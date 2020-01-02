@@ -1,0 +1,50 @@
+.aside {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  background-color: rgb(32, 34, 42);
+  .el-menu {
+    border-right: none
+  }
+  .logo {
+    height: 70px;
+    line-height: 70px;
+    background-color: rgb(32, 34, 42);
+    text-align: center;
+    color: #fff;
+    box-shadow: 0 1px 2px 0 rgba(0,0,0,.15);
+    .text-span {
+      color: #d4a266;
+      display: block;
+      .logo-img-big {
+        max-width: 156px;
+        margin-left: -20px;
+        height: auto;
+        vertical-align: middle;
+        transition: all .3s ease-in-out;
+      }
+    }
+    .img-span {
+      display: block;
+      .logo-img {
+        max-width: 25px;
+        vertical-align: middle;
+        transition: all .3s ease-in-out;
+      }
+      .small-img {
+        max-width: 55px;
+      }
+    }
+  }
+  .el-menu-vertical:not(.el-menu--collapse) {
+    width: 220px;
+  }
+}
+.el-menu-item i, .el-submenu i {
+  margin-right: 5px;
+  width: 24px;
+  text-align: center;
+  font-size: 18px;
+  vertical-align: middle;
+}

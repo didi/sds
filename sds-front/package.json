@@ -1,0 +1,31 @@
+{
+  "name": "opensds",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "vue-cli-service serve --watch",
+    "build": "vue-cli-service build",
+    "lint": "vue-cli-service lint",
+    "test:unit": "vue-cli-service test:unit"
+  },
+  "dependencies": {
+    "echarts": "^4.2.0-rc.1",
+    "element-ui": "^2.4.7",
+    "vue": "^2.5.17",
+    "vue-echarts": "^4.0.4",
+    "vue-router": "^3.0.1",
+    "vuex": "^3.0.1",
+    "whatwg-fetch": "^3.0.0"
+  },
+  "devDependencies": {
+    "@vue/cli-plugin-babel": "^3.0.1",
+    "@vue/cli-plugin-eslint": "^3.0.1",
+    "@vue/cli-plugin-unit-mocha": "^3.0.1",
+    "@vue/cli-service": "^3.0.1",
+    "@vue/test-utils": "^1.0.0-beta.20",
+    "chai": "^4.1.2",
+    "node-sass": "^4.9.0",
+    "sass-loader": "^7.0.1",
+    "vue-template-compiler": "^2.5.17"
+  }
+}

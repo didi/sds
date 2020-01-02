@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="WARN">
+
+    <Properties>
+        <Property name="ROOT">${sds.usr.log.dir}</Property>
+    </Properties>
+
+    <Appenders>
+        <!--<Console name="Console" target="SYSTEM_OUT">-->
+            <!--<PatternLayout pattern="%d{HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n"/>-->
+        <!--</Console>-->
+
+        <RollingFile name="didiouterAppender" fileName="${ROOT}/didiouter.log" bufferedIO="false" filePattern="${ROOT}/didiouter-%d{yyyy-MM-dd}.log">
+            <PatternLayout pattern="[%p][%d{yyyy-MM-dd'T'HH:mm:ss.SSS}] %m%n"/>
+            <Policies>
+                <TimeBaseTriggeringPolicy/>
+            </Policies>
+        </RollingFile>
+
+
+        <RollingFile name="sdsAppender" fileName="${ROOT}/Sds.log" bufferedIO="false" filePattern="${ROOT}/Sds-%d{yyyy-MM-dd}.log">
+            <PatternLayout pattern="[%p][%d{yyyy-MM-dd'T'HH:mm:ss.SSS}] %m%n"/>
+            <Policies>
+                <TimeBaseTriggeringPolicy/>
+            </Policies>
+        </RollingFile>
+
+        <RollingFile name="heartbeatAppender" fileName="${ROOT}/heartbeat.log" bufferedIO="false" filePattern="${ROOT}/heartbeat-%d{yyyy-MM-dd}.log">
+            <PatternLayout pattern="[%p][%d{yyyy-MM-dd'T'HH:mm:ss.SSS}] %m%n"/>
+            <Policies>
+                <TimeBaseTriggeringPolicy/>
+            </Policies>
+        </RollingFile>
+
+        <RollingFile name="pullStrategyAppender" fileName="${ROOT}/pullstrategy.log" bufferedIO="false" filePattern="${ROOT}/pullstrategy-%d{yyyy-MM-dd}.log">
+            <PatternLayout pattern="[%p][%d{yyyy-MM-dd'T'HH:mm:ss.SSS}] %m%n"/>
+            <Policies>
+                <TimeBaseTriggeringPolicy/>
+            </Policies>
+        </RollingFile>
+    </Appenders>
+
+    <Loggers>
+        <Logger name="heartbeatLogger" level="info" additivity="false">
+            <AppenderRef ref="heartbeatAppender"/>
+        </Logger>
+
+        <Logger name="pullStrategyLogger" level="info" additivity="false">
+            <AppenderRef ref="pullStrategyAppender"/>
+        </Logger>
+
+        <Logger name="didiouterLogger" level="info" additivity="false">
+            <AppenderRef ref="didiouterAppender"/>
+        </Logger>
+
+        <Root level="info">
+            <AppenderRef ref="sdsAppender"/>
+        </Root>
+    </Loggers>
+</Configuration>

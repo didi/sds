@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="http://www.padual.com/java/logback.xsd"
+        debug="false" scan="true" scanPeriod="30 second">
+
+    <property name="ROOT" value="${sds.usr.log.dir}" />
+    <timestamp key="DATETIME" datePattern="yyyy-MM-dd HH:mm:ss.SSS" />
+
+    <appender name="heartbeatAppender" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <encoder charset="utf-8">
+            <pattern>[%-5level] %date{yyyy-MM-dd HH:mm:ss.SSS} %m%n
+            </pattern>
+        </encoder>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>${ROOT}/heartbeat.%d.log</fileNamePattern>
+        </rollingPolicy>
+    </appender>
+
+    <appender name="pullStrategyAppender" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <encoder charset="utf-8">
+            <pattern>[%-5level] %date{yyyy-MM-dd HH:mm:ss.SSS} %m%n
+            </pattern>
+        </encoder>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>${ROOT}/pullstrategy.%d.log</fileNamePattern>
+        </rollingPolicy>
+    </appender>
+
+    <appender name="sdsAppender" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <encoder charset="utf-8">
+            <pattern>[%-5level] %date{yyyy-MM-dd HH:mm:ss.SSS} %m%n
+            </pattern>
+        </encoder>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>${ROOT}/Sds.%d.log</fileNamePattern>
+        </rollingPolicy>
+    </appender>
+
+    <logger name="sdsLogger" level="INFO" additivity="false" >
+        <appender-ref ref="sdsAppender" />
+    </logger>
+
+    <logger name="heartbeatLogger" level="INFO" additivity="false" >
+        <appender-ref ref="heartbeatAppender" />
+    </logger>
+
+    <logger name="pullStrategyLogger" level="INFO" additivity="false" >
+        <appender-ref ref="pullStrategyAppender" />
+    </logger>
+
+    <root level="INFO">
+        <appender-ref ref="sdsAppender" />
+    </root>
+</configuration>
