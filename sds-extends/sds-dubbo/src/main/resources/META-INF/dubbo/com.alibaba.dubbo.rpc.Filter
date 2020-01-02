@@ -1,4 +1,0 @@
-SdsProviderFilter=com.didiglobal.sds.plugins.dubbo.filter.SdsProviderFilter
-SdsConsumerFilter=com.didiglobal.sds.plugins.dubbo.filter.SdsConsumerFilter
-
-

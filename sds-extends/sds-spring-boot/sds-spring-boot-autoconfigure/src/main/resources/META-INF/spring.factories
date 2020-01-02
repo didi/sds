@@ -1,3 +1,0 @@
-# Auto Configure
-org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
-com.didiglobal.sds.plugins.spring.boot.autoconfigure.SdsAutoConfiguration
