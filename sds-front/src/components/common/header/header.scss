@@ -1,0 +1,98 @@
+.el-header {
+  position: fixed;
+  top: 0;
+  left: 220px;
+  right: 0;
+  padding: 0;
+  z-index: 1;
+  height: 50px !important;
+  background-color: #ffffff;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, .05);
+  transition: all .3s ease-in-out;
+
+  .header-controller {
+    overflow: hidden;
+    padding: 0 15px;
+    line-height: 45px;
+
+    ul {
+      font-size: 0;
+
+      li {
+        display: inline-block;
+
+        a {
+          display: inline-block;
+          vertical-align: middle;
+          margin: 0 15px;
+          color: #333333;
+          font-size: 16px;
+          font-weight: bold;
+          border-top: 2px solid #ffffff;
+          transition: all .6s;
+
+          &:hover {
+            border-top: 2px solid #333333;
+          }
+        }
+
+        span {
+          display: inline-block;
+          vertical-align: middle;
+        }
+      }
+    }
+
+    .env-tag {
+      font-size: 16px;
+      margin-right: 2em;
+      color: indianred;
+      font-weight: bold;
+    }
+
+    .hd-ct-left {
+      float: left;
+
+      .search-input {
+        width: 150px;
+        height: 30px;
+        font-size: 14px;
+        color: #000000;
+        font-weight: normal;
+        display: inline-block;
+        vertical-align: middle;
+        padding-left: 10px;
+        border: none;
+        outline: none;
+      }
+    }
+
+    .hd-ct-right {
+      float: right;
+
+      .iconfont {
+        margin: 0;
+        border-top: none;
+      }
+
+      .user-name, .adSys-down {
+        font-size: 14px;
+        font-weight: normal;
+      }
+
+      .user-name {
+        padding: 0 5px;
+      }
+    }
+
+  }
+
+  .bread-crumb {
+    padding: 0 15px;
+    background-color: #ffffff;
+
+    .el-breadcrumb {
+      line-height: 50px;
+    }
+  }
+}
