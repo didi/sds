@@ -122,18 +122,6 @@
             <activation>
                 <activeByDefault>true</activeByDefault>
             </activation>
-            <distributionManagement>
-                <repository>
-                    <id>central</id>
-                    <name>artifactory-main-releases</name>
-                    <url>http://artifactory.intra.xiaojukeji.com:80/artifactory/libs-release</url>
-                </repository>
-                <snapshotRepository>
-                    <id>snapshots</id>
-                    <name>artifactory-main-snapshots</name>
-                    <url>http://artifactory.intra.xiaojukeji.com:80/artifactory/libs-snapshot</url>
-                </snapshotRepository>
-            </distributionManagement>
         </profile>
     </profiles>
 </project>
