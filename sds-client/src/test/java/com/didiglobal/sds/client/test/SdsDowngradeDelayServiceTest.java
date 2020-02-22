@@ -15,7 +15,7 @@ import java.util.concurrent.ConcurrentHashMap;
 public class SdsDowngradeDelayServiceTest extends AbstractDowngradeTest {
 
     private static final String SERVER_URL = "http://localhost:9080/sds-server/home/heartbeat/touch";
-    private static SdsClient sdsClient = SdsClientFactory.getOrCreateSdsClient("daijia", "test", SERVER_URL);
+    private static SdsClient sdsClient = SdsClientFactory.getOrCreateSdsClient("didi", "test", SERVER_URL);
 
     @Test
     public void visDowngradeDelayTest() {

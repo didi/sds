@@ -17,7 +17,7 @@ import java.util.concurrent.TimeUnit;
  */
 public abstract class AbstractDowngradeTest {
 
-    protected static final String SERVER_URL = "http://10.179.100.222:8887";
+    protected static final String SERVER_URL = "http://127.0.0.1:8887";
     protected static SdsClient sdsClient = SdsClientFactory.getOrCreateSdsClient("黑马", "mzz-study", SERVER_URL);
 
     // 业务方法是否抛出异常
