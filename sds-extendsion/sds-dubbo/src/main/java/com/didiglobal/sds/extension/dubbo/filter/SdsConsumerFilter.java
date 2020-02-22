@@ -1,4 +1,4 @@
-package com.didiglobal.sds.plugins.dubbo.filter;
+package com.didiglobal.sds.extension.dubbo.filter;
 
 import com.alibaba.dubbo.common.Constants;
 import com.alibaba.dubbo.common.extension.Activate;

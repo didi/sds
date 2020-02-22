@@ -34,4 +34,7 @@ tmp/**/*
 .classpath
 .loadpath
 
+## .gitignore for node
+sds-front/package-lock.json
+
 .DS_Store

@@ -13,7 +13,7 @@
         <module>sds-client</module>
         <module>sds-web</module>
         <module>sds-bootstrap</module>
-        <module>sds-extends</module>
+        <module>sds-extension</module>
         <module>sds-easy</module>
     </modules>
 
