@@ -1,4 +1,4 @@
-package com.didiglobal.sds.plugins.okhttp;
+package com.didiglobal.sds.extension.okhttp;
 
 import com.didiglobal.sds.client.SdsClient;
 import com.didiglobal.sds.client.SdsClientFactory;

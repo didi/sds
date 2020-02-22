@@ -1,4 +1,4 @@
-package com.didiglobal.sds.plugins.spring.boot.autoconfigure;
+package com.didiglobal.sds.extension.spring.boot.autoconfigure;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
 
