@@ -73,7 +73,7 @@ sds-client除了需要统计滑动窗口的数据，还有两个任务，统计�
 <dependency>
    <groupId>com.didiglobal.sds</groupId>
    <artifactId>sds-easy</artifactId>
-   <version>2.0.1-SNAPSHOT</version>
+   <version>1.0.1-SNAPSHOT</version>
 </dependency>
 ```
 sds-easy内部依赖了sds-client，sds-easy的出现是为了让我们使用sds-client更便捷。
@@ -84,7 +84,7 @@ sds-easy内部依赖了sds-client，sds-easy的出现是为了让我们使用sds
 <dependency>
    <groupId>com.didiglobal.sds</groupId>
    <artifactId>sds-dubbo</artifactId>
-   <version>2.0.1-SNAPSHOT</version>
+   <version>1.0.1-SNAPSHOT</version>
 </dependency>
 ```
 
