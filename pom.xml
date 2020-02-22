@@ -111,7 +111,7 @@
         <profile>
             <id>front</id>
             <activation>
-                <activeByDefault>true</activeByDefault>
+                <activeByDefault>false</activeByDefault>
             </activation>
             <modules>
                 <module>sds-front</module>
