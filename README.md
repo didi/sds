@@ -71,7 +71,7 @@ sds-client除了需要统计滑动窗口的数据，还有两个任务，统计�
 
 ```xml
 <dependency>
-   <groupId>com.didichuxing.platform.sds</groupId>
+   <groupId>com.didiglobal.sds</groupId>
    <artifactId>sds-easy</artifactId>
    <version>2.0.1-SNAPSHOT</version>
 </dependency>
@@ -82,7 +82,7 @@ sds-easy内部依赖了sds-client，sds-easy的出现是为了让我们使用sds
 
 ```xml
 <dependency>
-   <groupId>com.didichuxing.platform.sds</groupId>
+   <groupId>com.didiglobal.sds</groupId>
    <artifactId>sds-dubbo</artifactId>
    <version>2.0.1-SNAPSHOT</version>
 </dependency>
@@ -98,7 +98,7 @@ private static SdsClient sdsClient = SdsClientFactory.getOrCreateSdsClient("黑�
 
 我们可以在Spring配置文件如下初始化：
 ```xml
-<bean id="sdsClient" class="com.didichuxing.platform.sds.client.SdsClientFactory" factory-method="getOrCreateSdsClient">
+<bean id="sdsClient" class="com.didiglobal.sds.client.SdsClientFactory" factory-method="getOrCreateSdsClient">
     <constructor-arg type="java.lang.String" value="hm" />
     <constructor-arg type="java.lang.String" value="bh-order" />
     <constructor-arg type="java.lang.String" value="http://10.179.100.222:8887（注意：这里的是线下环境的地址）" />
