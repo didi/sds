@@ -92,7 +92,7 @@ sds-easy内部依赖了sds-client，sds-easy的出现是为了让我们使用sds
 注意，该对象应该使用单例模式，可以直接通过SdsClientFactory工厂来创建：
 
 ```java
-private static final String SERVER_URL = "http://10.179.100.222:8887";
+private static final String SERVER_URL = "http://127.0.0.1:8887";
 private static SdsClient sdsClient = SdsClientFactory.getOrCreateSdsClient("黑马", "bh-order", SERVER_URL);
 ```
 
@@ -101,7 +101,7 @@ private static SdsClient sdsClient = SdsClientFactory.getOrCreateSdsClient("黑�
 <bean id="sdsClient" class="com.didiglobal.sds.client.SdsClientFactory" factory-method="getOrCreateSdsClient">
     <constructor-arg type="java.lang.String" value="hm" />
     <constructor-arg type="java.lang.String" value="bh-order" />
-    <constructor-arg type="java.lang.String" value="http://10.179.100.222:8887（注意：这里的是线下环境的地址）" />
+    <constructor-arg type="java.lang.String" value="http://127.0.0.1:8887（注意：这里的是线下环境的地址）" />
 </bean>
 ```
 
@@ -164,7 +164,7 @@ protected boolean businessMethod() {
 前面提到过，sds-easy中提供了一种更简便的使用方式，即使用SdsEasyUtil类，例如：
 
 ```java
-protected static final String SERVER_URL = "http://10.179.100.222:8887";
+protected static final String SERVER_URL = "http://127.0.0.1:8887";
  
 static {
     // 可以找个安静的地方初始化SdsClient
