@@ -112,7 +112,7 @@
         <profile>
             <id>front</id>
             <activation>
-                <activeByDefault>true</activeByDefault>
+                <activeByDefault>false</activeByDefault>
             </activation>
             <properties>
                 <!-- 前端构建件输出地址 -->
