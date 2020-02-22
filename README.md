@@ -263,5 +263,4 @@ SDS的目标是打造一个简单、易用、可靠的限流、熔断和降级�
 ## 10. 协议
 
 <img alt="Apache-2.0 license" src="https://lucene.apache.org/images/mantle-power.png" width="128">
-
 SDS 基于 Apache-2.0 协议进行分发和使用，更多信息参见 [协议文件](LICENSE)。
