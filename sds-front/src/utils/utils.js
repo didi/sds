@@ -7,7 +7,7 @@ export default {
       case "10.89.191.50":
         return "preonline";
 
-      case "10.179.100.222":
+      case "127.0.0.1":
         return "stable";
 
       default:

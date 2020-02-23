@@ -38,3 +38,4 @@ tmp/**/*
 sds-front/package-lock.json
 
 .DS_Store
+node_modules
