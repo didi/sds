@@ -93,7 +93,7 @@ sds-easy内部依赖了sds-client，sds-easy的出现是为了让我们使用sds
 
 ```java
 private static final String SERVER_URL = "http://127.0.0.1:8887";
-private static SdsClient sdsClient = SdsClientFactory.getOrCreateSdsClient("黑马", "bh-order", SERVER_URL);
+private static SdsClient sdsClient = SdsClientFactory.getOrCreateSdsClient("两轮车", "order", SERVER_URL);
 ```
 
 我们可以在Spring配置文件如下初始化：
