@@ -101,7 +101,7 @@ private static SdsClient sdsClient = SdsClientFactory.getOrCreateSdsClient("黑�
 <bean id="sdsClient" class="com.didiglobal.sds.client.SdsClientFactory" factory-method="getOrCreateSdsClient">
     <constructor-arg type="java.lang.String" value="hm" />
     <constructor-arg type="java.lang.String" value="bh-order" />
-    <constructor-arg type="java.lang.String" value="http://127.0.0.1:8887（注意：这里的是线下环境的地址）" />
+    <constructor-arg type="java.lang.String" value="http://127.0.0.1:8887" />
 </bean>
 ```
 
