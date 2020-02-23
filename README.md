@@ -234,7 +234,7 @@ static {
 为了能进一步减少接入的难度，我们对常用框架的接入进行了封装，让接入的成本更低。
 
 ### 8.1 对Dubbo的支持
-大多数外部工具，对Dubbo的切入点都在Filter上，Filter一个不好的地方是它是由Dubbo通过SPI来初始化的，不能直接和Spring容器初始化的Bean打通，但对于SDS来说没关系，因为SdsClient实例本来就是静态单例。
+大多数外部工具，对Dubbo的切入点都在Filter上，Filter它是由Dubbo通过SPI来初始化的，SdsClient实例应该作为静态单例来使用。
 
 我们为此提供了sds-dubbo.jar（注意，如果是maven方式构建，可以业务系统可以只依赖sds-dubbo.jar，因为sds-dubbo.jar内依赖了sds-client.jar），里面有一个SdsProviderFilter 和 SdsConsumerFilter，这两个filter都提供了可覆盖的接口，用于业务系统根据自己的特殊性，来提供降级后的返回值或行为：
 ```java
