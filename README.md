@@ -101,8 +101,8 @@ private static final SdsClient sdsClient = SdsClientFactory.getOrCreateSdsClient
 我们可以在Spring配置文件如下初始化：
 ```xml
 <bean id="sdsClient" class="com.didiglobal.sds.client.SdsClientFactory" factory-method="getOrCreateSdsClient">
-    <constructor-arg type="java.lang.String" value="hm" />
-    <constructor-arg type="java.lang.String" value="bh-order" />
+    <constructor-arg type="java.lang.String" value="两轮车" />
+    <constructor-arg type="java.lang.String" value="order" />
     <constructor-arg type="java.lang.String" value="http://127.0.0.1:8887" />
 </bean>
 ```
