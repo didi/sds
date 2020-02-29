@@ -8,10 +8,10 @@ import com.didiglobal.sds.web.controller.request.PointStrategyRequest;
 import com.didiglobal.sds.web.controller.response.SdsResponse;
 import com.didiglobal.sds.web.dao.AppInfoDao;
 import com.didiglobal.sds.web.dao.PointStrategyDao;
-import com.didiglobal.sds.web.dao.StrategyGroupDao;
+import com.didiglobal.sds.web.dao.SdsSchemeDao;
 import com.didiglobal.sds.web.dao.bean.AppInfoDO;
 import com.didiglobal.sds.web.dao.bean.PointStrategyDO;
-import com.didiglobal.sds.web.dao.bean.StrategyGroupDO;
+import com.didiglobal.sds.web.dao.bean.SdsSchemeDO;
 import com.didiglobal.sds.web.util.FastBeanUtil;
 import com.didiglobal.sds.web.util.StringCheck;
 import org.apache.commons.collections.CollectionUtils;
@@ -39,11 +39,11 @@ public class PointStrategyController {
     @Autowired
     private PointStrategyDao pointStrategyDao;
     @Autowired
-    private StrategyGroupDao strategyGroupDao;
+    private SdsSchemeDao sdsSchemeDao;
     @Autowired
     private AppInfoDao appInfoDao;
 
-    private final static String STRATEGY_TEMPLATE = "提示：应用组：%s，应用：%s 当前所使用的策略组是【%s】（注意，不属于该策略组的降级点策略将对该应用不生效）";
+    private final static String STRATEGY_TEMPLATE = "提示：应用组：%s，应用：%s 当前所使用的降级预案是【%s】（注意，不属于该降级预案的降级点策略将对该应用不生效）";
 
     private static Logger logger = SdsLoggerFactory.getDefaultLogger();
 
@@ -71,13 +71,13 @@ public class PointStrategyController {
 
         List<PointStrategyDO> data = pointStrategyDao.queryPointStrategyByPage(pointStrategyRequest.getAppGroupName(),
                 pointStrategyRequest.getAppName(), pointStrategyRequest.getPoint(), pointStrategyRequest.
-                        getStrategyGroupName(), (page - 1) * pageSize, pageSize);
+                        getSdsSchemeName(), (page - 1) * pageSize, pageSize);
 
         return new SdsResponse<>(data);
     }
 
     @RequestMapping(value = "querystrategygrouptips")
-    public SdsResponse<String> queryAppCurStrategyGroupTips(@RequestBody PointStrategyRequest pointStrategyRequest) {
+    public SdsResponse<String> queryAppCurSdsSchemeTips(@RequestBody PointStrategyRequest pointStrategyRequest) {
 
         if (pointStrategyRequest == null) {
             return new SdsResponse(SdsCode.PARAM_ERROR.getCode(), "请求参数错误，请联系程序猿");
@@ -100,13 +100,13 @@ public class PointStrategyController {
         }
 
         String tips = String.format(STRATEGY_TEMPLATE, appInfoDO.getAppGroupName(), appInfoDO.getAppName(),
-                appInfoDO.getStrategyGroupName());
+                appInfoDO.getSdsSchemeName());
 
         return new SdsResponse<>(tips);
     }
 
     // curl -X POST -H 'Content-type':'application/json'  -d '{"appGroupName":"黑马", "appName":"mzz-study",
-    // "strategyGroupName":"FIRST_GROUP", "point":"love", "status":1, "operatorId":999 }'
+    // "sdsSchemeName":"FIRST_GROUP", "point":"love", "status":1, "operatorId":999 }'
     // http://localhost:8887/sds/pointstrategy/add
     @RequestMapping(value = "add")
     public SdsResponse addPointStrategy(@RequestBody PointStrategyRequest pointStrategyRequest) {
@@ -123,8 +123,8 @@ public class PointStrategyController {
             return new SdsResponse(SdsCode.PARAM_ERROR.getCode(), "应用名称不能为空");
         }
 
-        if (StringUtils.isBlank(pointStrategyRequest.getStrategyGroupName())) {
-            return new SdsResponse(SdsCode.PARAM_ERROR.getCode(), "策略组名称不能为空");
+        if (StringUtils.isBlank(pointStrategyRequest.getSdsSchemeName())) {
+            return new SdsResponse(SdsCode.PARAM_ERROR.getCode(), "降级预案名称不能为空");
         }
 
         if (StringUtils.isBlank(pointStrategyRequest.getPoint())) {
@@ -155,19 +155,19 @@ public class PointStrategyController {
             return new SdsResponse(SdsCode.PARAM_ERROR.getCode(), "降级点名称不能超过200个字符");
         }
 
-        StrategyGroupDO strategyGroupDO = strategyGroupDao.queryByGroupName(pointStrategyRequest.getAppGroupName(),
-                pointStrategyRequest.getAppName(), pointStrategyRequest.getStrategyGroupName());
-        if (strategyGroupDO == null) {
-            return new SdsResponse(SdsCode.PARAM_ERROR.getCode(), "策略组" + pointStrategyRequest.
-                    getStrategyGroupName() + "不存在！");
+        SdsSchemeDO sdsSchemeDO = sdsSchemeDao.queryByGroupName(pointStrategyRequest.getAppGroupName(),
+                pointStrategyRequest.getAppName(), pointStrategyRequest.getSdsSchemeName());
+        if (sdsSchemeDO == null) {
+            return new SdsResponse(SdsCode.PARAM_ERROR.getCode(), "降级预案" + pointStrategyRequest.
+                    getSdsSchemeName() + "不存在！");
         }
 
-        List<PointStrategyDO> pointStrategyDOS = pointStrategyDao.queryPointStrategyByStrategyGroup(
+        List<PointStrategyDO> pointStrategyDOS = pointStrategyDao.queryPointStrategyBySdsScheme(
                 pointStrategyRequest.getAppGroupName(), pointStrategyRequest.getAppName(),
-                pointStrategyRequest.getPoint(), pointStrategyRequest.getStrategyGroupName());
+                pointStrategyRequest.getPoint(), pointStrategyRequest.getSdsSchemeName());
         if (CollectionUtils.isNotEmpty(pointStrategyDOS)) {
             return new SdsResponse(SdsCode.PARAM_ERROR.getCode(), "降级点" + pointStrategyRequest.getPoint() +
-                    "和策略组" + pointStrategyRequest.getStrategyGroupName() + "已存在！");
+                    "和降级预案" + pointStrategyRequest.getSdsSchemeName() + "已存在！");
         }
 
         pointStrategyRequest.setOperatorName(pointStrategyRequest.getCreatorName());
@@ -200,12 +200,12 @@ public class PointStrategyController {
             return new SdsResponse(SdsCode.PARAM_ERROR.getCode(), "应用名称不能为空");
         }
 
-        if (StringUtils.isBlank(pointStrategyRequest.getStrategyGroupName())) {
-            return new SdsResponse(SdsCode.PARAM_ERROR.getCode(), "策略组名称不能为空");
+        if (StringUtils.isBlank(pointStrategyRequest.getSdsSchemeName())) {
+            return new SdsResponse(SdsCode.PARAM_ERROR.getCode(), "降级预案名称不能为空");
         }
 
-        if (StringUtils.isBlank(pointStrategyRequest.getNewStrategyGroupName())) {
-            return new SdsResponse(SdsCode.PARAM_ERROR.getCode(), "新策略组名称不能为空");
+        if (StringUtils.isBlank(pointStrategyRequest.getNewSdsSchemeName())) {
+            return new SdsResponse(SdsCode.PARAM_ERROR.getCode(), "新降级预案名称不能为空");
         }
 
         if (StringUtils.isBlank(pointStrategyRequest.getPoint())) {
@@ -233,23 +233,23 @@ public class PointStrategyController {
         }
 
         List<PointStrategyDO> oldPointStrategyDOS =
-                pointStrategyDao.queryPointStrategyByStrategyGroup(pointStrategyRequest.getAppGroupName(),
+                pointStrategyDao.queryPointStrategyBySdsScheme(pointStrategyRequest.getAppGroupName(),
                         pointStrategyRequest.getAppName(), pointStrategyRequest.getPoint(),
-                        pointStrategyRequest.getStrategyGroupName());
+                        pointStrategyRequest.getSdsSchemeName());
         if (CollectionUtils.isEmpty(oldPointStrategyDOS)) {
-            return new SdsResponse(SdsCode.PARAM_ERROR.getCode(), "降级点" + pointStrategyRequest.getPoint() + "和策略组" +
-                    pointStrategyRequest.getStrategyGroupName() + "不存在！");
+            return new SdsResponse(SdsCode.PARAM_ERROR.getCode(), "降级点" + pointStrategyRequest.getPoint() + "和降级预案" +
+                    pointStrategyRequest.getSdsSchemeName() + "不存在！");
         }
 
-        if (!Objects.equals(pointStrategyRequest.getStrategyGroupName(),
-                pointStrategyRequest.getNewStrategyGroupName())) {
+        if (!Objects.equals(pointStrategyRequest.getSdsSchemeName(),
+                pointStrategyRequest.getNewSdsSchemeName())) {
             List<PointStrategyDO> pointStrategyDOS =
-                    pointStrategyDao.queryPointStrategyByStrategyGroup(pointStrategyRequest.getAppGroupName(),
+                    pointStrategyDao.queryPointStrategyBySdsScheme(pointStrategyRequest.getAppGroupName(),
                             pointStrategyRequest.getAppName(), pointStrategyRequest.getPoint(),
-                            pointStrategyRequest.getNewStrategyGroupName());
+                            pointStrategyRequest.getNewSdsSchemeName());
             if (CollectionUtils.isNotEmpty(pointStrategyDOS)) {
-                return new SdsResponse(SdsCode.PARAM_ERROR.getCode(), "降级点" + pointStrategyRequest.getPoint() + "和策略组" +
-                        pointStrategyRequest.getNewStrategyGroupName() + "已存在！");
+                return new SdsResponse(SdsCode.PARAM_ERROR.getCode(), "降级点" + pointStrategyRequest.getPoint() + "和降级预案" +
+                        pointStrategyRequest.getNewSdsSchemeName() + "已存在！");
             }
         }
 
@@ -277,7 +277,7 @@ public class PointStrategyController {
 
         int result = pointStrategyDao.deletePointStrategy(pointStrategyRequest.getAppGroupName(),
                 pointStrategyRequest.getAppName(),
-                pointStrategyRequest.getPoint(), pointStrategyRequest.getStrategyGroupName());
+                pointStrategyRequest.getPoint(), pointStrategyRequest.getSdsSchemeName());
 
         if (result == 1) {
             appInfoDao.increaseAppVersion(pointStrategyRequest.getAppGroupName(), pointStrategyRequest.getAppName(),

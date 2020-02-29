@@ -22,9 +22,9 @@
             </el-form-item>
           </el-col>
           <el-col :span="6">
-            <el-form-item label="策略组">
-              <el-select v-model="form.strategyGroup" placeholder="策略组">
-                <p v-for="(item, index) in strategyGroupData" :key="index">
+            <el-form-item label="降级预案">
+              <el-select v-model="form.sdsScheme" placeholder="降级预案">
+                <p v-for="(item, index) in sdsSchemeData" :key="index">
                   <el-option :label="item" :value="item"></el-option>
                 </p>
               </el-select>
@@ -107,8 +107,8 @@
           :show-overflow-tooltip="true">
         </el-table-column>
         <el-table-column
-          prop="strategyGroupName"
-          label="策略组"
+          prop="sdsSchemeName"
+          label="降级预案"
           :show-overflow-tooltip="true">
         </el-table-column>
         <el-table-column
@@ -200,9 +200,9 @@
         </el-form-item>
         </p>
         <div class="strategy-group">
-          <el-form-item label="策略组">
-            <el-select v-model="addStrategyGroup">
-              <p v-for="(item, index) in addStrategyGroupData" :key="index">
+          <el-form-item label="降级预案">
+            <el-select v-model="addSdsScheme">
+              <p v-for="(item, index) in addSdsSchemeData" :key="index">
                 <el-option :label="item" :value="item"></el-option>
               </p>
             </el-select>
@@ -265,10 +265,10 @@
           </el-form-item>
         </p>
         <!-- <p class="of-application-group">
-          <el-form-item label="所用策略组">
-            <el-select v-model="form.strategyGroup" placeholder="">
-              <el-option label="策略组1" value="1"></el-option>
-              <el-option label="策略组2" value="2"></el-option>
+          <el-form-item label="所用降级预案">
+            <el-select v-model="form.sdsScheme" placeholder="">
+              <el-option label="降级预案1" value="1"></el-option>
+              <el-option label="降级预案2" value="2"></el-option>
             </el-select>
           </el-form-item>
         </p> -->
@@ -305,9 +305,9 @@
           </el-form-item>
         </p>
         <p>
-          <el-form-item label="策略组">
-            <el-select v-model="editRowData.strategyGroupName" placeholder="">
-            <p v-for="(item, index) in editStrategyGroupData" :key="index">
+          <el-form-item label="降级预案">
+            <el-select v-model="editRowData.sdsSchemeName" placeholder="">
+            <p v-for="(item, index) in editSdsSchemeData" :key="index">
               <el-option :label="item" :value="item"></el-option>
             </p>
             </el-select>
@@ -698,14 +698,14 @@
   export default {
     data () {
       return {
-        oldStrategyGroupName: '',
-        editNewStrategyGroupName: '',
-        editStrategyGroupData: [],
-        newStrategyGroupName: '',
+        oldSdsSchemeName: '',
+        editNewSdsSchemeName: '',
+        editSdsSchemeData: [],
+        newSdsSchemeName: '',
         dialogEditAdvancedConfig: false,
         appNameData: [],
-        addStrategyGroupData: [],
-        addStrategyGroup: '',
+        addSdsSchemeData: [],
+        addSdsScheme: '',
         demotePointStatus: 1,
         timeoutCountThreshold: '',
         pressureTestDowngrade: 0,
@@ -733,8 +733,8 @@
         addApplyGroupName: '',
         dialogAddDemotePoint: false,
         dialogAdvancedConfig: false,
-        strategyGroupData: [],
-        editStrategyGroup: '',
+        sdsSchemeData: [],
+        editSdsScheme: '',
         editApplyName: '',
         editRowData: {},
         dialogEditApply: false,
@@ -750,7 +750,7 @@
         form: {
           appName: '',
           applyGroup: '',
-          strategyGroup: '',
+          sdsScheme: '',
           demotePoint: ''
         },
         showAllExpand: true,
@@ -762,15 +762,15 @@
       this.appgroupListall()
     },
     watch: {
-      'editRowData.strategyGroupName' (newVal) {
-        this.editNewStrategyGroupName = newVal
+      'editRowData.sdsSchemeName' (newVal) {
+        this.editNewSdsSchemeName = newVal
       },
-      //监听编辑case下面某应用的所有策略组
+      //监听编辑case下面某应用的所有降级预案
       'editRowData' (newVal) {
-        this.editRowData.strategyGroup = ''
+        this.editRowData.sdsScheme = ''
         this.strategygroupListall(newVal.appGroupName, newVal.appName).then((res) => {
           if (res.code === 200) {
-            this.editStrategyGroupData = res.data
+            this.editSdsSchemeData = res.data
           } else {
             this.$message({
               message: res.msg,
@@ -779,7 +779,7 @@
           }
         }).catch((err) => {
           this.$message({
-            message: "查询该应用下的所有策略组失败",
+            message: "查询该应用下的所有降级预案失败",
             type: 'warning'
           })
         })
@@ -787,7 +787,7 @@
       //监听查询case下的应用组变化
       'form.applyGroup' (newVal, oldVal) {
         this.form.appName = '';
-        this.form.strategyGroup = '';
+        this.form.sdsScheme = '';
         this.getAppinfoListall(newVal).then((res) => {
           if(res.code === 200) {
             this.appNameData = res.data
@@ -807,10 +807,10 @@
       //监听查询状态下的应用变化
       'form.appName' (newVal, oldVal) {
         if (!newVal) return;
-        this.form.strategyGroup = ''
+        this.form.sdsScheme = ''
         this.strategygroupListall(this.form.applyGroup, newVal).then((res) => {
           if (res.code === 200) {
-            this.strategyGroupData = res.data
+            this.sdsSchemeData = res.data
           } else {
             this.$message({
               message: res.msg,
@@ -819,7 +819,7 @@
           }
         }).catch((err) => {
           this.$message({
-            message: "查询该应用下的所有策略组失败",
+            message: "查询该应用下的所有降级预案失败",
             type: 'warning'
           })
         })
@@ -843,13 +843,13 @@
           })
         })
       },
-      //监听增加策略点case下 获取所有策略组
+      //监听增加策略点case下 获取所有降级预案
       addApplyName (newVal, oldVal) {
-        this.addStrategyGroup = '',
+        this.addSdsScheme = '',
           this.strategygroupListall(this.addApplyGroupName, newVal).then((res) => {
             if (res.code === 200) {
               console.log('strategygroupListall', res.data)
-              this.addStrategyGroupData = res.data
+              this.addSdsSchemeData = res.data
             } else {
               this.$message({
                 message: res.msg,
@@ -858,7 +858,7 @@
             }
           }).catch((err) => {
             this.$message({
-              message: "查询所有策略组失败",
+              message: "查询所有降级预案失败",
               type: 'warning'
             })
           })
@@ -881,7 +881,7 @@
           }
         }).catch((err) => {
           this.$message({
-            message: "获取应用策略组失败",
+            message: "获取应用降级预案失败",
             type: 'warning'
           })
         })
@@ -904,8 +904,8 @@
         let params = {
           appGroupName: this.editRowData.appGroupName, //应用组
           appName: this.editRowData.appName,//应用名称
-          strategyGroupName: this.oldStrategyGroupName, //策略组名称
-          newStrategyGroupName: this.editRowData.strategyGroupName, //新策略组名
+          sdsSchemeName: this.oldSdsSchemeName, //降级预案名称
+          newSdsSchemeName: this.editRowData.sdsSchemeName, //新降级预案名
           point: this.editRowData.point, //降级点名称
           visitThreshold: this.editRowData.visitThreshold, //访问量阈值
           concurrentThreshold: this.editRowData.concurrentThreshold, //并发量阈值
@@ -983,7 +983,7 @@
           })
         })
       },
-      //查询所有策略组
+      //查询所有降级预案
       strategygroupListall (appGroupName, appName) { // todo
         let params = {
           appGroupName: appGroupName,
@@ -1020,7 +1020,7 @@
         let params = {
           appGroupName: this.addApplyGroupName, //应用组
           appName: this.addApplyName,//应用名称
-          strategyGroupName: this.addStrategyGroup, //策略组名称
+          sdsSchemeName: this.addSdsScheme, //降级预案名称
           point: this.addDemotePointName, //降级点名称
           visitThreshold: this.accessThreshold, //访问量阈值
           concurrentThreshold: this.concurrencyThreshold, //并发量阈值
@@ -1073,7 +1073,7 @@
         this.querystrategygrouptips()
         this.dialogEditDemotePoint = true
         this.editRowData = row
-        this.oldStrategyGroupName = row.strategyGroupName
+        this.oldSdsSchemeName = row.sdsSchemeName
       },
       //删除降级点
       handleDelete(rowData) {
@@ -1081,7 +1081,7 @@
           appGroupName: rowData.appGroupName,
           appName: rowData.appName,
           point: rowData.point,
-          strategyGroupName: rowData.strategyGroupName,
+          sdsSchemeName: rowData.sdsSchemeName,
           operatorId: rowData.operatorId
         }
         this.$confirm('确定删除该降级点吗?', '提示', {
@@ -1119,7 +1119,7 @@
         let params = {
           appGroupName: this.form.applyGroup,
           appName: this.form.appName,
-          strategyGroupName: this.form.strategyGroup,
+          sdsSchemeName: this.form.sdsScheme,
           point: this.form.demotePoint,
           page: page || 1,
           pageSize: pageSize || this.tableData.ps

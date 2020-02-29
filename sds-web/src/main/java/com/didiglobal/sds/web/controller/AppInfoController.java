@@ -6,11 +6,11 @@ import com.didiglobal.sds.web.controller.response.SdsResponse;
 import com.didiglobal.sds.web.dao.AppGroupDao;
 import com.didiglobal.sds.web.dao.AppInfoDao;
 import com.didiglobal.sds.web.dao.PointStrategyDao;
-import com.didiglobal.sds.web.dao.StrategyGroupDao;
+import com.didiglobal.sds.web.dao.SdsSchemeDao;
 import com.didiglobal.sds.web.dao.bean.AppGroupDO;
 import com.didiglobal.sds.web.dao.bean.AppInfoDO;
 import com.didiglobal.sds.web.dao.bean.PointStrategyDO;
-import com.didiglobal.sds.web.dao.bean.StrategyGroupDO;
+import com.didiglobal.sds.web.dao.bean.SdsSchemeDO;
 import com.didiglobal.sds.web.util.StringCheck;
 import com.google.common.collect.Lists;
 import org.apache.commons.collections.CollectionUtils;
@@ -43,7 +43,7 @@ public class AppInfoController {
     @Autowired
     private AppGroupDao appGroupDao;
     @Autowired
-    private StrategyGroupDao strategyGroupDao;
+    private SdsSchemeDao sdsSchemeDao;
     @Autowired
     private PointStrategyDao pointStrategyDao;
 
@@ -134,7 +134,7 @@ public class AppInfoController {
         AppInfoDO appInfoDO = new AppInfoDO();
         appInfoDO.setAppGroupName(appInfoRequest.getAppGroupName());
         appInfoDO.setAppName(appInfoRequest.getAppName());
-        appInfoDO.setStrategyGroupName(appInfoRequest.getStrategyGroupName());
+        appInfoDO.setSdsSchemeName(appInfoRequest.getSdsSchemeName());
         appInfoDO.setCreatorName(appInfoRequest.getCreatorName());
         appInfoDO.setCreatorEmail(appInfoRequest.getCreatorEmail());
         appInfoDO.setOperatorName(appInfoRequest.getCreatorName());
@@ -144,24 +144,24 @@ public class AppInfoController {
 
         if (result == 1) {
             /**
-             *  如果添加应用成功，那么立马给该应用创建一个默认策略组，并将该默认策略组设置为该应用的当前策略组
+             *  如果添加应用成功，那么立马给该应用创建一个默认降级预案，并将该默认降级预案设置为该应用的当前降级预案
              */
-            StrategyGroupDO strategyGroupDO = new StrategyGroupDO();
-            strategyGroupDO.setAppGroupName(appInfoRequest.getAppGroupName());
-            strategyGroupDO.setAppName(appInfoRequest.getAppName());
+            SdsSchemeDO sdsSchemeDO = new SdsSchemeDO();
+            sdsSchemeDO.setAppGroupName(appInfoRequest.getAppGroupName());
+            sdsSchemeDO.setAppName(appInfoRequest.getAppName());
 
-            strategyGroupDO.setStrategyGroupName("默认策略组");
-            strategyGroupDO.setCreatorName(appInfoRequest.getCreatorName());
-            strategyGroupDO.setCreatorEmail(appInfoRequest.getCreatorEmail());
-            strategyGroupDO.setOperatorName(appInfoRequest.getCreatorName());
-            strategyGroupDO.setOperatorEmail(appInfoRequest.getCreatorEmail());
+            sdsSchemeDO.setSdsSchemeName("默认降级预案");
+            sdsSchemeDO.setCreatorName(appInfoRequest.getCreatorName());
+            sdsSchemeDO.setCreatorEmail(appInfoRequest.getCreatorEmail());
+            sdsSchemeDO.setOperatorName(appInfoRequest.getCreatorName());
+            sdsSchemeDO.setOperatorEmail(appInfoRequest.getCreatorEmail());
 
-            result = strategyGroupDao.addStrategyGroup(strategyGroupDO);
+            result = sdsSchemeDao.addSdsScheme(sdsSchemeDO);
 
             if (result == 1) {
-                // 将该默认策略组设置成该应用的当前策略组
+                // 将该默认降级预案设置成该应用的当前降级预案
                 appInfoDao.updateAppInfo(appInfoRequest.getAppGroupName(), appInfoRequest.getAppName(), appInfoRequest.
-                                getAppName(), strategyGroupDO.getStrategyGroupName(),
+                                getAppName(), sdsSchemeDO.getSdsSchemeName(),
                         appInfoRequest.getCreatorName(), appInfoRequest.getCreatorEmail());
             }
         }
@@ -171,7 +171,7 @@ public class AppInfoController {
     }
 
     // curl -X POST -H 'Content-type':'application/json'  -d '{"appGroupName":"黑马", "appName":"bh-order",
-    // "newAppName":"bh-ins", "newStrategyGroupName":"abc", "operatorId":2}'  http://localhost:8887/sds/appinfo/edit
+    // "newAppName":"bh-ins", "newSdsSchemeName":"abc", "operatorId":2}'  http://localhost:8887/sds/appinfo/edit
     @RequestMapping(value = "edit")
     public SdsResponse<List<AppInfoDO>> updateAppInfo(@RequestBody AppInfoRequest appInfoRequest) {
 
@@ -216,7 +216,7 @@ public class AppInfoController {
          * 所以，只有该应用下没有配置降级点策略才允许修改应用名字
          */
         if (modifyAppName) {
-            List<PointStrategyDO> pointStrategyList = pointStrategyDao.queryPointStrategyByStrategyGroup(appInfoRequest.
+            List<PointStrategyDO> pointStrategyList = pointStrategyDao.queryPointStrategyBySdsScheme(appInfoRequest.
                             getAppGroupName(),
                     appInfoRequest.getAppName(), null, null);
             if (CollectionUtils.isNotEmpty(pointStrategyList)) {
@@ -225,22 +225,22 @@ public class AppInfoController {
             }
         }
 
-        if (StringUtils.isNotBlank(appInfoRequest.getNewStrategyGroupName())) {
-            StrategyGroupDO strategyGroupDO = strategyGroupDao.queryByGroupName(appInfoRequest.getAppGroupName(),
+        if (StringUtils.isNotBlank(appInfoRequest.getNewSdsSchemeName())) {
+            SdsSchemeDO sdsSchemeDO = sdsSchemeDao.queryByGroupName(appInfoRequest.getAppGroupName(),
                     appInfoRequest.getAppName(),
-                    appInfoRequest.getNewStrategyGroupName());
-            if (strategyGroupDO == null) {
-                return new SdsResponse(PARAM_ERROR.getCode(), appInfoRequest.getNewStrategyGroupName() +
-                        "策略组不存在");
+                    appInfoRequest.getNewSdsSchemeName());
+            if (sdsSchemeDO == null) {
+                return new SdsResponse(PARAM_ERROR.getCode(), appInfoRequest.getNewSdsSchemeName() +
+                        "降级预案不存在");
             }
         }
 
         int result = appInfoDao.updateAppInfo(appInfoRequest.getAppGroupName(), appInfoRequest.getAppName(),
-                appInfoRequest.getNewAppName(), appInfoRequest.getNewStrategyGroupName(), appInfoRequest.
+                appInfoRequest.getNewAppName(), appInfoRequest.getNewSdsSchemeName(), appInfoRequest.
                         getOperatorName(), appInfoRequest.getOperatorEmail());
 
         if (result == 1) {
-            strategyGroupDao.updateStrategyGroupAppNameBatch(appInfoRequest.getAppGroupName(),
+            sdsSchemeDao.updateSdsSchemeAppNameBatch(appInfoRequest.getAppGroupName(),
                     appInfoRequest.getAppName(), appInfoRequest.getNewAppName(), appInfoRequest.getOperatorName(),
                     appInfoRequest.getOperatorEmail());
         }
@@ -264,7 +264,7 @@ public class AppInfoController {
             return new SdsResponse(PARAM_ERROR.getCode(), "应用名称不能为空");
         }
 
-        List<PointStrategyDO> pointStrategyList = pointStrategyDao.queryPointStrategyByStrategyGroup(
+        List<PointStrategyDO> pointStrategyList = pointStrategyDao.queryPointStrategyBySdsScheme(
                 appInfoRequest.getAppGroupName(), appInfoRequest.getAppName(), null, null);
         if (CollectionUtils.isNotEmpty(pointStrategyList)) {
             return new SdsResponse(PARAM_ERROR.getCode(), appInfoRequest.getAppName() + "应用下配置了降级点策略，" +

@@ -5,15 +5,15 @@ import com.didiglobal.sds.web.controller.bean.PageInfo;
 /**
  * Created by yizhenqiang on 18/9/29.
  */
-public class StrategyGroupRequest extends PageInfo {
+public class SdsSchemeRequest extends PageInfo {
 
     private String appGroupName;
 
     private String appName;
 
-    private String strategyGroupName;
+    private String sdsSchemeName;
 
-    private String newStrategyGroupName;
+    private String newSdsSchemeName;
 
     private String operatorName;
 
@@ -39,20 +39,20 @@ public class StrategyGroupRequest extends PageInfo {
         this.appName = appName;
     }
 
-    public String getStrategyGroupName() {
-        return strategyGroupName;
+    public String getSdsSchemeName() {
+        return sdsSchemeName;
     }
 
-    public void setStrategyGroupName(String strategyGroupName) {
-        this.strategyGroupName = strategyGroupName;
+    public void setSdsSchemeName(String sdsSchemeName) {
+        this.sdsSchemeName = sdsSchemeName;
     }
 
-    public String getNewStrategyGroupName() {
-        return newStrategyGroupName;
+    public String getNewSdsSchemeName() {
+        return newSdsSchemeName;
     }
 
-    public void setNewStrategyGroupName(String newStrategyGroupName) {
-        this.newStrategyGroupName = newStrategyGroupName;
+    public void setNewSdsSchemeName(String newSdsSchemeName) {
+        this.newSdsSchemeName = newSdsSchemeName;
     }
 
     public String getOperatorName() {
@@ -89,11 +89,11 @@ public class StrategyGroupRequest extends PageInfo {
 
     @Override
     public String toString() {
-        final StringBuilder sb = new StringBuilder("StrategyGroupRequest{");
+        final StringBuilder sb = new StringBuilder("SdsSchemeRequest{");
         sb.append("appGroupName='").append(appGroupName).append('\'');
         sb.append(", appName='").append(appName).append('\'');
-        sb.append(", strategyGroupName='").append(strategyGroupName).append('\'');
-        sb.append(", newStrategyGroupName='").append(newStrategyGroupName).append('\'');
+        sb.append(", sdsSchemeName='").append(sdsSchemeName).append('\'');
+        sb.append(", newSdsSchemeName='").append(newSdsSchemeName).append('\'');
         sb.append(", operatorName='").append(operatorName).append('\'');
         sb.append(", operatorEmail='").append(operatorEmail).append('\'');
         sb.append(", creatorName='").append(creatorName).append('\'');

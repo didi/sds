@@ -3,11 +3,11 @@ package com.didiglobal.sds.web.dao.bean;
 import java.util.Date;
 
 /**
- * 策略组实体
+ * 降级预案实体
  * <p>
  * Created by yizhenqiang on 18/9/1.
  */
-public class StrategyGroupDO {
+public class SdsSchemeDO {
 
     private Long id;
 
@@ -16,9 +16,9 @@ public class StrategyGroupDO {
     private String appName;
 
     /**
-     * 策略组名称
+     * 降级预案名称
      */
-    private String strategyGroupName;
+    private String sdsSchemeName;
 
     private String operatorName;
 
@@ -32,14 +32,14 @@ public class StrategyGroupDO {
 
     private Date modifiedTime;
 
-    public StrategyGroupDO() {
+    public SdsSchemeDO() {
     }
 
-    public StrategyGroupDO(String appGroupName, String appName, String strategyGroupName, String creatorName,
+    public SdsSchemeDO(String appGroupName, String appName, String sdsSchemeName, String creatorName,
                            String creatorEmail) {
         this.appGroupName = appGroupName;
         this.appName = appName;
-        this.strategyGroupName = strategyGroupName;
+        this.sdsSchemeName = sdsSchemeName;
         this.creatorName = creatorName;
         this.creatorEmail = creatorEmail;
         this.operatorName = creatorName;
@@ -70,12 +70,12 @@ public class StrategyGroupDO {
         this.appName = appName;
     }
 
-    public String getStrategyGroupName() {
-        return strategyGroupName;
+    public String getSdsSchemeName() {
+        return sdsSchemeName;
     }
 
-    public void setStrategyGroupName(String strategyGroupName) {
-        this.strategyGroupName = strategyGroupName;
+    public void setSdsSchemeName(String sdsSchemeName) {
+        this.sdsSchemeName = sdsSchemeName;
     }
 
     public String getOperatorName() {
@@ -128,11 +128,11 @@ public class StrategyGroupDO {
 
     @Override
     public String toString() {
-        final StringBuilder sb = new StringBuilder("StrategyGroupDO{");
+        final StringBuilder sb = new StringBuilder("SdsSchemeDO{");
         sb.append("id=").append(id);
         sb.append(", appGroupName='").append(appGroupName).append('\'');
         sb.append(", appName='").append(appName).append('\'');
-        sb.append(", strategyGroupName='").append(strategyGroupName).append('\'');
+        sb.append(", sdsSchemeName='").append(sdsSchemeName).append('\'');
         sb.append(", operatorName='").append(operatorName).append('\'');
         sb.append(", operatorEmail='").append(operatorEmail).append('\'');
         sb.append(", creatorName='").append(creatorName).append('\'');

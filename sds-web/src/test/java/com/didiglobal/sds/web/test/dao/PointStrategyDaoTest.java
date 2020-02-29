@@ -25,7 +25,7 @@ public class PointStrategyDaoTest {
         strategyDO.setAppGroupName("黑马");
         strategyDO.setAppName("bh-order");
         strategyDO.setPoint("testPoint22");
-        strategyDO.setStrategyGroupName("FIRST_GROUP");
+        strategyDO.setSdsSchemeName("FIRST_GROUP");
         strategyDO.setVisitThreshold(50000L);
         strategyDO.setConcurrentThreshold(20);
         strategyDO.setExceptionThreshold(100L);
@@ -48,7 +48,7 @@ public class PointStrategyDaoTest {
         strategyDO.setAppGroupName("黑马");
         strategyDO.setAppName("bh-order");
         strategyDO.setPoint("testPoint23");
-        strategyDO.setStrategyGroupName("FIRST_GROUP");
+        strategyDO.setSdsSchemeName("FIRST_GROUP");
         strategyDO.setDowngradeRate(100);
         strategyDO.setStatus(1);
         System.out.println(pointStrategyDao.addPointStrategy(strategyDO));
@@ -62,8 +62,8 @@ public class PointStrategyDaoTest {
         pointStrategyDO.setAppGroupName("hm");
         pointStrategyDO.setAppName("bh-marketing-activity");
         pointStrategyDO.setPoint("groupBuyQueryCardConfig");
-        pointStrategyDO.setStrategyGroupName("QPS自动降级");
-        pointStrategyDO.setNewStrategyGroupName("QPS自动降级");
+        pointStrategyDO.setSdsSchemeName("QPS自动降级");
+        pointStrategyDO.setNewSdsSchemeName("QPS自动降级");
         pointStrategyDO.setStatus(1);
         pointStrategyDO.setDowngradeRate(100);
         pointStrategyDO.setCreatorName("易振强");

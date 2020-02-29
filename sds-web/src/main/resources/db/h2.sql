@@ -14,7 +14,7 @@ CREATE TABLE IF NOT EXISTS `app_info` (
     `id` bigint PRIMARY KEY AUTO_INCREMENT,
     `app_group_name` varchar(32),
     `app_name` varchar(32),
-    `strategy_group_name` varchar(32),
+    `sds_scheme_name` varchar(32),
     `version` bigint,
     `operator_name` varchar(50) NOT NULL DEFAULT '' ,
     `operator_email` varchar(50) NOT NULL DEFAULT '' ,
@@ -25,18 +25,18 @@ CREATE TABLE IF NOT EXISTS `app_info` (
     UNIQUE KEY `uniq_app_group_name_app_name` (`app_group_name`,`app_name`)
 );
 
-CREATE TABLE IF NOT EXISTS `strategy_group` (
+CREATE TABLE IF NOT EXISTS `sds_scheme` (
     `id` bigint PRIMARY KEY AUTO_INCREMENT,
     `app_group_name` varchar(32) NOT NULL DEFAULT '',
     `app_name` varchar(32) NOT NULL DEFAULT '',
-    `strategy_group_name` varchar(32) NOT NULL DEFAULT '',
+    `sds_scheme_name` varchar(32) NOT NULL DEFAULT '',
     `operator_name` varchar(50) NOT NULL DEFAULT '' ,
     `operator_email` varchar(50) NOT NULL DEFAULT '' ,
     `creator_name` varchar(50) NOT NULL DEFAULT '' ,
     `creator_email` varchar(50) NOT NULL DEFAULT '' ,
     `modify_time` timestamp,
     `create_time` timestamp,
-    UNIQUE KEY `uniq_app_group_name_app_name_strategy_group` (`app_group_name`,`app_name`,`strategy_group_name`)
+    UNIQUE KEY `uniq_app_group_name_app_name_sds_scheme` (`app_group_name`,`app_name`,`sds_scheme_name`)
 );
 
 CREATE TABLE IF NOT EXISTS `point_strategy` (
@@ -44,7 +44,7 @@ CREATE TABLE IF NOT EXISTS `point_strategy` (
     `app_group_name` varchar(32) NOT NULL DEFAULT '' , 
     `app_name` varchar(32) NOT NULL DEFAULT '' ,
     `point` varchar(200) NOT NULL DEFAULT '' , 
-    `strategy_group_name` varchar(32) NOT NULL DEFAULT '' , 
+    `sds_scheme_name` varchar(32) NOT NULL DEFAULT '' ,
     `visit_threshold` bigint(20) NOT NULL DEFAULT '-1' , 
     `visit_growth_rate` int(11) NOT NULL DEFAULT '-1' , 
     `visit_growth_threshold` bigint(20) NOT NULL DEFAULT '-1' , 
@@ -67,7 +67,7 @@ CREATE TABLE IF NOT EXISTS `point_strategy` (
     `creator_email` varchar(50) NOT NULL DEFAULT '' ,
     `modify_time` timestamp ,
     `create_time` timestamp , 
-    UNIQUE KEY `uniq_point_strategy` (`app_group_name`,`app_name`,`point`,`strategy_group_name`)
+    UNIQUE KEY `uniq_point_strategy` (`app_group_name`,`app_name`,`point`,`sds_scheme_name`)
 );
 
 CREATE TABLE IF NOT EXISTS `heartbeat` (

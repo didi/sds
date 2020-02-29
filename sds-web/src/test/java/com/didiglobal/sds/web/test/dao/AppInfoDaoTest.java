@@ -44,7 +44,7 @@ public class AppInfoDaoTest {
 
         appInfoDO.setAppGroupName("黑马2");
         appInfoDO.setAppName("bh-order");
-        appInfoDO.setStrategyGroupName("FIRST_GREP");
+        appInfoDO.setSdsSchemeName("FIRST_GREP");
         Assert.assertEquals(1, appInfoDao.addAppInfo(appInfoDO));
     }
 

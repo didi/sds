@@ -16,8 +16,8 @@ CREATE TABLE IF NOT EXISTS `app_info` (
   `id` bigint unsigned NOT NULL AUTO_INCREMENT COMMENT '自增id',
   `app_group_name` varchar(32) NOT NULL DEFAULT '' COMMENT '应用组名称',
   `app_name` varchar(32) NOT NULL DEFAULT '' COMMENT '应用名称',
-  `strategy_group_name` varchar(32) NOT NULL DEFAULT '' COMMENT '当前所使用的策略组',
-  `version` bigint(20) NOT NULL DEFAULT '0' COMMENT '当前app的数据版本，调整对应的策略组策略或者当前app使用的策略组都会改变数据版本',
+  `sds_scheme_name` varchar(32) NOT NULL DEFAULT '' COMMENT '当前所使用的降级预案',
+  `version` bigint(20) NOT NULL DEFAULT '0' COMMENT '当前app的数据版本，调整对应的降级预案策略或者当前app使用的降级预案都会改变数据版本',
   `operator_name` varchar(50) NOT NULL DEFAULT '' COMMENT '操作人姓名',
   `operator_email` varchar(50) NOT NULL DEFAULT '' COMMENT '操作人邮箱',
   `creator_name` varchar(50) NOT NULL DEFAULT '' COMMENT '创建人姓名',
@@ -28,11 +28,11 @@ CREATE TABLE IF NOT EXISTS `app_info` (
   UNIQUE KEY `uniq_app_group_name_app_name` (`app_group_name`,`app_name`) USING BTREE
 ) ENGINE=InnoDB AUTO_INCREMENT=79 DEFAULT CHARSET=utf8 COMMENT='应用表';
 
-CREATE TABLE IF NOT EXISTS `strategy_group` (
+CREATE TABLE IF NOT EXISTS `sds_scheme` (
   `id` bigint unsigned NOT NULL AUTO_INCREMENT COMMENT '自增id',
-  `app_group_name` varchar(32) NOT NULL DEFAULT '' COMMENT '策略组名称',
+  `app_group_name` varchar(32) NOT NULL DEFAULT '' COMMENT '应用组名称',
   `app_name` varchar(32) NOT NULL DEFAULT '' COMMENT '应用名称',
-  `strategy_group_name` varchar(32) NOT NULL DEFAULT '' COMMENT '策略组名称',
+  `sds_scheme_name` varchar(32) NOT NULL DEFAULT '' COMMENT '降级预案名称',
   `operator_name` varchar(50) NOT NULL DEFAULT '' COMMENT '操作人姓名',
   `operator_email` varchar(50) NOT NULL DEFAULT '' COMMENT '操作人邮箱',
   `creator_name` varchar(50) NOT NULL DEFAULT '' COMMENT '创建人姓名',
@@ -40,15 +40,15 @@ CREATE TABLE IF NOT EXISTS `strategy_group` (
   `modify_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '更新日期',
   `create_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建日期',
   PRIMARY KEY (`id`),
-  UNIQUE KEY `uniq_app_group_name_app_name_strategy_group` (`app_group_name`,`app_name`,`strategy_group_name`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=94 DEFAULT CHARSET=utf8 COMMENT='策略组表';
+  UNIQUE KEY `uniq_app_group_name_app_name_sds_scheme` (`app_group_name`,`app_name`,`sds_scheme_name`) USING BTREE
+) ENGINE=InnoDB AUTO_INCREMENT=94 DEFAULT CHARSET=utf8 COMMENT='降级预案表';
 
 CREATE TABLE IF NOT EXISTS `point_strategy` (
     `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT COMMENT '自增id',
     `app_group_name` varchar(32) NOT NULL DEFAULT '' COMMENT '应用组名称',
     `app_name` varchar(32) NOT NULL DEFAULT '' COMMENT '应用名称',
     `point` varchar(200) NOT NULL DEFAULT '' COMMENT '降级点名称',
-    `strategy_group_name` varchar(32) NOT NULL DEFAULT '' COMMENT '策略组名称',
+    `sds_scheme_name` varchar(32) NOT NULL DEFAULT '' COMMENT '降级预案名称',
     `visit_threshold` bigint(20) NOT NULL DEFAULT '-1' COMMENT '访问量阈值',
     `visit_growth_rate` int(11) NOT NULL DEFAULT '-1' COMMENT '秒级别的访问量增长比率，15表示15%，280表示280%, -1表示不使用',
     `visit_growth_threshold` bigint(20) NOT NULL DEFAULT '-1' COMMENT '秒级别的访问量增长起始阈值',
@@ -71,7 +71,7 @@ CREATE TABLE IF NOT EXISTS `point_strategy` (
     `creator_email` varchar(50) NOT NULL DEFAULT '' COMMENT '创建人邮箱',
     `modify_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '更新日期',
     `create_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建日期', PRIMARY KEY (`id`),
-    UNIQUE KEY `uniq_point_strategy` (`app_group_name`,`app_name`,`point`,`strategy_group_name`) USING BTREE,
+    UNIQUE KEY `uniq_point_strategy` (`app_group_name`,`app_name`,`point`,`sds_scheme_name`) USING BTREE,
     KEY `idx_point` (`point`) USING BTREE
 ) ENGINE=InnoDB AUTO_INCREMENT=511 DEFAULT CHARSET=utf8 COMMENT='降级点策略信息表'
 

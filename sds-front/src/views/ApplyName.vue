@@ -41,8 +41,8 @@
           :show-overflow-tooltip="true">
         </el-table-column>
         <el-table-column
-          prop="strategyGroupName"
-          label="当前策略组"
+          prop="sdsSchemeName"
+          label="当前降级预案"
           :show-overflow-tooltip="true">
         </el-table-column>
         <el-table-column
@@ -121,9 +121,9 @@
           </el-form-item>
         </p>
         <!-- <p class="of-application-group">
-          <el-form-item label="所用策略组">
-            <el-select v-model="addStrategyGroup">
-              <p v-for="(item, index) in addStrategyGroupData" :key="index">
+          <el-form-item label="所用降级预案">
+            <el-select v-model="addSdsScheme">
+              <p v-for="(item, index) in addSdsSchemeData" :key="index">
                 <el-option :label="item" :value="item"></el-option>
               </p>
             </el-select>
@@ -159,9 +159,9 @@
           </el-form-item>
         </p>
         <p class="of-application-group">
-          <el-form-item label="所用策略组">
-            <el-select v-model="editRowData.strategyGroupName" placeholder="">
-              <p v-for="(item, index) in strategyGroupData" :key="index">
+          <el-form-item label="所用降级预案">
+            <el-select v-model="editRowData.sdsSchemeName" placeholder="">
+              <p v-for="(item, index) in sdsSchemeData" :key="index">
                 <el-option :label="item" :value="item"></el-option>
               </p>
             </el-select>
@@ -230,13 +230,13 @@
       return {
         addApplyGroupData: [],
         applyGroupData: [],
-        addStrategyGroup: '',
+        addSdsScheme: '',
         addApplyGroup: '',
         newAppName: '',
-        addStrategyGroupData: [],
+        addSdsSchemeData: [],
         oldAppName: '',
-        strategyGroupData: [],
-        editStrategyGroup: '',
+        sdsSchemeData: [],
+        editSdsScheme: '',
         editRowData: {},
         dialogEditApply: false,
         dialogAddApply: false,
@@ -250,7 +250,7 @@
         form: {
           applyName: '',
           applyGroup: '',
-          strategyGroup: ''
+          sdsScheme: ''
         }
       }
     },
@@ -262,7 +262,7 @@
         }
         Api.strategygroupListall(params).then((res) => {
           if (res.code === 200) {
-            this.addStrategyGroupData = res.data
+            this.addSdsSchemeData = res.data
           } else {
             this.$message({
               message: res.msg,
@@ -313,7 +313,7 @@
           appGroupName: this.editRowData.appGroupName,
           appName: this.oldAppName,
           newAppName: this.editRowData.appName,
-          newStrategyGroupName: this.editRowData.strategyGroupName,
+          newSdsSchemeName: this.editRowData.sdsSchemeName,
           operatorId: this.editRowData.operatorId
         }
         Api.appinfoEdit(params).then((res) => {
@@ -404,7 +404,7 @@
         Api.strategygroupListall(params).then((res) => {
           if (res.code === 200) {
             console.log('strategygroupListall', res.data)
-            this.strategyGroupData = res.data
+            this.sdsSchemeData = res.data
           } else {
             this.$message({
               message: res.msg,

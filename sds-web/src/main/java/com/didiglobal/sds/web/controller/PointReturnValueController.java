@@ -59,7 +59,7 @@ public class PointReturnValueController {
     }
 
     // curl -X POST -H 'Content-type':'application/json'  -d '{"appGroupName":"黑马", "appName":"mzz-study",
-    // "strategyGroupName":"FIRST_GROUP", "point":"love", "status":1, "operatorId":999 }'
+    // "sdsSchemeName":"FIRST_GROUP", "point":"love", "status":1, "operatorId":999 }'
     // http://localhost:8887/sds/pointstrategy/add
     @RequestMapping(value = "add")
     public SdsResponse addPointReturnValue(@RequestBody PointReturnValueRequest pointReturnValueRequest) {

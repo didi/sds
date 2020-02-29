@@ -124,12 +124,12 @@ public class HeartbeatServiceImpl implements HeartbeatService {
              */
             List<PointStrategyDO> pointStrategyDOList =
                     pointStrategyDao.queryPointStrategyBatch(heartbeatRequest.getAppGroupName(),
-                            heartbeatRequest.getAppName(), null, appInfoDO.getStrategyGroupName());
+                            heartbeatRequest.getAppName(), null, appInfoDO.getSdsSchemeName());
             Map<String, SdsStrategy> pointMap = Maps.newHashMap();
             List<SdsStrategy> strategies = Lists.newArrayList();
             if (CollectionUtils.isNotEmpty(pointStrategyDOList)) {
                 /**
-                 * 只返回有效的并且和当前模块的告警策略组匹配的降级点的信息
+                 * 只返回有效的并且和当前模块的告警降级预案匹配的降级点的信息
                  */
                 for (PointStrategyDO strategyDO : pointStrategyDOList) {
                     SdsStrategy sdsStrategy = new SdsStrategy();
@@ -152,7 +152,7 @@ public class HeartbeatServiceImpl implements HeartbeatService {
             }
         }
 
-        response.setStrategyGroupName(appInfoDO.getStrategyGroupName());
+        response.setSdsSchemeName(appInfoDO.getSdsSchemeName());
 
         return response;
     }
