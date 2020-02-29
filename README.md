@@ -264,7 +264,7 @@ SDS的目标是打造一个简单、易用、可靠的限流、熔断和降级�
 **微信群**：我们有微信群（SDS开发者交流群），但群二维码7天有效，所以请加微信号 **sugarmq**、**devil_chpengzh**、**lansedemeng-2010**、**huangyiminghappy** 为好友，我们会拉你入群。
 
 **钉钉群**：我们也有钉钉群（SDS开发者交流群），请用钉钉扫码加入：
-![avatar](https://pt-starimg.didistatic.com/static/starimg/img/VErz2cV5Qm1582954743272.png)
+![avatar](https://pt-starimg.didistatic.com/static/starimg/img/iLerLAuHui1582955510603.png)
 
 ## 11. 协议
 
