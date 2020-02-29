@@ -92,8 +92,10 @@ sds-easy内部依赖了sds-client，sds-easy的出现是为了让我们使用sds
 注意，该对象应该使用单例模式，可以直接通过SdsClientFactory工厂来创建：
 
 ```java
+// SDS控制台地址
 private static final String SERVER_URL = "http://127.0.0.1:8887";
-private static SdsClient sdsClient = SdsClientFactory.getOrCreateSdsClient("两轮车", "order", SERVER_URL);
+// 通过工厂方法来创建SdsClient实例
+private static final SdsClient sdsClient = SdsClientFactory.getOrCreateSdsClient("两轮车", "order", SERVER_URL);
 ```
 
 我们可以在Spring配置文件如下初始化：
