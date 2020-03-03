@@ -16,9 +16,9 @@ public class PointStrategyRequest extends PageInfo {
 
     private String point;
 
-    private String strategyGroupName;
+    private String sdsSchemeName;
 
-    private String newStrategyGroupName;
+    private String newSdsSchemeName;
 
     /**
      * 访问量阈值，-1表示未生效，0表示彻底关闭流量（相当于开关）
@@ -134,20 +134,20 @@ public class PointStrategyRequest extends PageInfo {
         this.point = point;
     }
 
-    public String getStrategyGroupName() {
-        return strategyGroupName;
+    public String getSdsSchemeName() {
+        return sdsSchemeName;
     }
 
-    public void setStrategyGroupName(String strategyGroupName) {
-        this.strategyGroupName = strategyGroupName;
+    public void setSdsSchemeName(String sdsSchemeName) {
+        this.sdsSchemeName = sdsSchemeName;
     }
 
-    public String getNewStrategyGroupName() {
-        return newStrategyGroupName;
+    public String getNewSdsSchemeName() {
+        return newSdsSchemeName;
     }
 
-    public void setNewStrategyGroupName(String newStrategyGroupName) {
-        this.newStrategyGroupName = newStrategyGroupName;
+    public void setNewSdsSchemeName(String newSdsSchemeName) {
+        this.newSdsSchemeName = newSdsSchemeName;
     }
 
     public Long getVisitThreshold() {
@@ -301,8 +301,8 @@ public class PointStrategyRequest extends PageInfo {
         sb.append("appGroupName='").append(appGroupName).append('\'');
         sb.append(", appName='").append(appName).append('\'');
         sb.append(", point='").append(point).append('\'');
-        sb.append(", strategyGroupName='").append(strategyGroupName).append('\'');
-        sb.append(", newStrategyGroupName='").append(newStrategyGroupName).append('\'');
+        sb.append(", sdsSchemeName='").append(sdsSchemeName).append('\'');
+        sb.append(", newSdsSchemeName='").append(newSdsSchemeName).append('\'');
         sb.append(", visitThreshold=").append(visitThreshold);
         sb.append(", concurrentThreshold=").append(concurrentThreshold);
         sb.append(", exceptionThreshold=").append(exceptionThreshold);

@@ -202,7 +202,7 @@ final public class SdsHeartBeatService {
             return;
         }
 
-        String strategyGroupName = response.getStrategyGroupName();
+        String sdsSchemeName = response.getSdsSchemeName();
         version = response.getVersion();
 
         ConcurrentHashMap<String, SdsStrategy> strategies = new ConcurrentHashMap<>();
@@ -218,7 +218,7 @@ final public class SdsHeartBeatService {
          */
         resetPointInfo(strategies);
 
-        logger.info("SdsHeartBeatService#updatePointStrategyFromWebServer 重设降级点参数成功，当前策略组：" + strategyGroupName);
+        logger.info("SdsHeartBeatService#updatePointStrategyFromWebServer 重设降级点参数成功，当前降级预案：" + sdsSchemeName);
     }
 
     /**

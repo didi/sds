@@ -27,7 +27,7 @@
           <i class="iconfont adSys-thunderbolt"></i>
           <span>降级策略</span>
         </template>
-        <el-menu-item index="/strategyGroup">策略组</el-menu-item>
+        <el-menu-item index="/sdsScheme">降级预案</el-menu-item>
         <el-menu-item index="/demotePoint">降级点策略</el-menu-item>
         <el-menu-item index="/demotePointResponse">降级返回值</el-menu-item>
       </el-submenu>

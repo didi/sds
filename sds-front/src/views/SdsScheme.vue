@@ -16,13 +16,13 @@
            </p>
          </el-select>
        </el-form-item>
-       <el-form-item label="策略组">
-         <el-input v-model="strategyGroup" placeholder="策略组" @keyup.enter.native="doSearch"></el-input>
+       <el-form-item label="降级预案">
+         <el-input v-model="sdsScheme" placeholder="降级预案" @keyup.enter.native="doSearch"></el-input>
        </el-form-item>
      </el-form>
       <div class="condition-btn-wrapper">
         <el-button type="primary" @click="doSearch" icon="el-icon-search">查 找</el-button>
-        <el-button type="primary" @click="addStrategyGroup" icon="el-icon-plus">新增策略组</el-button>
+        <el-button type="primary" @click="addSdsScheme" icon="el-icon-plus">新增降级预案</el-button>
       </div>
     </div>
     <div class="strategy-group-table b-wrapper">
@@ -42,8 +42,8 @@
           :show-overflow-tooltip="true">
         </el-table-column>
         <el-table-column
-          prop="strategyGroupName"
-          label="策略组"
+          prop="sdsSchemeName"
+          label="降级预案"
           width="180"
           :show-overflow-tooltip="true">
         </el-table-column>
@@ -113,7 +113,7 @@
       </div>
     </div>
    
-    <el-dialog title="新增策略组" :visible.sync="dialogStrategyGroup">
+    <el-dialog title="新增降级预案" :visible.sync="dialogSdsScheme">
       <el-form :inline="true" class="add-strategy-group" label-position="right" label-width="120px">
         <p class="of-application-group">
           <el-form-item label="应用组名称">
@@ -134,8 +134,8 @@
           </el-form-item>
         </p>
         <p class="add-strategy-group-name">
-          <el-form-item label="策略组名称">
-            <el-input v-model="form.strategyGroupName"></el-input>
+          <el-form-item label="降级预案名称">
+            <el-input v-model="form.sdsSchemeName"></el-input>
           </el-form-item>
           <el-form-item>
             <el-tooltip class="item-warning" effect="dark" content="注意：只能使用汉字、字母、数字、-、_" placement="bottom">
@@ -144,31 +144,31 @@
           </el-form-item>
         </p>
         <!-- <p class="of-application-group">
-          <el-form-item label="所用策略组">
-            <el-select v-model="form.strategyGroup" placeholder="">
-              <el-option label="策略组1" value="1"></el-option>
-              <el-option label="策略组2" value="2"></el-option>
+          <el-form-item label="所用降级预案">
+            <el-select v-model="form.sdsScheme" placeholder="">
+              <el-option label="降级预案1" value="1"></el-option>
+              <el-option label="降级预案2" value="2"></el-option>
             </el-select>
           </el-form-item>
         </p> -->
         <p class="dialog-footer">
           <el-form-item>
-            <el-button type="primary" @click="closeDialogAddStrategyGroupy">取消</el-button>
-            <el-button type="primary" @click="doSubmitAddStrategyGroup">确定</el-button>
+            <el-button type="primary" @click="closeDialogAddSdsSchemey">取消</el-button>
+            <el-button type="primary" @click="doSubmitAddSdsScheme">确定</el-button>
           </el-form-item>
         </p>
       </el-form>
     </el-dialog>
-    <el-dialog title="修改策略组" :visible.sync="dialogEditStrategyGroup">
+    <el-dialog title="修改降级预案" :visible.sync="dialogEditSdsScheme">
       <el-form :inline="true" class="edit-apply" label-position="right" label-width="120px">
         <p class="of-application-group">
-          <el-form-item label="原策略组名称">
-            <el-input v-model="editRowData.strategyGroupName" disabled></el-input>
+          <el-form-item label="原降级预案名称">
+            <el-input v-model="editRowData.sdsSchemeName" disabled></el-input>
           </el-form-item>
         </p>
         <p class="edit-apply-name">
-          <el-form-item label="新策略组名称">
-            <el-input v-model="editStrategyGroupName"></el-input>
+          <el-form-item label="新降级预案名称">
+            <el-input v-model="editSdsSchemeName"></el-input>
           </el-form-item>
           <el-form-item>
             <el-tooltip class="item-warning" effect="dark" content="注意：只能使用汉字、字母、数字、-、_" placement="bottom">
@@ -178,13 +178,13 @@
         </p>
         <p class="dialog-footer">
           <el-form-item>
-            <el-button type="primary" @click="closeDialogEditStrategyGroup">取消</el-button>
-            <el-button type="primary" @click="doSubmitEditStrategyGroup">确定</el-button>
+            <el-button type="primary" @click="closeDialogEditSdsScheme">取消</el-button>
+            <el-button type="primary" @click="doSubmitEditSdsScheme">确定</el-button>
           </el-form-item>
         </p>
       </el-form>
     </el-dialog>
-    <el-dialog title="克隆策略组" :visible.sync="dialogCloneStrategyGroup">
+    <el-dialog title="克隆降级预案" :visible.sync="dialogCloneSdsScheme">
       <el-form :inline="true" class="edit-apply" label-position="right" label-width="120px">
         <p class="of-application-group">
           <el-form-item label="原应用组名称">
@@ -205,17 +205,17 @@
           </el-form-item>
         </p>
         <p class="of-application-group">
-          <el-form-item label="原策略组名称">
-            <el-select v-model="cloneRowData.strategyGroupName" placeholder="" disabled>
-              <p v-for="(item, index) in allStrategyGroupData" :key="index">
+          <el-form-item label="原降级预案名称">
+            <el-select v-model="cloneRowData.sdsSchemeName" placeholder="" disabled>
+              <p v-for="(item, index) in allSdsSchemeData" :key="index">
                 <el-option :label="item" :value="item"></el-option>
               </p>
             </el-select>
           </el-form-item>
         </p>
         <p class="edit-apply-name">
-          <el-form-item label="新策略组名称">
-            <el-input v-model="newStrategyGroupName"></el-input>
+          <el-form-item label="新降级预案名称">
+            <el-input v-model="newSdsSchemeName"></el-input>
           </el-form-item>
           <el-form-item>
             <el-tooltip class="item-warning" effect="dark" content="注意：只能使用汉字、字母、数字、-、_" placement="bottom">
@@ -225,8 +225,8 @@
         </p>
         <p class="dialog-footer">
           <el-form-item>
-            <el-button type="primary" @click="closeDialogCloneStrategyGroup">取消</el-button>
-            <el-button type="primary" @click="doSubmitCloneStrategyGroup">确定</el-button>
+            <el-button type="primary" @click="closeDialogCloneSdsScheme">取消</el-button>
+            <el-button type="primary" @click="doSubmitCloneSdsScheme">确定</el-button>
           </el-form-item>
         </p>
       </el-form>
@@ -351,30 +351,30 @@
       createTime: '2016-06-02'
     }
   ]
-  let mockStrategyGroup = ['strategy1', 'strategy2', 'strategy3', 'strategy4', 'strategy5', 'strategy6']
+  let mockSdsScheme = ['strategy1', 'strategy2', 'strategy3', 'strategy4', 'strategy5', 'strategy6']
   export default {
     data () {
       return {
         cloneRowData: {},
-        newStrategyGroupName: '',
-        allStrategyGroupData: [],
-        primaryStrategyGroupName: '',
-        dialogCloneStrategyGroup: false,
-        editStrategyGroupName: '',
+        newSdsSchemeName: '',
+        allSdsSchemeData: [],
+        primarySdsSchemeName: '',
+        dialogCloneSdsScheme: false,
+        editSdsSchemeName: '',
         anyApplyData: [],
         applyGroup: '',
         applyName: '',
-        strategyGroup: '',
+        sdsScheme: '',
         someApplyData: [],
         addApplyName: '',
         addApplyGroupName: '',
-        strategyGroupData: mockStrategyGroup,
-        editStrategyGroup: '',
+        sdsSchemeData: mockSdsScheme,
+        editSdsScheme: '',
         editApplyName: '',
         editRowData: {},
         dialogEditApply: false,
-        dialogStrategyGroup: false,
-        dialogEditStrategyGroup: false,
+        dialogSdsScheme: false,
+        dialogEditSdsScheme: false,
         applicationGroup: "",
         tableData: {
           data: [],
@@ -386,7 +386,7 @@
         form: {
           applyName: '',
           applyGroup: '',
-          strategyGroupName: ''
+          sdsSchemeName: ''
         }
       }
     },
@@ -443,7 +443,7 @@
       //   Api.strategygroupListall(params).then((res) => {
       //     if (res.code === 200) {
       //       console.log('strategygroupListall', res.data)
-      //       this.allStrategyGroupData = res.data
+      //       this.allSdsSchemeData = res.data
       //     } else {
       //       this.$message({
       //         message: res.msg,
@@ -452,27 +452,27 @@
       //     }
       //   }).catch((err) => {
       //     this.$message({
-      //       message: "查询该应用下面的所有策略组失败",
+      //       message: "查询该应用下面的所有降级预案失败",
       //       type: 'warning'
       //     })
       //   })
       // }
     },
     methods: {
-      //克隆策略组请求接口逻辑
-      doSubmitCloneStrategyGroup () {
+      //克隆降级预案请求接口逻辑
+      doSubmitCloneSdsScheme () {
         let params = {
           appGroupName: this.cloneRowData.appGroupName,
           appName: this.cloneRowData.appName,
-          strategyGroupName: this.cloneRowData.strategyGroupName,
-          newStrategyGroupName: this.newStrategyGroupName,
+          sdsSchemeName: this.cloneRowData.sdsSchemeName,
+          newSdsSchemeName: this.newSdsSchemeName,
           operatorId: this.cloneRowData.operatorId
         }
         Api.strategygroupClone(params).then((res) => {
           if (res.code === 200) {
             console.log('strategygroupClone', res.data)
             this.$message({
-              message: "克隆策略组成功",
+              message: "克隆降级预案成功",
               type: 'success'
             })
           } else {
@@ -483,33 +483,33 @@
           }
         }).catch((err) => {
           this.$message({
-            message: "克隆策略组失败",
+            message: "克隆降级预案失败",
             type: 'warning'
           })
         })
-        this.dialogCloneStrategyGroup = false
+        this.dialogCloneSdsScheme = false
       },
-      //关闭克隆策略组
-      closeDialogCloneStrategyGroup () {
-        this.dialogCloneStrategyGroup = false
+      //关闭克隆降级预案
+      closeDialogCloneSdsScheme () {
+        this.dialogCloneSdsScheme = false
       },
-      //克隆策略组逻辑
+      //克隆降级预案逻辑
       handleClone (rowData) {
-        this.dialogCloneStrategyGroup = true;
+        this.dialogCloneSdsScheme = true;
         this.cloneRowData = rowData
       },
-      //新增策略组逻辑
-      doSubmitAddStrategyGroup () {
+      //新增降级预案逻辑
+      doSubmitAddSdsScheme () {
         let params = {
           appGroupName: this.addApplyGroupName,
           appName: this.addApplyName,
-          strategyGroupName: this.form.strategyGroupName
+          sdsSchemeName: this.form.sdsSchemeName
         };
         Api.strategygroupAdd(params).then((res) => {
           if(res.code === 200) {
             console.log(res.data)
             this.$message({
-              message: '新增策略组成功',
+              message: '新增降级预案成功',
               type: 'success'
             })
           } else {
@@ -520,11 +520,11 @@
           }
         }).catch((err) => {
           this.$message({
-            message: "新增策略组失败",
+            message: "新增降级预案失败",
             type: 'warning'
           })
         })
-        this.dialogStrategyGroup = false;
+        this.dialogSdsScheme = false;
       },
       //查询某应用组下面的所有应用
       getAppinfoListall (appGroup) {
@@ -558,7 +558,7 @@
           })
         })
       },
-      // //查询所有策略组
+      // //查询所有降级预案
       // strategygroupListall () { // todo
       //   let params = {
       //     appGroupName: 'apply',
@@ -575,24 +575,24 @@
       //     }
       //   }).catch((err) => {
       //     this.$message({
-      //       message: "查询所有策略组失败",
+      //       message: "查询所有降级预案失败",
       //       type: 'warning'
       //     })
       //   })
       // },
-      //修改策略组
-      doSubmitEditStrategyGroup () {
+      //修改降级预案
+      doSubmitEditSdsScheme () {
         let params = {
           appGroupName: this.editRowData.appGroupName,
           appName: this.editRowData.appName,
-          strategyGroupName: this.editRowData.strategyGroupName,
-          newStrategyGroupName: this.editStrategyGroupName,
+          sdsSchemeName: this.editRowData.sdsSchemeName,
+          newSdsSchemeName: this.editSdsSchemeName,
           operatorId: this.editRowData.operatorId
         }
         Api.strategygroupEdit(params).then((res) => {
           if(res.code === 200) {
             this.$message({
-              message: "修改策略组成功",
+              message: "修改降级预案成功",
               type: 'success'
             })
           } else {
@@ -608,10 +608,10 @@
             type: 'warning'
           })
         })
-        this.dialogEditStrategyGroup = false
+        this.dialogEditSdsScheme = false
       },
-      closeDialogEditStrategyGroup () {
-        this.dialogEditStrategyGroup = false
+      closeDialogEditSdsScheme () {
+        this.dialogEditSdsScheme = false
       },
       appgroupListall () {
         let params = {
@@ -637,25 +637,25 @@
           })
         })
       },
-      addStrategyGroup() {
-        this.dialogStrategyGroup = true
+      addSdsScheme() {
+        this.dialogSdsScheme = true
       },
-      closeDialogAddStrategyGroupy () {
-        this.dialogStrategyGroup = false
+      closeDialogAddSdsSchemey () {
+        this.dialogSdsScheme = false
       },
       handleEdit(row) {
-        this.dialogEditStrategyGroup = true
+        this.dialogEditSdsScheme = true
         this.editRowData = row
       },
-      //删除策略组
+      //删除降级预案
       handleDelete(rowData) {
         let params = {
           appGroupName: rowData.appGroupName,
           appName: rowData.appName,
-          strategyGroupName: rowData.strategyGroupName,
+          sdsSchemeName: rowData.sdsSchemeName,
           operatorId: rowData.operatorId
         }
-        this.$confirm('确定删除该策略组吗?', '提示', {
+        this.$confirm('确定删除该降级预案吗?', '提示', {
           confirmButtonText: '确定',
           cancelButtonText: '取消',
           type: 'warning'
@@ -663,7 +663,7 @@
           Api.deleteStrategygroup(params).then((res) => {
             if(res.code === 200) {
               this.$message({
-                message: "删除策略组成功",
+                message: "删除降级预案成功",
                 type: 'success'
               })
             } else {
@@ -675,7 +675,7 @@
           }).catch((err => {
             console.log('err', err)
             this.$message({
-              message: "删除策略组失败",
+              message: "删除降级预案失败",
               type: 'warning'
             })
           }))
@@ -686,12 +686,12 @@
           });
         });
       },
-      // 分页查询策略组
+      // 分页查询降级预案
       strategygroupListpage(page, pageSize) {
         let params = {
           appGroupName: this.applyGroup,
           appName: this.applyName,
-          strategyGroupName: this.strategyGroup,
+          sdsSchemeName: this.sdsScheme,
           page: page || 1,
           pageSize: pageSize || this.tableData.ps
         }
@@ -720,7 +720,7 @@
           }
         }).catch((err) => {
           this.$message({
-            message: "查询策略组失败",
+            message: "查询降级预案失败",
             type: 'warning'
           })
         })

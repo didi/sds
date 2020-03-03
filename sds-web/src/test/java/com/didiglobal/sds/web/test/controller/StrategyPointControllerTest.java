@@ -31,7 +31,7 @@ public class StrategyPointControllerTest {
                         .param("appGroupName", "应用组A")
                         .param("appName", "应用a")
                         .param("point", "eeee")
-                        .param("strategyGroupName", "删除策略组")
+                        .param("sdsSchemeName", "删除降级预案")
                         .param("operatorName", "1")
                         .param("operatorEmail", "1")
                         .param("creatorName", "1")

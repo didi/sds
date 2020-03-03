@@ -15,9 +15,9 @@ public class AppInfoRequest extends PageInfo {
 
     private String newAppName;
 
-    private String strategyGroupName;
+    private String sdsSchemeName;
 
-    private String newStrategyGroupName;
+    private String newSdsSchemeName;
 
     private String operatorName;
 
@@ -51,20 +51,20 @@ public class AppInfoRequest extends PageInfo {
         this.newAppName = newAppName;
     }
 
-    public String getStrategyGroupName() {
-        return strategyGroupName;
+    public String getSdsSchemeName() {
+        return sdsSchemeName;
     }
 
-    public void setStrategyGroupName(String strategyGroupName) {
-        this.strategyGroupName = strategyGroupName;
+    public void setSdsSchemeName(String sdsSchemeName) {
+        this.sdsSchemeName = sdsSchemeName;
     }
 
-    public String getNewStrategyGroupName() {
-        return newStrategyGroupName;
+    public String getNewSdsSchemeName() {
+        return newSdsSchemeName;
     }
 
-    public void setNewStrategyGroupName(String newStrategyGroupName) {
-        this.newStrategyGroupName = newStrategyGroupName;
+    public void setNewSdsSchemeName(String newSdsSchemeName) {
+        this.newSdsSchemeName = newSdsSchemeName;
     }
 
     public String getOperatorName() {
@@ -105,8 +105,8 @@ public class AppInfoRequest extends PageInfo {
         sb.append("appGroupName='").append(appGroupName).append('\'');
         sb.append(", appName='").append(appName).append('\'');
         sb.append(", newAppName='").append(newAppName).append('\'');
-        sb.append(", strategyGroupName='").append(strategyGroupName).append('\'');
-        sb.append(", newStrategyGroupName='").append(newStrategyGroupName).append('\'');
+        sb.append(", sdsSchemeName='").append(sdsSchemeName).append('\'');
+        sb.append(", newSdsSchemeName='").append(newSdsSchemeName).append('\'');
         sb.append(", operatorName='").append(operatorName).append('\'');
         sb.append(", operatorEmail='").append(operatorEmail).append('\'');
         sb.append(", creatorName='").append(creatorName).append('\'');

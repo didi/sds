@@ -1,6 +1,6 @@
 package com.didiglobal.sds.web.test.controller;
 
-import com.didiglobal.sds.web.controller.StrategyGroupController;
+import com.didiglobal.sds.web.controller.SdsSchemeController;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,15 +15,15 @@ import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class StrategyGroupControllerTest {
+public class SdsSchemeControllerTest {
 
     @Autowired
-    private StrategyGroupController strategyGroupController;
+    private SdsSchemeController sdsSchemeController;
 
     @Test
     public void queryAppInfoByPageTest() {
 
-        MockMvc mockMvc = MockMvcBuilders.standaloneSetup(strategyGroupController).build();
+        MockMvc mockMvc = MockMvcBuilders.standaloneSetup(sdsSchemeController).build();
         try {
             mockMvc.perform(post("/sds/strategygroup/listpage").characterEncoding("UTF-8").contentType(
                     MediaType.APPLICATION_JSON_UTF8)

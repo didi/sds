@@ -19,10 +19,10 @@ public interface AppInfoDao {
      */
     @Insert("<script> insert into app_info(app_group_name, app_name, operator_name, operator_email, creator_name, "
             + "creator_email " +
-            " <if test=\"strategyGroupName != null and strategyGroupName.length > 0 \">, strategy_group_name </if>" +
+            " <if test=\"sdsSchemeName != null and sdsSchemeName.length > 0 \">, sds_scheme_name </if>" +
             ") " +
             "values(#{appGroupName}, #{appName}, #{operatorName}, #{operatorEmail}, #{creatorName}, #{creatorEmail} " +
-            " <if test=\"strategyGroupName != null and strategyGroupName.length > 0 \">, #{strategyGroupName} </if>" +
+            " <if test=\"sdsSchemeName != null and sdsSchemeName.length > 0 \">, #{sdsSchemeName} </if>" +
             ")" +
             " </script>")
     int addAppInfo(AppInfoDO appInfoDO);
@@ -33,17 +33,17 @@ public interface AppInfoDao {
      * @param appGroupName
      * @param appName
      * @param newAppName
-     * @param newStrategyGroupName
+     * @param newSdsSchemeName
      * @param operatorName
      * @param operatorEmail
      * @return
      */
-    @Update("update app_info set app_name = #{newAppName}, strategy_group_name = #{newStrategyGroupName}, version = "
+    @Update("update app_info set app_name = #{newAppName}, sds_scheme_name = #{newSdsSchemeName}, version = "
             + "version + 1, operator_name = #{operatorName}, operator_email = #{operatorEmail} " +
             "where app_group_name = #{appGroupName} and app_name = #{appName}")
     int updateAppInfo(@Param("appGroupName") String appGroupName, @Param("appName") String appName, @Param(
             "newAppName") String newAppName,
-                      @Param("newStrategyGroupName") String newStrategyGroupName,
+                      @Param("newSdsSchemeName") String newSdsSchemeName,
                       @Param("operatorName") String operatorName, @Param("operatorEmail") String operatorEmail);
 
     /**
@@ -91,7 +91,7 @@ public interface AppInfoDao {
             @Result(property = "id", column = "id"),
             @Result(property = "appGroupName", column = "app_group_name"),
             @Result(property = "appName", column = "app_name"),
-            @Result(property = "strategyGroupName", column = "strategy_group_name"),
+            @Result(property = "sdsSchemeName", column = "sds_scheme_name"),
             @Result(property = "version", column = "version"),
             @Result(property = "operatorName", column = "operator_name"),
             @Result(property = "operatorEmail", column = "operator_email"),
@@ -116,7 +116,7 @@ public interface AppInfoDao {
             @Result(property = "id", column = "id"),
             @Result(property = "appGroupName", column = "app_group_name"),
             @Result(property = "appName", column = "app_name"),
-            @Result(property = "strategyGroupName", column = "strategy_group_name"),
+            @Result(property = "sdsSchemeName", column = "sds_scheme_name"),
             @Result(property = "version", column = "version"),
             @Result(property = "operatorName", column = "operator_name"),
             @Result(property = "operatorEmail", column = "operator_email"),
@@ -136,7 +136,7 @@ public interface AppInfoDao {
             @Result(property = "id", column = "id"),
             @Result(property = "appGroupName", column = "app_group_name"),
             @Result(property = "appName", column = "app_name"),
-            @Result(property = "strategyGroupName", column = "strategy_group_name"),
+            @Result(property = "sdsSchemeName", column = "sds_scheme_name"),
             @Result(property = "version", column = "version"),
             @Result(property = "operatorName", column = "operator_name"),
             @Result(property = "operatorEmail", column = "operator_email"),

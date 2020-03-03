@@ -25,9 +25,9 @@ public class AppInfoDO {
     private String appName;
 
     /**
-     * 该应用当前使用的策略组名称
+     * 该应用当前使用的降级预案名称
      */
-    private String strategyGroupName;
+    private String sdsSchemeName;
 
     /**
      * 版本号
@@ -70,12 +70,12 @@ public class AppInfoDO {
         this.appName = appName;
     }
 
-    public String getStrategyGroupName() {
-        return strategyGroupName;
+    public String getSdsSchemeName() {
+        return sdsSchemeName;
     }
 
-    public void setStrategyGroupName(String strategyGroupName) {
-        this.strategyGroupName = strategyGroupName;
+    public void setSdsSchemeName(String sdsSchemeName) {
+        this.sdsSchemeName = sdsSchemeName;
     }
 
     public Long getVersion() {
@@ -140,7 +140,7 @@ public class AppInfoDO {
         sb.append("id=").append(id);
         sb.append(", appGroupName='").append(appGroupName).append('\'');
         sb.append(", appName='").append(appName).append('\'');
-        sb.append(", strategyGroupName='").append(strategyGroupName).append('\'');
+        sb.append(", sdsSchemeName='").append(sdsSchemeName).append('\'');
         sb.append(", version=").append(version);
         sb.append(", operatorName='").append(operatorName).append('\'');
         sb.append(", operatorEmail='").append(operatorEmail).append('\'');

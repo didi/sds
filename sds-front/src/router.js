@@ -2,7 +2,7 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import ApplicationGroup from './views/ApplicationGroup.vue'
 import ApplyName from './views/ApplyName.vue'
-import StrategyGroup from './views/StrategyGroup.vue'
+import SdsScheme from './views/SdsScheme.vue'
 import DemotePoint from './views/DemotePoint.vue'
 import DemotePointResponse from "./views/DemotePointResponse.vue";
 import SettingUp from './views/SettingUp.vue'
@@ -30,9 +30,9 @@ export default new Router({
       component: ApplyName
     },
     {
-      path: "/strategyGroup",
-      name: "策略组",
-      component: StrategyGroup
+      path: "/sdsScheme",
+      name: "降级预案",
+      component: SdsScheme
     },
     {
       path: "/demotePoint",

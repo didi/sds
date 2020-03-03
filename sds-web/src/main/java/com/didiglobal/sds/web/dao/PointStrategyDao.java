@@ -24,7 +24,7 @@ public interface PointStrategyDao {
      * @param strategyDO
      * @return
      */
-    @Insert("<script> insert into point_strategy (app_group_name, app_name, point, strategy_group_name, "
+    @Insert("<script> insert into point_strategy (app_group_name, app_name, point, sds_scheme_name, "
             + "downgrade_rate, status, operator_name, operator_email, creator_name, creator_email" +
             "<if test='visitThreshold != null'> , visit_threshold </if> " +
             "<if test='concurrentThreshold != null'> , concurrent_threshold </if> " +
@@ -38,7 +38,7 @@ public interface PointStrategyDao {
             "<if test='delayTime != null'> , delay_time </if> " +
             "<if test='pressureTestDowngrade != null'> , pressure_test_downgrade </if> " +
             "<if test='retryInterval != null'> , retry_interval </if> ) " +
-            " values(#{appGroupName}, #{appName}, #{point}, #{strategyGroupName}, #{downgradeRate}, #{status}, "
+            " values(#{appGroupName}, #{appName}, #{point}, #{sdsSchemeName}, #{downgradeRate}, #{status}, "
             + "#{operatorName}, #{operatorEmail}, #{creatorName}, #{creatorEmail}" +
             "<if test='visitThreshold != null'> , #{visitThreshold}  </if> " +
             "<if test='concurrentThreshold != null'> , #{concurrentThreshold} </if> " +
@@ -61,7 +61,7 @@ public interface PointStrategyDao {
      * @param strategyDOList
      * @return
      */
-    @Insert("<script> insert into point_strategy (app_group_name, app_name, point, strategy_group_name, "
+    @Insert("<script> insert into point_strategy (app_group_name, app_name, point, sds_scheme_name, "
             + "visit_threshold, " +
             "concurrent_threshold, exception_threshold, exception_rate_threshold, exception_rate_start, "
             + "timeout_threshold, " +
@@ -70,7 +70,7 @@ public interface PointStrategyDao {
             + "creator_name, creator_email) " +
             "values " +
             "<foreach collection=\"strategyDOList\" item=\"strategyDO\" separator=\",\" open=\"(\" close=\")\" >" +
-            "#{strategyDO.appGroupName}, #{strategyDO.appName}, #{strategyDO.point}, #{strategyDO.strategyGroupName},"
+            "#{strategyDO.appGroupName}, #{strategyDO.appName}, #{strategyDO.point}, #{strategyDO.sdsSchemeName},"
             + " #{strategyDO.visitThreshold}, #{strategyDO.concurrentThreshold}, " +
             "#{strategyDO.exceptionThreshold}, #{strategyDO.exceptionRateThreshold}, #{strategyDO"
             + ".exceptionRateStart}, #{strategyDO.timeoutThreshold}, #{strategyDO.timeoutCountThreshold}, " +
@@ -89,17 +89,17 @@ public interface PointStrategyDao {
      * @param appGroupName
      * @param appName
      * @param point
-     * @param strategyGroupName
+     * @param sdsSchemeName
      * @return
      */
     @Delete("delete from point_strategy " +
             " where app_group_name = #{appGroupName}" +
             " and app_name = #{appName}" +
             " and point = #{point}" +
-            " and strategy_group_name = #{strategyGroupName}")
+            " and sds_scheme_name = #{sdsSchemeName}")
     int deletePointStrategy(@Param("appGroupName") String appGroupName, @Param("appName") String appName, @Param(
             "point") String point,
-                            @Param("strategyGroupName") String strategyGroupName);
+                            @Param("sdsSchemeName") String sdsSchemeName);
 
     /**
      * 更新降级点策略
@@ -108,7 +108,7 @@ public interface PointStrategyDao {
      * @return
      */
     @Update("<script> update point_strategy <set> " +
-            " strategy_group_name = #{newStrategyGroupName}, status = #{status}, operator_name = #{operatorName}, "
+            " sds_scheme_name = #{newSdsSchemeName}, status = #{status}, operator_name = #{operatorName}, "
             + "operator_email = #{operatorEmail}  " +
             "<if test='visitThreshold != null'> , visit_threshold = #{visitThreshold} </if> " +
             "<if test='concurrentThreshold != null'> , concurrent_threshold = #{concurrentThreshold} </if> " +
@@ -128,7 +128,7 @@ public interface PointStrategyDao {
             " where app_group_name = #{appGroupName}" +
             " and app_name = #{appName}" +
             " and point = #{point}" +
-            " and strategy_group_name = #{strategyGroupName}" +
+            " and sds_scheme_name = #{sdsSchemeName}" +
             " </script>")
     int updatePointStrategy(PointStrategyDO strategyDO);
 
@@ -138,12 +138,12 @@ public interface PointStrategyDao {
      * @param appGroupName
      * @param appName
      * @param points
-     * @param strategyGroupName
+     * @param sdsSchemeName
      * @return
      */
     @Select("<script> select * from point_strategy where app_group_name = #{appGroupName} " +
             " and app_name = #{appName} " +
-            " and strategy_group_name = #{strategyGroupName} " +
+            " and sds_scheme_name = #{sdsSchemeName} " +
             " <if test='points != null'> " +
             " and point in " +
             " <foreach collection=\"points\" item=\"point\" open=\"(\" close=\")\" separator=\",\">#{point}</foreach>" +
@@ -154,7 +154,7 @@ public interface PointStrategyDao {
             @Result(property = "appGroupName", column = "app_group_name"),
             @Result(property = "appName", column = "app_name"),
             @Result(property = "point", column = "point"),
-            @Result(property = "strategyGroupName", column = "strategy_group_name"),
+            @Result(property = "sdsSchemeName", column = "sds_scheme_name"),
             @Result(property = "visitThreshold", column = "visit_threshold"),
             @Result(property = "concurrentThreshold", column = "concurrent_threshold"),
             @Result(property = "exceptionThreshold", column = "exception_threshold"),
@@ -178,7 +178,7 @@ public interface PointStrategyDao {
     List<PointStrategyDO> queryPointStrategyBatch(@Param("appGroupName") String appGroupName,
                                                   @Param("appName") String appName,
                                                   @Param("points") List<String> points,
-                                                  @Param("strategyGroupName") String strategyGroupName);
+                                                  @Param("sdsSchemeName") String sdsSchemeName);
 
     /**
      * 分页查询降级点策略
@@ -186,7 +186,7 @@ public interface PointStrategyDao {
      * @param appGroupName
      * @param appName
      * @param point
-     * @param strategyGroupName
+     * @param sdsSchemeName
      * @param start
      * @param size
      * @return
@@ -195,8 +195,8 @@ public interface PointStrategyDao {
             "<where> " +
             " <if test='appGroupName != null and appGroupName.length > 0'> and app_group_name = #{appGroupName} </if>" +
             " <if test='appName != null and appName.length > 0'> and app_name = #{appName} </if> " +
-            " <if test='strategyGroupName != null and strategyGroupName.length > 0'> and strategy_group_name = "
-            + "#{strategyGroupName} </if>" +
+            " <if test='sdsSchemeName != null and sdsSchemeName.length > 0'> and sds_scheme_name = "
+            + "#{sdsSchemeName} </if>" +
             " <if test='point != null and point.length > 0'> and point like concat('%', #{point}, '%') </if> " +
             "</where>" +
             " order by modify_time desc " +
@@ -206,7 +206,7 @@ public interface PointStrategyDao {
             @Result(property = "appGroupName", column = "app_group_name"),
             @Result(property = "appName", column = "app_name"),
             @Result(property = "point", column = "point"),
-            @Result(property = "strategyGroupName", column = "strategy_group_name"),
+            @Result(property = "sdsSchemeName", column = "sds_scheme_name"),
             @Result(property = "visitThreshold", column = "visit_threshold"),
             @Result(property = "concurrentThreshold", column = "concurrent_threshold"),
             @Result(property = "exceptionThreshold", column = "exception_threshold"),
@@ -231,33 +231,33 @@ public interface PointStrategyDao {
     })
     List<PointStrategyDO> queryPointStrategyByPage(@Param("appGroupName") String appGroupName,
                                                    @Param("appName") String appName, @Param("point") String point,
-                                                   @Param("strategyGroupName") String strategyGroupName, @Param(
+                                                   @Param("sdsSchemeName") String sdsSchemeName, @Param(
                                                            "start") Integer start, @Param("size") Integer size);
 
     /**
-     * 查询该策略组下有多少策略
+     * 查询该降级预案下有多少策略
      *
      * @param appGroupName
      * @param appName
      * @param point
-     * @param strategyGroupName
+     * @param sdsSchemeName
      * @param start
      * @param size
      * @return
      */
     @Select("select count(*) from point_strategy where app_group_name = #{appGroupName} and app_name = #{appName} and"
-            + " strategy_group_name = #{strategyGroupName}")
-    int queryPointStrategyCountByStrategyGroup(@Param("appGroupName") String appGroupName,
+            + " sds_scheme_name = #{sdsSchemeName}")
+    int queryPointStrategyCountBySdsScheme(@Param("appGroupName") String appGroupName,
                                                @Param("appName") String appName,
-                                               @Param("strategyGroupName") String strategyGroupName);
+                                               @Param("sdsSchemeName") String sdsSchemeName);
 
     /**
-     * 通过策略组查询降级点策略
+     * 通过降级预案查询降级点策略
      *
      * @param appGroupName
      * @param appName
      * @param point
-     * @param strategyGroupName 值为null时表示查询该应用下面的所有降级点
+     * @param sdsSchemeName 值为null时表示查询该应用下面的所有降级点
      * @return
      */
     @Select("<script>  " +
@@ -265,7 +265,7 @@ public interface PointStrategyDao {
             " where app_group_name = #{appGroupName} " +
             " and app_name = #{appName} " +
             " <if test='point != null'> and point = #{point} </if>" +
-            " <if test='strategyGroupName != null'> and strategy_group_name = #{strategyGroupName} </if>" +
+            " <if test='sdsSchemeName != null'> and sds_scheme_name = #{sdsSchemeName} </if>" +
             " order by modify_time desc " +
             "</script> ")
     @Results({
@@ -273,7 +273,7 @@ public interface PointStrategyDao {
             @Result(property = "appGroupName", column = "app_group_name"),
             @Result(property = "appName", column = "app_name"),
             @Result(property = "point", column = "point"),
-            @Result(property = "strategyGroupName", column = "strategy_group_name"),
+            @Result(property = "sdsSchemeName", column = "sds_scheme_name"),
             @Result(property = "visitThreshold", column = "visit_threshold"),
             @Result(property = "concurrentThreshold", column = "concurrent_threshold"),
             @Result(property = "exceptionThreshold", column = "exception_threshold"),
@@ -294,9 +294,9 @@ public interface PointStrategyDao {
             @Result(property = "modifiedTime", column = "modify_time"),
             @Result(property = "createTime", column = "create_time")
     })
-    List<PointStrategyDO> queryPointStrategyByStrategyGroup(@Param("appGroupName") String appGroupName, @Param(
+    List<PointStrategyDO> queryPointStrategyBySdsScheme(@Param("appGroupName") String appGroupName, @Param(
             "appName") String appName,
                                                             @Param("point") String point,
-                                                            @Param("strategyGroupName") String strategyGroupName);
+                                                            @Param("sdsSchemeName") String sdsSchemeName);
 
 }

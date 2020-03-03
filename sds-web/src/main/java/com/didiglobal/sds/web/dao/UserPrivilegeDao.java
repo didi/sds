@@ -48,7 +48,7 @@ public interface UserPrivilegeDao {
             @Result(property = "userName", column = "user_name"),
             @Result(property = "appGroupName", column = "app_group_name"),
             @Result(property = "appName", column = "app_name"),
-            @Result(property = "strategyGroupName", column = "strategy_group_name"),
+            @Result(property = "sdsSchemeName", column = "sds_scheme_name"),
             @Result(property = "modifiedTime", column = "modify_time"),
             @Result(property = "createTime", column = "create_time")
     })

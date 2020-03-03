@@ -1,6 +1,6 @@
 package com.didiglobal.sds.web.dao;
 
-import com.didiglobal.sds.web.dao.bean.StrategyGroupDO;
+import com.didiglobal.sds.web.dao.bean.SdsSchemeDO;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
@@ -15,43 +15,43 @@ import java.util.List;
  * Created by yizhenqiang on 18/2/11.
  */
 @Mapper
-public interface StrategyGroupDao {
+public interface SdsSchemeDao {
 
     /**
-     * 新增策略组
+     * 新增降级预案
      *
-     * @param strategyGroupDO
+     * @param sdsSchemeDO
      * @return
      */
-    @Insert("insert into strategy_group(app_group_name, app_name, strategy_group_name, operator_name, operator_email,"
+    @Insert("insert into sds_scheme(app_group_name, app_name, sds_scheme_name, operator_name, operator_email,"
             + " creator_name, creator_email) " +
-            "values(#{appGroupName}, #{appName}, #{strategyGroupName}, #{operatorName}, #{operatorEmail}, "
+            "values(#{appGroupName}, #{appName}, #{sdsSchemeName}, #{operatorName}, #{operatorEmail}, "
             + "#{creatorName}, #{creatorEmail})")
-    int addStrategyGroup(StrategyGroupDO strategyGroupDO);
+    int addSdsScheme(SdsSchemeDO sdsSchemeDO);
 
 
     /**
-     * 更新策略组名字
+     * 更新降级预案名字
      *
      * @param appGroupName
      * @param appName
-     * @param strategyGroupName
-     * @param newStrategyGroupName
+     * @param sdsSchemeName
+     * @param newSdsSchemeName
      * @param operatorName
      * @param operatorEmail
      * @return
      */
-    @Update("update strategy_group set strategy_group_name = #{newStrategyGroupName}, operator_name = "
+    @Update("update sds_scheme set sds_scheme_name = #{newSdsSchemeName}, operator_name = "
             + "#{operatorName}, operator_email = #{operatorEmail} " +
-            " where app_group_name = #{appGroupName} and app_name = #{appName} and strategy_group_name = "
-            + "#{strategyGroupName}")
-    int updateStrategyGroup(@Param("appGroupName") String appGroupName, @Param("appName") String appName, @Param(
-            "strategyGroupName") String strategyGroupName,
-                            @Param("newStrategyGroupName") String newStrategyGroupName,
+            " where app_group_name = #{appGroupName} and app_name = #{appName} and sds_scheme_name = "
+            + "#{sdsSchemeName}")
+    int updateSdsScheme(@Param("appGroupName") String appGroupName, @Param("appName") String appName, @Param(
+            "sdsSchemeName") String sdsSchemeName,
+                            @Param("newSdsSchemeName") String newSdsSchemeName,
                             @Param("operatorName") String operatorName, @Param("operatorEmail") String operatorEmail);
 
     /**
-     * 批量更新策略组的应用名称
+     * 批量更新降级预案的应用名称
      *
      * @param appGroupName
      * @param appName
@@ -60,50 +60,50 @@ public interface StrategyGroupDao {
      * @param operatorEmail
      * @return
      */
-    @Update("update strategy_group set app_name = #{newAppName}, operator_name = #{operatorName}, operator_email = "
+    @Update("update sds_scheme set app_name = #{newAppName}, operator_name = #{operatorName}, operator_email = "
             + "#{operatorEmail}  where app_group_name = #{appGroupName} and app_name = #{appName}")
-    int updateStrategyGroupAppNameBatch(@Param("appGroupName") String appGroupName, @Param("appName") String appName,
+    int updateSdsSchemeAppNameBatch(@Param("appGroupName") String appGroupName, @Param("appName") String appName,
                                         @Param("newAppName") String newAppName,
                                         @Param("operatorName") String operatorName,
                                         @Param("operatorEmail") String operatorEmail);
 
 
     /**
-     * 删除策略组
+     * 删除降级预案
      *
      * @param appGroupName
      * @param appName
-     * @param strategyGroupName
+     * @param sdsSchemeName
      * @return
      */
-    @Update("delete from strategy_group " +
+    @Update("delete from sds_scheme " +
             "where app_group_name = #{appGroupName}" +
             " and app_name = #{appName}" +
-            " and strategy_group_name = #{strategyGroupName}"
+            " and sds_scheme_name = #{sdsSchemeName}"
     )
-    int deleteStrategyGroup(@Param("appGroupName") String appGroupName, @Param("appName") String appName, @Param(
-            "strategyGroupName") String strategyGroupName);
+    int deleteSdsScheme(@Param("appGroupName") String appGroupName, @Param("appName") String appName, @Param(
+            "sdsSchemeName") String sdsSchemeName);
 
     /**
-     * 查询所有策略组
+     * 查询所有降级预案
      *
      * @param appGroupName
      * @param appName
      * @return
      */
-    @Select("select * from strategy_group where app_group_name = #{appGroupName} and app_name = #{appName} order by "
+    @Select("select * from sds_scheme where app_group_name = #{appGroupName} and app_name = #{appName} order by "
             + "modify_time desc ")
     @Results({
             @Result(property = "id", column = "id"),
             @Result(property = "appGroupName", column = "app_group_name"),
             @Result(property = "appName", column = "app_name"),
-            @Result(property = "strategyGroupName", column = "strategy_group_name"),
+            @Result(property = "sdsSchemeName", column = "sds_scheme_name"),
             @Result(property = "operatorName", column = "operator_name"),
             @Result(property = "operatorEmail", column = "operator_email"),
             @Result(property = "modifiedTime", column = "modify_time"),
             @Result(property = "createTime", column = "create_time")
     })
-    List<StrategyGroupDO> queryAllStrategyGroup(@Param("appGroupName") String appGroupName,
+    List<SdsSchemeDO> queryAllSdsScheme(@Param("appGroupName") String appGroupName,
                                                 @Param("appName") String appName);
 
     /**
@@ -111,42 +111,42 @@ public interface StrategyGroupDao {
      *
      * @param appGroupName
      * @param appName
-     * @param strategyGroupName
+     * @param sdsSchemeName
      * @return
      */
-    @Select("select * from strategy_group where app_group_name = #{appGroupName} " +
+    @Select("select * from sds_scheme where app_group_name = #{appGroupName} " +
             " and app_name = #{appName} " +
-            " and strategy_group_name = #{strategyGroupName} " +
+            " and sds_scheme_name = #{sdsSchemeName} " +
             " order by modify_time desc ")
     @Results({
             @Result(property = "id", column = "id"),
             @Result(property = "appGroupName", column = "app_group_name"),
             @Result(property = "appName", column = "app_name"),
-            @Result(property = "strategyGroupName", column = "strategy_group_name"),
+            @Result(property = "sdsSchemeName", column = "sds_scheme_name"),
             @Result(property = "operatorName", column = "operator_name"),
             @Result(property = "operatorEmail", column = "operator_email"),
             @Result(property = "modifiedTime", column = "modify_time"),
             @Result(property = "createTime", column = "create_time")
     })
-    StrategyGroupDO queryByGroupName(@Param("appGroupName") String appGroupName, @Param("appName") String appName,
-                                     @Param("strategyGroupName") String strategyGroupName);
+    SdsSchemeDO queryByGroupName(@Param("appGroupName") String appGroupName, @Param("appName") String appName,
+                                     @Param("sdsSchemeName") String sdsSchemeName);
 
     /**
-     * 分页查询策略组信息
+     * 分页查询降级预案信息
      *
      * @param appGroupName
      * @param appName
-     * @param strategyGroupName
+     * @param sdsSchemeName
      * @param start
      * @param size
      * @return
      */
-    @Select("<script> select * from strategy_group " +
+    @Select("<script> select * from sds_scheme " +
             "<where> " +
             " <if test=\"appGroupName != null and appGroupName.length > 0 \"> app_group_name = #{appGroupName} </if> " +
             " <if test=\"appName != null and appName.length > 0 \"> and app_name = #{appName} </if> " +
-            " <if test=\"strategyGroupName != null and strategyGroupName.length > 0\"> and strategy_group_name like "
-            + "concat('%', #{strategyGroupName}, '%') </if> " +
+            " <if test=\"sdsSchemeName != null and sdsSchemeName.length > 0\"> and sds_scheme_name like "
+            + "concat('%', #{sdsSchemeName}, '%') </if> " +
             "</where>" +
             " order by modify_time desc " +
             " limit #{start}, #{size} </script> ")
@@ -154,7 +154,7 @@ public interface StrategyGroupDao {
             @Result(property = "id", column = "id"),
             @Result(property = "appGroupName", column = "app_group_name"),
             @Result(property = "appName", column = "app_name"),
-            @Result(property = "strategyGroupName", column = "strategy_group_name"),
+            @Result(property = "sdsSchemeName", column = "sds_scheme_name"),
             @Result(property = "operatorName", column = "operator_name"),
             @Result(property = "operatorEmail", column = "operator_email"),
             @Result(property = "creatorName", column = "creator_name"),
@@ -162,8 +162,8 @@ public interface StrategyGroupDao {
             @Result(property = "modifiedTime", column = "modify_time"),
             @Result(property = "createTime", column = "create_time")
     })
-    List<StrategyGroupDO> queryStrategyGroupByPage(@Param("appGroupName") String appGroupName,
+    List<SdsSchemeDO> querySdsSchemeByPage(@Param("appGroupName") String appGroupName,
                                                    @Param("appName") String appName,
-                                                   @Param("strategyGroupName") String strategyGroupName, @Param(
+                                                   @Param("sdsSchemeName") String sdsSchemeName, @Param(
                                                            "start") Integer start, @Param("size") Integer size);
 }
