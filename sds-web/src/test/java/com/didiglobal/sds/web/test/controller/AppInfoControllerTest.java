@@ -24,7 +24,7 @@ public class AppInfoControllerTest {
 
         MockMvc mockMvc = MockMvcBuilders.standaloneSetup(appInfoController).build();
         try {
-            mockMvc.perform(post("/sds/appinfo/listpage").param("appGroupName", "黑马")
+            mockMvc.perform(post("/sds/appinfo/listpage").param("appGroupName", "两轮车")
                     .param("appName", "bh-order")
                     .param("page", "1")
                     .param("pageSize", "10")

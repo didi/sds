@@ -143,7 +143,7 @@ public class SdsPowerfulCounterService {
         return pointCounterMap.get(point);
     }
 
-    public static ConcurrentHashMap<String, PowerfulCycleTimeCounter> getPointCounterMap() {
+    public ConcurrentHashMap<String, PowerfulCycleTimeCounter> getPointCounterMap() {
         return pointCounterMap;
     }
 }

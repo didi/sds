@@ -24,7 +24,7 @@ public class AppGroupControllerTest {
 
         MockMvc mockMvc = MockMvcBuilders.standaloneSetup(appGroupController).build();
         try {
-            mockMvc.perform(post("/sds/appgroup/listpage").param("appGroupName", "黑马")
+            mockMvc.perform(post("/sds/appgroup/listpage").param("appGroupName", "两轮车")
                     .param("appName", "bh-order")
                     .param("page", "1")
                     .param("pageSize", "10")

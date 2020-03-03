@@ -77,7 +77,7 @@ public class SdsSchemeController {
         return new SdsResponse<>(sdsSchemeNameList);
     }
 
-    // curl -X POST -H 'Content-type':'application/json'  -d '{"appGroupName":"黑马"}'
+    // curl -X POST -H 'Content-type':'application/json'  -d '{"appGroupName":"两轮车"}'
     // http://localhost:8887/sds/strategygroup/listpage
     @RequestMapping(value = "listpage")
     public SdsResponse<List<SdsSchemeDO>> querySdsSchemeByPage(@RequestBody SdsSchemeRequest
@@ -109,7 +109,7 @@ public class SdsSchemeController {
         return new SdsResponse(sdsSchemeList);
     }
 
-    // curl -X POST -H 'Content-type':'application/json'  -d '{"appGroupName":"黑马", "appName":"mzz-study",
+    // curl -X POST -H 'Content-type':'application/json'  -d '{"appGroupName":"两轮车", "appName":"mzz-study",
     // "sdsSchemeName":"FIRST_GROUP", "operatorId":2}'  http://localhost:8887/sds/strategygroup/add
     @RequestMapping(value = "add")
     public SdsResponse addSdsScheme(@RequestBody SdsSchemeRequest sdsSchemeRequest) {

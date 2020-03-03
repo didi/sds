@@ -151,7 +151,7 @@ final public class SdsHeartBeatService {
         /**
          * 这里先获取客户端用到的所有降级点
          */
-        Enumeration<String> keys = SdsPowerfulCounterService.getPointCounterMap().keys();
+        Enumeration<String> keys = SdsPowerfulCounterService.getInstance().getPointCounterMap().keys();
         List<String> pointList = new ArrayList<>();
         while(keys.hasMoreElements()) {
             pointList.add(keys.nextElement());
@@ -312,8 +312,8 @@ final public class SdsHeartBeatService {
         Map<String, SdsCycleInfo> map = new HashMap<>();
 
         // 统计访问量降级点信息
-        for (Entry<String, PowerfulCycleTimeCounter> entry : SdsPowerfulCounterService.getPointCounterMap().
-                entrySet()) {
+        for (Entry<String, PowerfulCycleTimeCounter> entry :
+                SdsPowerfulCounterService.getInstance().getPointCounterMap().entrySet()) {
             String point = entry.getKey();
             PowerfulCycleTimeCounter counter = entry.getValue();
 

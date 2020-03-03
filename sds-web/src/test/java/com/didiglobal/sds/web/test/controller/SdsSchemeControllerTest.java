@@ -27,7 +27,7 @@ public class SdsSchemeControllerTest {
         try {
             mockMvc.perform(post("/sds/strategygroup/listpage").characterEncoding("UTF-8").contentType(
                     MediaType.APPLICATION_JSON_UTF8)
-                    .param("appGroupName", "黑马")
+                    .param("appGroupName", "两轮车")
                     .param("appName", "bh-order")
                     .param("page", "1")
                     .param("pageSize", "10")

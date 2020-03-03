@@ -49,7 +49,7 @@ public class AppInfoController {
 
     private static Logger logger = SdsLoggerFactory.getDefaultLogger();
 
-    // curl -X POST -H 'Content-type':'application/json'  -d '{"appGroupName":"黑马"}'
+    // curl -X POST -H 'Content-type':'application/json'  -d '{"appGroupName":"两轮车"}'
     // http://localhost:8887/sds/appinfo/listpage
     @RequestMapping(value = "listpage")
     public SdsResponse<List<AppInfoDO>> queryAppInfoByPage(@RequestBody AppInfoRequest appInfoRequest) {
@@ -89,7 +89,7 @@ public class AppInfoController {
         return new SdsResponse<>(Lists.newArrayList());
     }
 
-    // curl -X POST -H 'Content-type':'application/json'  -d '{"appGroupName":"黑马", "appName":"bh-order",
+    // curl -X POST -H 'Content-type':'application/json'  -d '{"appGroupName":"两轮车", "appName":"bh-order",
     // "operatorId":2}'  http://localhost:8887/sds/appinfo/add
     @RequestMapping(value = "add")
     public SdsResponse addAppInfo(@RequestBody AppInfoRequest appInfoRequest) {
@@ -170,7 +170,7 @@ public class AppInfoController {
                 new SdsResponse(SYSTEM_ERROR.getCode(), "新增应用失败");
     }
 
-    // curl -X POST -H 'Content-type':'application/json'  -d '{"appGroupName":"黑马", "appName":"bh-order",
+    // curl -X POST -H 'Content-type':'application/json'  -d '{"appGroupName":"两轮车", "appName":"bh-order",
     // "newAppName":"bh-ins", "newSdsSchemeName":"abc", "operatorId":2}'  http://localhost:8887/sds/appinfo/edit
     @RequestMapping(value = "edit")
     public SdsResponse<List<AppInfoDO>> updateAppInfo(@RequestBody AppInfoRequest appInfoRequest) {

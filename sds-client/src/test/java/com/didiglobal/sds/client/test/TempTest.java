@@ -12,7 +12,7 @@ import java.util.concurrent.TimeUnit;
 public class TempTest {
 
     protected static final String SERVER_URL = "http://127.0.0.1:8887";
-    protected static SdsClient sdsClient = SdsClientFactory.getOrCreateSdsClient("黑马", "mzz-study", SERVER_URL);
+    protected static SdsClient sdsClient = SdsClientFactory.getOrCreateSdsClient("两轮车", "mzz-study", SERVER_URL);
 
     @Test
     public void strategyTest() {
