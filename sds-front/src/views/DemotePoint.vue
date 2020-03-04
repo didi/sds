@@ -14,7 +14,7 @@
           </el-col>
           <el-col :span="6">
             <el-form-item label="应用名称">
-              <el-select v-model="form.appName" placeholder="应用名称" @change="querystrategygrouptips">
+              <el-select v-model="form.appName" placeholder="应用名称" @change="querysdsschemetips">
                 <p v-for="(item, index) in appNameData" :key="index">
                   <el-option :label="item" :value="item"></el-option>
                 </p>
@@ -42,8 +42,8 @@
         <el-button type="primary" @click="addDemotePoint" icon="el-icon-plus">新增降级点策略</el-button>
       </div>
     </div>
-    <div v-if="!!strategygrouptips" class="strategy-group-tips">
-      <el-tag type="danger">{{ strategygrouptips }}</el-tag>
+    <div v-if="!!sdsschemetips" class="strategy-group-tips">
+      <el-tag type="danger">{{ sdsschemetips }}</el-tag>
     </div>
     <div class="demote-point-table b-wrapper">
       <el-table
@@ -177,8 +177,8 @@
     </div>
 
     <el-dialog title="新增降级点策略" :visible.sync="dialogAddDemotePoint">
-      <div style="padding-bottom: 20px; line-height: 20px;" v-if="!!strategygrouptips">
-        <span style="color: red">{{ strategygrouptips }}</span>
+      <div style="padding-bottom: 20px; line-height: 20px;" v-if="!!sdsschemetips">
+        <span style="color: red">{{ sdsschemetips }}</span>
       </div>
       <el-form :inline="true" class="add-apply" label-position="right" label-width="140px">
         <p class="of-application-group">
@@ -192,7 +192,7 @@
         </p>
         <p class="of-application-group">
           <el-form-item label="应用名称">
-            <el-select v-model="addApplyName" placeholder="应用名称" @change="querystrategygrouptips">
+            <el-select v-model="addApplyName" placeholder="应用名称" @change="querysdsschemetips">
         <p v-for="(item, index) in someApplyData" :key="index">
           <el-option :label="item" :value="item"></el-option>
         </p>
@@ -282,8 +282,8 @@
       </el-form>
     </el-dialog>
     <el-dialog title="修改降级点策略" :visible.sync="dialogEditDemotePoint">
-      <div style="padding-bottom: 20px; line-height: 20px;" v-if="!!strategygrouptips">
-        <span style="color: red">{{ strategygrouptips }}</span>
+      <div style="padding-bottom: 20px; line-height: 20px;" v-if="!!sdsschemetips">
+        <span style="color: red">{{ sdsschemetips }}</span>
       </div>
       <el-form :inline="true" class="add-apply"  label-position="right" label-width="140px">
         <p class="of-application-group">
@@ -754,7 +754,7 @@
           demotePoint: ''
         },
         showAllExpand: true,
-        strategygrouptips: '',
+        sdsschemetips: '',
         pointDictlist: []
       }
     },
@@ -768,7 +768,7 @@
       //监听编辑case下面某应用的所有降级预案
       'editRowData' (newVal) {
         this.editRowData.sdsScheme = ''
-        this.strategygroupListall(newVal.appGroupName, newVal.appName).then((res) => {
+        this.sdsschemeListall(newVal.appGroupName, newVal.appName).then((res) => {
           if (res.code === 200) {
             this.editSdsSchemeData = res.data
           } else {
@@ -808,7 +808,7 @@
       'form.appName' (newVal, oldVal) {
         if (!newVal) return;
         this.form.sdsScheme = ''
-        this.strategygroupListall(this.form.applyGroup, newVal).then((res) => {
+        this.sdsschemeListall(this.form.applyGroup, newVal).then((res) => {
           if (res.code === 200) {
             this.sdsSchemeData = res.data
           } else {
@@ -846,9 +846,9 @@
       //监听增加策略点case下 获取所有降级预案
       addApplyName (newVal, oldVal) {
         this.addSdsScheme = '',
-          this.strategygroupListall(this.addApplyGroupName, newVal).then((res) => {
+          this.sdsschemeListall(this.addApplyGroupName, newVal).then((res) => {
             if (res.code === 200) {
-              console.log('strategygroupListall', res.data)
+              console.log('sdsschemeListall', res.data)
               this.addSdsSchemeData = res.data
             } else {
               this.$message({
@@ -866,13 +866,13 @@
       }
     },
     methods: {
-      querystrategygrouptips () {
-        Api.querystrategygrouptips({
+      querysdsschemetips () {
+        Api.querysdsschemetips({
           appGroupName: this.form.applyGroup || this.addApplyGroupName,
           appName: this.form.appName || this.addApplyName
         }).then((res) => {
           if(res.code === 200) {
-            this.strategygrouptips = res.data
+            this.sdsschemetips = res.data
           } else {
             this.$message({
               message: res.msg,
@@ -984,12 +984,12 @@
         })
       },
       //查询所有降级预案
-      strategygroupListall (appGroupName, appName) { // todo
+      sdsschemeListall (appGroupName, appName) { // todo
         let params = {
           appGroupName: appGroupName,
           appName: appName
         }
-        return Api.strategygroupListall(params)
+        return Api.sdsschemeListall(params)
       },
       appgroupListall () {
         let params = {
@@ -1070,7 +1070,7 @@
         // 展示tips
         this.form.applyGroup = row.appGroupName
         this.form.appName = row.appName
-        this.querystrategygrouptips()
+        this.querysdsschemetips()
         this.dialogEditDemotePoint = true
         this.editRowData = row
         this.oldSdsSchemeName = row.sdsSchemeName

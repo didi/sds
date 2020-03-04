@@ -260,7 +260,7 @@
           appGroupName: this.form.applyName,
           appName: newVal
         }
-        Api.strategygroupListall(params).then((res) => {
+        Api.sdsschemeListall(params).then((res) => {
           if (res.code === 200) {
             this.addSdsSchemeData = res.data
           } else {
@@ -401,9 +401,9 @@
           appGroupName: this.editRowData.appGroupName,
           appName: this.editRowData.appName
         }
-        Api.strategygroupListall(params).then((res) => {
+        Api.sdsschemeListall(params).then((res) => {
           if (res.code === 200) {
-            console.log('strategygroupListall', res.data)
+            console.log('sdsschemeListall', res.data)
             this.sdsSchemeData = res.data
           } else {
             this.$message({

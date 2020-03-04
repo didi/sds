@@ -24,7 +24,9 @@ public class AppGroupDaoTest {
     public void addAppGroupTest() {
         AppGroupDO appGroupDO = new AppGroupDO();
         appGroupDO.setCreatorName("路飞");
+        appGroupDO.setOperatorName("路飞");
         appGroupDO.setCreatorEmail("yizhenqiang@didichuxing.com");
+        appGroupDO.setOperatorEmail("yizhenqiang@didichuxing.com");
         appGroupDO.setAppGroupName("黑马4");
         Assert.assertEquals(1, appGroupDao.addAppGroup(appGroupDO));
 

@@ -1,4 +1,4 @@
-
+DROP TABLE IF EXISTS `app_group`;
 CREATE TABLE IF NOT EXISTS `app_group` (
   `id` bigint unsigned NOT NULL AUTO_INCREMENT COMMENT '自增id',
   `app_group_name` varchar(32) NOT NULL DEFAULT '' COMMENT '应用组名称',
@@ -12,6 +12,7 @@ CREATE TABLE IF NOT EXISTS `app_group` (
   UNIQUE KEY `uniq_app_group_name` (`app_group_name`) USING BTREE
 ) ENGINE=InnoDB AUTO_INCREMENT=98 DEFAULT CHARSET=utf8 COMMENT='应用组表';
 
+DROP TABLE IF EXISTS `app_info`;
 CREATE TABLE IF NOT EXISTS `app_info` (
   `id` bigint unsigned NOT NULL AUTO_INCREMENT COMMENT '自增id',
   `app_group_name` varchar(32) NOT NULL DEFAULT '' COMMENT '应用组名称',
@@ -28,6 +29,8 @@ CREATE TABLE IF NOT EXISTS `app_info` (
   UNIQUE KEY `uniq_app_group_name_app_name` (`app_group_name`,`app_name`) USING BTREE
 ) ENGINE=InnoDB AUTO_INCREMENT=79 DEFAULT CHARSET=utf8 COMMENT='应用表';
 
+
+DROP TABLE IF EXISTS `sds_scheme`;
 CREATE TABLE IF NOT EXISTS `sds_scheme` (
   `id` bigint unsigned NOT NULL AUTO_INCREMENT COMMENT '自增id',
   `app_group_name` varchar(32) NOT NULL DEFAULT '' COMMENT '应用组名称',
@@ -43,6 +46,7 @@ CREATE TABLE IF NOT EXISTS `sds_scheme` (
   UNIQUE KEY `uniq_app_group_name_app_name_sds_scheme` (`app_group_name`,`app_name`,`sds_scheme_name`) USING BTREE
 ) ENGINE=InnoDB AUTO_INCREMENT=94 DEFAULT CHARSET=utf8 COMMENT='降级预案表';
 
+DROP TABLE IF EXISTS `point_strategy`;
 CREATE TABLE IF NOT EXISTS `point_strategy` (
     `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT COMMENT '自增id',
     `app_group_name` varchar(32) NOT NULL DEFAULT '' COMMENT '应用组名称',
@@ -75,6 +79,8 @@ CREATE TABLE IF NOT EXISTS `point_strategy` (
     KEY `idx_point` (`point`) USING BTREE
 ) ENGINE=InnoDB AUTO_INCREMENT=511 DEFAULT CHARSET=utf8 COMMENT='降级点策略信息表'
 
+
+DROP TABLE IF EXISTS `heartbeat`;
 CREATE TABLE IF NOT EXISTS `heartbeat` (
   `id` bigint unsigned NOT NULL AUTO_INCREMENT COMMENT '自增id',
   `app_group_name` varchar(32) NOT NULL DEFAULT '' COMMENT '应用组名称',
@@ -92,6 +98,7 @@ CREATE TABLE IF NOT EXISTS `heartbeat` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=834679 DEFAULT CHARSET=utf8 COMMENT='心跳表';
 
+DROP TABLE IF EXISTS `point_dict`;
 CREATE TABLE IF NOT EXISTS `point_dict` (
     `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT COMMENT '自增id',
     `app_group_name` varchar(32) NOT NULL DEFAULT '' COMMENT '应用组名称',
@@ -103,6 +110,7 @@ CREATE TABLE IF NOT EXISTS `point_dict` (
     UNIQUE KEY `uniq_point_strategy_dict` (`app_group_name`,`app_name`,`point`) USING BTREE, KEY `idx_point` (`point`) USING BTREE
 ) ENGINE=InnoDB AUTO_INCREMENT=2603 DEFAULT CHARSET=utf8 COMMENT='降级点字典表'
 
+DROP TABLE IF EXISTS `point_return_value`;
 CREATE TABLE IF NOT EXISTS `point_return_value` (
   `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT COMMENT '自增id',
   `app_group_name` varchar(32) NOT NULL DEFAULT '' COMMENT '应用组名称',

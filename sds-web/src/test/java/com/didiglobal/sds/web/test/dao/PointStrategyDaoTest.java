@@ -51,6 +51,12 @@ public class PointStrategyDaoTest {
         strategyDO.setSdsSchemeName("FIRST_GROUP");
         strategyDO.setDowngradeRate(100);
         strategyDO.setStatus(1);
+
+        strategyDO.setCreatorEmail("yizhenqiang@didiglobal.com");
+        strategyDO.setCreatorName("路飞");
+        strategyDO.setOperatorEmail("yizhenqiang@didiglobal.com");
+        strategyDO.setOperatorName("路飞");
+
         System.out.println(pointStrategyDao.addPointStrategy(strategyDO));
 
     }

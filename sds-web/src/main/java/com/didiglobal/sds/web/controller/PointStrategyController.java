@@ -76,7 +76,7 @@ public class PointStrategyController {
         return new SdsResponse<>(data);
     }
 
-    @RequestMapping(value = "querystrategygrouptips")
+    @RequestMapping(value = "querysdsschemetips")
     public SdsResponse<String> queryAppCurSdsSchemeTips(@RequestBody PointStrategyRequest pointStrategyRequest) {
 
         if (pointStrategyRequest == null) {

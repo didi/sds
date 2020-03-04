@@ -29,6 +29,8 @@ public class SdsSchemeDaoTest {
         sdsSchemeDO.setSdsSchemeName("FIRST_GROUP");
         sdsSchemeDO.setCreatorName("路飞");
         sdsSchemeDO.setCreatorEmail("yizhenqiang@didichuxing.com");
+        sdsSchemeDO.setOperatorName("路飞");
+        sdsSchemeDO.setOperatorEmail("yizhenqiang@didichuxing.com");
         Assert.assertEquals(1, sdsSchemeDao.addSdsScheme(sdsSchemeDO));
 
         sdsSchemeDO.setSdsSchemeName("SECOND_GROUP");
