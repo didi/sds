@@ -65,7 +65,7 @@ public class ConcurrentDowngradeTest extends AbstractDowngradeTest {
 
     @Override
     protected String getPoint() {
-        return "testPoint";
+        return "concurrentPoint";
     }
 
     @Override
@@ -75,6 +75,6 @@ public class ConcurrentDowngradeTest extends AbstractDowngradeTest {
 
     @Override
     protected long getTakeTime() {
-        return 1000;
+        return 950;
     }
 }

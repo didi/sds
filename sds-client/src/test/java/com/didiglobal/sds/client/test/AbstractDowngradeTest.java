@@ -51,7 +51,7 @@ public abstract class AbstractDowngradeTest {
         long startTime = System.currentTimeMillis();
         try {
             // 保证从完整的10s开始执行
-            Thread.sleep(1000 - startTime % 1000);
+            Thread.sleep(10000 - startTime % 10000 + 100);
         } catch (InterruptedException e) {
         }
 
@@ -128,10 +128,10 @@ public abstract class AbstractDowngradeTest {
     protected abstract long getTakeTime();
 
     /**
-     * 等1.5个完全周期，即15s，这里为了保险，等16s
+     * 至少等1个完全周期，即10s，这里为了保险，等11s
      */
     protected void waitResult() {
-        sleepMilliseconds(16000);
+        sleepMilliseconds(11000);
     }
 
     protected void sleepMilliseconds(long milliseconds) {
@@ -144,7 +144,8 @@ public abstract class AbstractDowngradeTest {
     private class ClientThread implements Runnable {
         @Override
         public void run() {
-            while (true) {
+            long executorTimes = getExecutorTimes();
+            while (executorTimes-- > 0) {
                 try {
                     businessMethod();
                 } catch (Exception e) {
