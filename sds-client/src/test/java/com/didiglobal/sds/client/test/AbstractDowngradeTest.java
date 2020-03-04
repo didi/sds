@@ -26,7 +26,7 @@ public abstract class AbstractDowngradeTest {
     private ExecutorService service = null;
 
     static {
-        // 不从sds-web获取策略配置，完全使用本地手动设置
+        // 不从sds-admin获取策略配置，完全使用本地手动设置
         CycleDataService.setPullPointStrategySwitch(false);
         CycleDataService.setUploadDataSwitch(false);
     }

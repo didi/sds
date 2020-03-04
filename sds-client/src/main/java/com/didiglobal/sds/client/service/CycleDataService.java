@@ -48,7 +48,7 @@ final public class CycleDataService {
     private static volatile boolean pullPointStrategySwitch = true;
 
     /**
-     * 向sds-web发送统计数据开关
+     * 向sds-admin发送统计数据开关
      * true-开启，false-关闭
      */
     private static volatile boolean uploadDataSwitch = true;
