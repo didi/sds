@@ -43,10 +43,15 @@ final public class CycleDataService {
 
     /**
      * 拉取最新策略开关
-     * 注意：主要供测试使用
      * true-开启，false-关闭
      */
     private static volatile boolean pullPointStrategySwitch = true;
+
+    /**
+     * 向sds-web发送统计数据开关
+     * true-开启，false-关闭
+     */
+    private static volatile boolean uploadDataSwitch = true;
 
     static {
         cleanAndUploadExecutor = new ScheduledThreadPoolExecutor(1, new ThreadFactory() {
@@ -144,7 +149,7 @@ final public class CycleDataService {
              * 执行心跳服务
              */
             SdsHeartBeatService sdsHeartBeatService = SdsHeartBeatService.getInstance();
-            if (sdsHeartBeatService != null) {
+            if (sdsHeartBeatService != null && uploadDataSwitch) {
                 sdsHeartBeatService.uploadHeartbeatData();
             }
 
@@ -194,5 +199,9 @@ final public class CycleDataService {
 
     public static void setPullPointStrategySwitch(boolean pullPointStrategySwitch) {
         CycleDataService.pullPointStrategySwitch = pullPointStrategySwitch;
+    }
+
+    public static void setUploadDataSwitch(boolean uploadDataSwitch) {
+        CycleDataService.uploadDataSwitch = uploadDataSwitch;
     }
 }

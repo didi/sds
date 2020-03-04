@@ -72,28 +72,28 @@ export default {
     return _fetch.post(apiHost + "/sds/appinfo/delete", params);
   },
   //查询所有降级预案（降级预案下拉列表使用）
-  strategygroupListall: params => {
-    return _fetch.post(apiHost + "/sds/strategygroup/listall", params);
+  sdsschemeListall: params => {
+    return _fetch.post(apiHost + "/sds/sdsscheme/listall", params);
   },
   //降级预案分页查询
-  strategygroupListpage: params => {
-    return _fetch.post(apiHost + "/sds/strategygroup/listpage", params);
+  sdsschemeListpage: params => {
+    return _fetch.post(apiHost + "/sds/sdsscheme/listpage", params);
   },
   //新增降级预案
-  strategygroupAdd: params => {
-    return _fetch.post(apiHost + "/sds/strategygroup/add", params);
+  sdsschemeAdd: params => {
+    return _fetch.post(apiHost + "/sds/sdsscheme/add", params);
   },
   //修改降级预案
-  strategygroupEdit: params => {
-    return _fetch.post(apiHost + "/sds/strategygroup/edit", params);
+  sdsschemeEdit: params => {
+    return _fetch.post(apiHost + "/sds/sdsscheme/edit", params);
   },
   //克隆降级预案
-  strategygroupClone: params => {
-    return _fetch.post(apiHost + "/sds/strategygroup/clone", params);
+  sdsschemeClone: params => {
+    return _fetch.post(apiHost + "/sds/sdsscheme/clone", params);
   },
   //删除降级预案
   deleteStrategygroup: params => {
-    return _fetch.post(apiHost + "/sds/strategygroup/delete", params);
+    return _fetch.post(apiHost + "/sds/sdsscheme/delete", params);
   },
   //新增降级点策略
   pointStrategyAdd: params => {
@@ -112,9 +112,9 @@ export default {
     return _fetch.post(apiHost + "/sds/pointstrategy/listpage", params);
   },
   // 查询应用当前生效降级预案
-  querystrategygrouptips: params => {
+  querysdsschemetips: params => {
     return _fetch.post(
-      apiHost + "/sds/pointstrategy/querystrategygrouptips ",
+      apiHost + "/sds/pointstrategy/querysdsschemetips ",
       params
     );
   },

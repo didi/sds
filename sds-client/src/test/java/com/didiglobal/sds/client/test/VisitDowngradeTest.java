@@ -1,7 +1,10 @@
 package com.didiglobal.sds.client.test;
 
 import com.didiglobal.sds.client.bean.SdsStrategy;
+import com.didiglobal.sds.client.counter.PowerfulCycleTimeCounter;
+import com.didiglobal.sds.client.service.SdsPowerfulCounterService;
 import com.didiglobal.sds.client.service.SdsStrategyService;
+import org.junit.Assert;
 import org.junit.Test;
 
 import java.util.concurrent.ConcurrentHashMap;
@@ -13,12 +16,21 @@ import java.util.concurrent.ConcurrentHashMap;
  */
 public class VisitDowngradeTest extends AbstractDowngradeTest {
 
+    private final static long VISITT_HRESHOLD = 5L;
+
     @Test
     public void test() {
 
         executor();
 
-        System.out.println("所有线程运行结束");
+        waitResult();
+
+        PowerfulCycleTimeCounter powerfulCycleTimeCounter =
+                SdsPowerfulCounterService.getInstance().getPointCounterMap().get(getPoint());
+        Assert.assertNotNull(powerfulCycleTimeCounter);
+
+        Assert.assertEquals(getExecutorTimes() * getThreadNum() - VISITT_HRESHOLD,
+                powerfulCycleTimeCounter.getLastCycleDowngradeValue(System.currentTimeMillis()));
 
     }
 
@@ -28,8 +40,9 @@ public class VisitDowngradeTest extends AbstractDowngradeTest {
 
         SdsStrategy strategy = new SdsStrategy();
         strategy.setPoint(getPoint());
-        strategy.setVisitThreshold(0L);
-        strategy.setDowngradeRate(0);
+
+        strategy.setVisitThreshold(VISITT_HRESHOLD);
+        strategy.setDowngradeRate(DOWNGRADE_RATE);
 
         strategyMap.put(getPoint(), strategy);
 
@@ -38,21 +51,21 @@ public class VisitDowngradeTest extends AbstractDowngradeTest {
 
     @Override
     protected long getExecutorTimes() {
-        return 1;
+        return 10;
     }
 
     @Override
     protected String getPoint() {
-        return "testPoint";
+        return "visitPoint";
     }
 
     @Override
     protected int getThreadNum() {
-        return 5;
+        return 1;
     }
 
     @Override
     protected long getTakeTime() {
-        return 10000;
+        return 950;
     }
 }

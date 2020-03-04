@@ -1,6 +1,8 @@
 package com.didiglobal.sds.web.test.controller;
 
+import com.alibaba.fastjson.JSON;
 import com.didiglobal.sds.web.controller.AppInfoController;
+import com.didiglobal.sds.web.controller.request.AppInfoRequest;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,12 +24,22 @@ public class AppInfoControllerTest {
     @Test
     public void queryAppInfoByPageTest() {
 
+        AppInfoRequest request = new AppInfoRequest();
+        request.setAppGroupName("两轮车");
+        request.setAppName("order");
+        request.setSdsSchemeName("默认降级预案");
+        request.setOperatorName("路飞");
+        request.setOperatorEmail("yizhenqiang@didiglobal.com");
+        request.setCreatorName("路飞");
+        request.setCreatorEmail("yizhenqiang@didiglobal.com");
+        request.setPage(1);
+        request.setPageSize(10);
+
+
         MockMvc mockMvc = MockMvcBuilders.standaloneSetup(appInfoController).build();
         try {
-            mockMvc.perform(post("/sds/appinfo/listpage").param("appGroupName", "黑马")
-                    .param("appName", "bh-order")
-                    .param("page", "1")
-                    .param("pageSize", "10")
+            mockMvc.perform(
+                    post("/sds/appinfo/listpage").contentType("application/json").content(JSON.toJSONString(request))
             ).andDo(print());
 
         } catch (Exception e) {

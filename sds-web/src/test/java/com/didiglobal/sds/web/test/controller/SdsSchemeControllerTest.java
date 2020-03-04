@@ -1,6 +1,8 @@
 package com.didiglobal.sds.web.test.controller;
 
+import com.alibaba.fastjson.JSON;
 import com.didiglobal.sds.web.controller.SdsSchemeController;
+import com.didiglobal.sds.web.controller.request.SdsSchemeRequest;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,16 +23,25 @@ public class SdsSchemeControllerTest {
     private SdsSchemeController sdsSchemeController;
 
     @Test
-    public void queryAppInfoByPageTest() {
+    public void querySdsSchemeByPageTest() {
+
+        SdsSchemeRequest request = new SdsSchemeRequest();
+        request.setAppGroupName("两轮车");
+        request.setAppName("order");
+        request.setSdsSchemeName("默认降级策略");
+        request.setOperatorName("路飞");
+        request.setOperatorEmail("yizhenqiang@didiglobal.com");
+        request.setCreatorName("路飞");
+        request.setCreatorEmail("yizhenqiang@didiglobal.com");
+        request.setPage(1);
+        request.setPageSize(10);
+
 
         MockMvc mockMvc = MockMvcBuilders.standaloneSetup(sdsSchemeController).build();
         try {
-            mockMvc.perform(post("/sds/strategygroup/listpage").characterEncoding("UTF-8").contentType(
+            mockMvc.perform(post("/sds/sdsscheme/listpage").characterEncoding("UTF-8").contentType(
                     MediaType.APPLICATION_JSON_UTF8)
-                    .param("appGroupName", "黑马")
-                    .param("appName", "bh-order")
-                    .param("page", "1")
-                    .param("pageSize", "10")
+                    .content(JSON.toJSONString(request))
             ).andDo(print());
 
         } catch (Exception e) {

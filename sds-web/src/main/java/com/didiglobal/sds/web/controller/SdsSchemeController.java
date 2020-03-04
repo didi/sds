@@ -36,7 +36,7 @@ import static com.didiglobal.sds.web.constants.SdsCode.*;
  * Created by yizhenqiang on 18/1/7.
  */
 @RestController
-@RequestMapping(value = "/sds/strategygroup/", method = RequestMethod.POST)
+@RequestMapping(value = "/sds/sdsscheme/", method = RequestMethod.POST)
 public class SdsSchemeController {
 
     @Autowired
@@ -77,8 +77,8 @@ public class SdsSchemeController {
         return new SdsResponse<>(sdsSchemeNameList);
     }
 
-    // curl -X POST -H 'Content-type':'application/json'  -d '{"appGroupName":"黑马"}'
-    // http://localhost:8887/sds/strategygroup/listpage
+    // curl -X POST -H 'Content-type':'application/json'  -d '{"appGroupName":"两轮车"}'
+    // http://localhost:8887/sds/sdsscheme/listpage
     @RequestMapping(value = "listpage")
     public SdsResponse<List<SdsSchemeDO>> querySdsSchemeByPage(@RequestBody SdsSchemeRequest
                                                                                sdsSchemeRequest) {
@@ -109,8 +109,8 @@ public class SdsSchemeController {
         return new SdsResponse(sdsSchemeList);
     }
 
-    // curl -X POST -H 'Content-type':'application/json'  -d '{"appGroupName":"黑马", "appName":"mzz-study",
-    // "sdsSchemeName":"FIRST_GROUP", "operatorId":2}'  http://localhost:8887/sds/strategygroup/add
+    // curl -X POST -H 'Content-type':'application/json'  -d '{"appGroupName":"两轮车", "appName":"mzz-study",
+    // "sdsSchemeName":"FIRST_GROUP", "operatorId":2}'  http://localhost:8887/sds/sdsscheme/add
     @RequestMapping(value = "add")
     public SdsResponse addSdsScheme(@RequestBody SdsSchemeRequest sdsSchemeRequest) {
 
@@ -174,7 +174,7 @@ public class SdsSchemeController {
     }
 
     // curl -X POST -H 'Content-type':'application/json'  -d '{"appGroupName":"黑马无敌", "newAppGroupName":"黑马狂奔",
-    // "operatorId":4}'  http://localhost:8887/sds/strategygroup/edit
+    // "operatorId":4}'  http://localhost:8887/sds/sdsscheme/edit
     @RequestMapping(value = "edit")
     public SdsResponse updateSdsScheme(@RequestBody SdsSchemeRequest sdsSchemeRequest) {
 
@@ -335,7 +335,7 @@ public class SdsSchemeController {
     }
 
     // curl -X POST -H 'Content-type':'application/json'  -d '{"appGroupName":"黑马狂奔"}'
-    // http://localhost:8887/sds/strategygroup/delete
+    // http://localhost:8887/sds/sdsscheme/delete
     @RequestMapping(value = "delete")
     public SdsResponse deleteSdsScheme(@RequestBody SdsSchemeRequest sdsSchemeRequest) {
 

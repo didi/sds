@@ -22,7 +22,7 @@ public class PointStrategyDaoTest {
     @Test
     public void addStrategyTest() {
         PointStrategyDO strategyDO = new PointStrategyDO();
-        strategyDO.setAppGroupName("黑马");
+        strategyDO.setAppGroupName("两轮车");
         strategyDO.setAppName("bh-order");
         strategyDO.setPoint("testPoint22");
         strategyDO.setSdsSchemeName("FIRST_GROUP");
@@ -37,20 +37,26 @@ public class PointStrategyDaoTest {
         strategyDO.setRetryInterval(10L);
         strategyDO.setDowngradeRate(100);
         strategyDO.setStatus(1);
-        strategyDO.setCreatorName("易振强");
+        strategyDO.setCreatorName("路飞");
         strategyDO.setCreatorEmail("yizhenqiang@didichuxing.com");
-        strategyDO.setOperatorName("易振强");
+        strategyDO.setOperatorName("路飞");
         strategyDO.setOperatorEmail("yizhenqiang@didichuxing.com");
 
         System.out.println(pointStrategyDao.addPointStrategy(strategyDO));
 
         strategyDO = new PointStrategyDO();
-        strategyDO.setAppGroupName("黑马");
+        strategyDO.setAppGroupName("两轮车");
         strategyDO.setAppName("bh-order");
         strategyDO.setPoint("testPoint23");
         strategyDO.setSdsSchemeName("FIRST_GROUP");
         strategyDO.setDowngradeRate(100);
         strategyDO.setStatus(1);
+
+        strategyDO.setCreatorEmail("yizhenqiang@didiglobal.com");
+        strategyDO.setCreatorName("路飞");
+        strategyDO.setOperatorEmail("yizhenqiang@didiglobal.com");
+        strategyDO.setOperatorName("路飞");
+
         System.out.println(pointStrategyDao.addPointStrategy(strategyDO));
 
     }
@@ -66,9 +72,9 @@ public class PointStrategyDaoTest {
         pointStrategyDO.setNewSdsSchemeName("QPS自动降级");
         pointStrategyDO.setStatus(1);
         pointStrategyDO.setDowngradeRate(100);
-        pointStrategyDO.setCreatorName("易振强");
+        pointStrategyDO.setCreatorName("路飞");
         pointStrategyDO.setCreatorEmail("yizhenqiang@didichuxing.com");
-        pointStrategyDO.setOperatorName("易振强");
+        pointStrategyDO.setOperatorName("路飞");
         pointStrategyDO.setOperatorEmail("yizhenqiang@didichuxing.com");
 
         System.out.println(pointStrategyDao.updatePointStrategy(pointStrategyDO));
@@ -76,15 +82,15 @@ public class PointStrategyDaoTest {
 
     @Test
     public void queryPointStrategyTest() {
-        System.out.println(pointStrategyDao.queryPointStrategyBatch("黑马", "mzz-study", Lists.newArrayList("testPoint"),
+        System.out.println(pointStrategyDao.queryPointStrategyBatch("两轮车", "mzz-study", Lists.newArrayList("testPoint"),
                 "FIRST_GROUP"));
         System.out.println(
-                pointStrategyDao.queryPointStrategyBatch("黑马", "mzz-study", Lists.newArrayList("abcdefPoint"),
+                pointStrategyDao.queryPointStrategyBatch("两轮车", "mzz-study", Lists.newArrayList("abcdefPoint"),
                         "FIRST_GROUP"));
     }
 
     @Test
     public void queryPointStrategyByPageTest() {
-        System.out.println(pointStrategyDao.queryPointStrategyByPage("黑马", "mzz-study", "testPoint", null, 0, 10));
+        System.out.println(pointStrategyDao.queryPointStrategyByPage("两轮车", "mzz-study", "testPoint", null, 0, 10));
     }
 }

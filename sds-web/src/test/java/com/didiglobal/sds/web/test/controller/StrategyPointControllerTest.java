@@ -1,6 +1,8 @@
 package com.didiglobal.sds.web.test.controller;
 
+import com.alibaba.fastjson.JSON;
 import com.didiglobal.sds.web.controller.PointStrategyController;
+import com.didiglobal.sds.web.controller.request.PointStrategyRequest;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,18 +26,18 @@ public class StrategyPointControllerTest {
     private PointStrategyController pointStrategyController;
 
     @Test
-    public void testAdd() throws Exception {
+    public void queryAppCurSdsSchemeTipsTest() throws Exception {
+
+        PointStrategyRequest request = new PointStrategyRequest();
+        request.setAppGroupName("应用组A");
+        request.setAppName("应用a");
+        request.setPage(1);
+        request.setPageSize(10);
+
         MockMvc mockMvc = MockMvcBuilders.standaloneSetup(pointStrategyController).build();
         mockMvc.perform(
                 post("/sds/pointstrategy/add").characterEncoding("UTF-8").contentType(MediaType.APPLICATION_JSON_UTF8)
-                        .param("appGroupName", "应用组A")
-                        .param("appName", "应用a")
-                        .param("point", "eeee")
-                        .param("sdsSchemeName", "删除降级预案")
-                        .param("operatorName", "1")
-                        .param("operatorEmail", "1")
-                        .param("creatorName", "1")
-                        .param("creatorEmail", "1")
+                        .content(JSON.toJSONString(request))
         ).andDo(print());
     }
 }

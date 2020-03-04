@@ -170,7 +170,7 @@ protected static final String SERVER_URL = "http://127.0.0.1:8887";
  
 static {
     // 可以找个安静的地方初始化SdsClient
-    SdsClientFactory.getOrCreateSdsClient("黑马", "mzz-study", SERVER_URL);
+    SdsClientFactory.getOrCreateSdsClient("两轮车", "mzz-study", SERVER_URL);
 }
  
 // 这里假装是业务Service

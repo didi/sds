@@ -392,7 +392,7 @@
     },
     created () {
       this.appgroupListall()
-      // this.strategygroupListall()
+      // this.sdsschemeListall()
     },
     computed: {
     },
@@ -440,9 +440,9 @@
       //     appGroupName: this.addApplyGroupName,
       //     appName: newVal
       //   }
-      //   Api.strategygroupListall(params).then((res) => {
+      //   Api.sdsschemeListall(params).then((res) => {
       //     if (res.code === 200) {
-      //       console.log('strategygroupListall', res.data)
+      //       console.log('sdsschemeListall', res.data)
       //       this.allSdsSchemeData = res.data
       //     } else {
       //       this.$message({
@@ -468,9 +468,9 @@
           newSdsSchemeName: this.newSdsSchemeName,
           operatorId: this.cloneRowData.operatorId
         }
-        Api.strategygroupClone(params).then((res) => {
+        Api.sdsschemeClone(params).then((res) => {
           if (res.code === 200) {
-            console.log('strategygroupClone', res.data)
+            console.log('sdsschemeClone', res.data)
             this.$message({
               message: "克隆降级预案成功",
               type: 'success'
@@ -505,7 +505,7 @@
           appName: this.addApplyName,
           sdsSchemeName: this.form.sdsSchemeName
         };
-        Api.strategygroupAdd(params).then((res) => {
+        Api.sdsschemeAdd(params).then((res) => {
           if(res.code === 200) {
             console.log(res.data)
             this.$message({
@@ -535,7 +535,7 @@
       },
       //下一页前一页查询
       currentChangeData(page) {
-        this.strategygroupListpage(page).then((res) => {
+        this.sdsschemeListpage(page).then((res) => {
           if(res.code === 200) {
             res.data.forEach(function(item){
               item.createTime = TimeFormat.utcTimeFormat(item.createTime);
@@ -559,14 +559,14 @@
         })
       },
       // //查询所有降级预案
-      // strategygroupListall () { // todo
+      // sdsschemeListall () { // todo
       //   let params = {
       //     appGroupName: 'apply',
       //     appName: 'yy1'
       //   }
-      //   Api.strategygroupListall(params).then((res) => {
+      //   Api.sdsschemeListall(params).then((res) => {
       //     if (res.code === 200) {
-      //       console.log('strategygroupListall', res.data)
+      //       console.log('sdsschemeListall', res.data)
       //     } else {
       //       this.$message({
       //         message: res.msg,
@@ -589,7 +589,7 @@
           newSdsSchemeName: this.editSdsSchemeName,
           operatorId: this.editRowData.operatorId
         }
-        Api.strategygroupEdit(params).then((res) => {
+        Api.sdsschemeEdit(params).then((res) => {
           if(res.code === 200) {
             this.$message({
               message: "修改降级预案成功",
@@ -687,7 +687,7 @@
         });
       },
       // 分页查询降级预案
-      strategygroupListpage(page, pageSize) {
+      sdsschemeListpage(page, pageSize) {
         let params = {
           appGroupName: this.applyGroup,
           appName: this.applyName,
@@ -695,12 +695,12 @@
           page: page || 1,
           pageSize: pageSize || this.tableData.ps
         }
-        return Api.strategygroupListpage(params)
+        return Api.sdsschemeListpage(params)
       },
       //查询应用
       doSearch() {
         console.log('doSearch', this.applyGroupData)
-         this.strategygroupListpage().then((res) => {
+         this.sdsschemeListpage().then((res) => {
           if(res.code === 200) {
             res.data.forEach(function(item){
               item.createTime = TimeFormat.utcTimeFormat(item.createTime)
