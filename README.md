@@ -1,4 +1,4 @@
-# SDS (Service Downgarade System)
+# SDS (Service Downgrade System)
 
 ## 1. 背景
 移动互联网时代的来临，给业务增长插上翅膀的同时，也给服务端应用带来了巨大的挑战，大流量、高并发和海量数据似乎成为了服务端应用的标配。
