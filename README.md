@@ -107,7 +107,7 @@ private static final SdsClient sdsClient = SdsClientFactory.getOrCreateSdsClient
 </bean>
 ```
 
-### 5.3 使用SdsClient对象来进行降级（因为使用起来比较麻烦，所以不太推荐）
+### 5.3 使用SdsClient对象来进行降级（不太推荐，使用起来比较麻烦）
 首先，当我们需要对某个方法做降级保护时，我们需要给该方法做一个降级标记，这样我们才能在服务端给该方法的降级策略做配置，我们把这个降级标记称作【降级点】，实际上是一个字符串，为了美观，我们采用Java变量的命名风格：驼峰法来命名。
 
 例如，我们需要对businessMethod方法进行降级保护，我们可以把该降级点记做【businessMethodPoint】（一个应用通常会有很多降级点，可以把这些降级点放在一个常量文件里面，便于统一管理），确定了降级点后，就可以直接编码了，如下：
