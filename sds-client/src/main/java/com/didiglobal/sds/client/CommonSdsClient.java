@@ -6,23 +6,17 @@ import com.didiglobal.sds.client.bean.VisitWrapperValue;
 import com.didiglobal.sds.client.config.SdsDowngradeActionNotify;
 import com.didiglobal.sds.client.enums.DowngradeActionType;
 import com.didiglobal.sds.client.log.SdsLoggerFactory;
-import com.didiglobal.sds.client.service.SdsDowngradeDelayService;
-import com.didiglobal.sds.client.service.SdsDowngradeExceptionService;
-import com.didiglobal.sds.client.service.SdsHeartBeatService;
-import com.didiglobal.sds.client.service.SdsPowerfulCounterService;
-import com.didiglobal.sds.client.service.SdsStrategyService;
+import com.didiglobal.sds.client.service.*;
+import com.didiglobal.sds.client.strategy.DefaultStrategyExecutorBuilder;
+import com.didiglobal.sds.client.strategy.StrategyExecutorBuilder;
 import com.didiglobal.sds.client.strategy.executor.AbstractStrategyExecutor;
-import com.didiglobal.sds.client.strategy.executor.ConcurrentStrategyExecutor;
-import com.didiglobal.sds.client.strategy.executor.ExceptionRateStrategyExecutor;
-import com.didiglobal.sds.client.strategy.executor.ExceptionStrategyExecutor;
-import com.didiglobal.sds.client.strategy.executor.TimeoutStrategyExecutor;
-import com.didiglobal.sds.client.strategy.executor.TokenBucketStrategyExecutor;
-import com.didiglobal.sds.client.strategy.executor.VisitStrategyExecutor;
 import com.didiglobal.sds.client.util.AssertUtil;
 import com.didiglobal.sds.client.util.TimeStatisticsUtil;
 import org.slf4j.Logger;
 
 import java.util.Date;
+import java.util.Iterator;
+import java.util.ServiceLoader;
 import java.util.concurrent.ThreadLocalRandom;
 
 /**
@@ -281,14 +275,23 @@ public class CommonSdsClient extends AbstractSdsClient {
      * 初始化策略
      */
     private void initStrategyChain() {
-        strategyExecutorChain =
-                new VisitStrategyExecutor(
-                        new TokenBucketStrategyExecutor(
-                                new ConcurrentStrategyExecutor(
-                                        new TimeoutStrategyExecutor(
-                                                new ExceptionStrategyExecutor(
-                                                        new ExceptionRateStrategyExecutor(null)
-                                                )))));
+        // 默认使用用户自定义的
+        try {
+            ServiceLoader<StrategyExecutorBuilder> strategyExecutorBuilders = ServiceLoader.load(StrategyExecutorBuilder.class);
+            Iterator<StrategyExecutorBuilder> strategyExecutorBuilderIterator = strategyExecutorBuilders.iterator();
+            // 注意这里用的是 if, 即只会找到第一个
+            if (strategyExecutorBuilderIterator.hasNext()) {
+                strategyExecutorChain = strategyExecutorBuilderIterator.next().build();
+            }
+        } catch (Exception e) {
+            // 如果构建策略链出错了, 打印 warn 日志提醒, 在下面重新构建策略链
+            logger.warn("CommonSdsClient initStrategyChain occur error, it will use default strategy executor chain", e);
+        }
+        // 构建默认策略链
+        if (strategyExecutorChain == null) {
+            logger.info("CommonSdsClient use default strategy executor chain");
+            strategyExecutorChain = new DefaultStrategyExecutorBuilder().build();
+        }
     }
 
     /**
