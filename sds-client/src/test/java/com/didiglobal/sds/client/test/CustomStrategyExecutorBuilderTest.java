@@ -28,7 +28,7 @@ public class CustomStrategyExecutorBuilderTest {
             executor = executor.getNext();
             count++;
         }
-        Assert.assertEquals(2, count);
+        Assert.assertEquals(6, count);
     }
 
 }
