@@ -214,7 +214,7 @@ String result = SdsEasyUtil.invokerMethod("somePoint", "我是降级后的默认
 ```
 
 ## 7. 注解支持（推荐）
-SDS也支持使用注解接入，我们只需要在方法上使用 **@SdsDowngradeMethod** 即可。而且注解的接入方式有两种，一种是使用**Java 
+SDS也支持使用注解接入，我们只需要在方法上使用 **@SdsDowngradeMethod** 即可。注解的接入方式有两种，一种是使用**Java 
 Agent**的能力来在类加载时将SDS代码植入（类似于Pinpoint的做法），另一种是利用**Aspectj**的能力来动态植入。
 ### 7.1 通过Java Agent的方式使用注解
 第一步：通过maven依赖sds-bootstrap.jar（或者将sds-bootstrap.jar放到某个绝对路径下，例如/home/sds/lib/sds-bootstrap.jar）
