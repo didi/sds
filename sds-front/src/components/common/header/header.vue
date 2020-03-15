@@ -73,11 +73,11 @@
       env() {
         switch (utils.getEnv()) {
           case "local":
-            return "本地测试环境";
+            return "";
           case "stable":
-            return "线下环境";
+            return "";
           case "preonline":
-            return "预发环境";
+            return "";
           case "online":
             return ""
         }
