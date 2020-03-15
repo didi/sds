@@ -71,29 +71,29 @@ export default {
   appinfoDelete: params => {
     return _fetch.post(apiHost + "/sds/appinfo/delete", params);
   },
-  //查询所有策略组（策略组下拉列表使用）
-  strategygroupListall: params => {
-    return _fetch.post(apiHost + "/sds/strategygroup/listall", params);
+  //查询所有降级预案（降级预案下拉列表使用）
+  sdsschemeListall: params => {
+    return _fetch.post(apiHost + "/sds/sdsscheme/listall", params);
   },
-  //策略组分页查询
-  strategygroupListpage: params => {
-    return _fetch.post(apiHost + "/sds/strategygroup/listpage", params);
+  //降级预案分页查询
+  sdsschemeListpage: params => {
+    return _fetch.post(apiHost + "/sds/sdsscheme/listpage", params);
   },
-  //新增策略组
-  strategygroupAdd: params => {
-    return _fetch.post(apiHost + "/sds/strategygroup/add", params);
+  //新增降级预案
+  sdsschemeAdd: params => {
+    return _fetch.post(apiHost + "/sds/sdsscheme/add", params);
   },
-  //修改策略组
-  strategygroupEdit: params => {
-    return _fetch.post(apiHost + "/sds/strategygroup/edit", params);
+  //修改降级预案
+  sdsschemeEdit: params => {
+    return _fetch.post(apiHost + "/sds/sdsscheme/edit", params);
   },
-  //克隆策略组
-  strategygroupClone: params => {
-    return _fetch.post(apiHost + "/sds/strategygroup/clone", params);
+  //克隆降级预案
+  sdsschemeClone: params => {
+    return _fetch.post(apiHost + "/sds/sdsscheme/clone", params);
   },
-  //删除策略组
+  //删除降级预案
   deleteStrategygroup: params => {
-    return _fetch.post(apiHost + "/sds/strategygroup/delete", params);
+    return _fetch.post(apiHost + "/sds/sdsscheme/delete", params);
   },
   //新增降级点策略
   pointStrategyAdd: params => {
@@ -111,10 +111,10 @@ export default {
   pointStrategyListpage: params => {
     return _fetch.post(apiHost + "/sds/pointstrategy/listpage", params);
   },
-  // 查询应用当前生效策略组
-  querystrategygrouptips: params => {
+  // 查询应用当前生效降级预案
+  querysdsschemetips: params => {
     return _fetch.post(
-      apiHost + "/sds/pointstrategy/querystrategygrouptips ",
+      apiHost + "/sds/pointstrategy/querysdsschemetips ",
       params
     );
   },

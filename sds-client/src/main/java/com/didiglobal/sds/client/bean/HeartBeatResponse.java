@@ -14,7 +14,7 @@ import java.util.List;
  */
 public class HeartBeatResponse {
 
-    private String strategyGroupName;
+    private String sdsSchemeName;
 
     private Boolean changed;
 
@@ -31,19 +31,19 @@ public class HeartBeatResponse {
         this.errorMsg = errorMsg;
     }
 
-    public HeartBeatResponse(String strategyGroupName, Boolean changed, Long version, List<SdsStrategy> strategies) {
-        this.strategyGroupName = strategyGroupName;
+    public HeartBeatResponse(String sdsSchemeName, Boolean changed, Long version, List<SdsStrategy> strategies) {
+        this.sdsSchemeName = sdsSchemeName;
         this.changed = changed;
         this.version = version;
         this.strategies = strategies;
     }
 
-    public String getStrategyGroupName() {
-        return strategyGroupName;
+    public String getSdsSchemeName() {
+        return sdsSchemeName;
     }
 
-    public void setStrategyGroupName(String strategyGroupName) {
-        this.strategyGroupName = strategyGroupName;
+    public void setSdsSchemeName(String sdsSchemeName) {
+        this.sdsSchemeName = sdsSchemeName;
     }
 
     public Boolean isChanged() {
@@ -85,7 +85,7 @@ public class HeartBeatResponse {
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder("HeartBeatResponse{");
-        sb.append("strategyGroupName='").append(strategyGroupName).append('\'');
+        sb.append("sdsSchemeName='").append(sdsSchemeName).append('\'');
         sb.append(", changed=").append(changed);
         sb.append(", version=").append(version);
         sb.append(", strategies=").append(strategies);

@@ -60,7 +60,7 @@ public class SdsEasyUtilTest {
 
     @Test
     public void invokerMethodWithoutReturnTest() {
-        int i = 10000000;
+        int i = 100;
         while (i-- > 0) {
             SdsEasyUtil.invokerMethodWithoutReturn("testPoint", () -> {
                 System.out.println("哈哈");

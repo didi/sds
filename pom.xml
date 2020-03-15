@@ -11,7 +11,7 @@
 
     <modules>
         <module>sds-client</module>
-        <module>sds-web</module>
+        <module>sds-admin</module>
         <module>sds-bootstrap</module>
         <module>sds-extension</module>
         <module>sds-easy</module>
