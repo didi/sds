@@ -31,6 +31,9 @@ docker run -dt \
     didisds/sds-admin
 ```
 
+> 或者可以直接访问演示环境[sds.chpengzh.com](https://sds.chpengzh.com)
+
+
 ## 3. SDS架构设计
 SDS采用C/S架构，只要Java应用依赖并使用了sds-client包，那么它就是一个SDS的客户端，sds-client中包含了限流、熔断和数据统计等功能。sds-admin作为Server端主要是为了配置降级策略、提供丰富的仪表盘并且保存客户端上传的统计数据、并应答最新的降级策略，如下图：
 <div align="center">    
