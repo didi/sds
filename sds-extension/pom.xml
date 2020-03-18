@@ -17,6 +17,7 @@
         <module>sds-dubbo</module>
         <module>sds-okhttp</module>
         <module>sds-spring-boot</module>
+        <module>sds-aspectj</module>
     </modules>
 
 </project>

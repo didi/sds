@@ -25,7 +25,7 @@ public class PointReturnValueDaoTest {
         PointReturnValueDO pointReturnValueDO = new PointReturnValueDO();
 
         pointReturnValueDO.setAppGroupName("htw");
-        pointReturnValueDO.setAppName("易振强测试");
+        pointReturnValueDO.setAppName("测试");
         pointReturnValueDO.setPoint("testPoint");
         pointReturnValueDO.setStatus(1);
         pointReturnValueDO.setReturnValueStr("abc-json");
@@ -41,7 +41,7 @@ public class PointReturnValueDaoTest {
     @Test
     public void updatePointReturnValueTest() {
 
-        pointReturnValueDao.updatePointReturnValue("htw", "易振强测试", "testPoint",
+        pointReturnValueDao.updatePointReturnValue("htw", "测试", "testPoint",
                 "new-abc-json", 0, "yizhenqiang", "yizhenqiang@didichuxing.com");
     }
 
@@ -49,7 +49,7 @@ public class PointReturnValueDaoTest {
     @Test
     public void deletePointReturnValueTest() {
 
-        pointReturnValueDao.deletePointReturnValue("htw", "易振强测试", "testPoint");
+        pointReturnValueDao.deletePointReturnValue("htw", "测试", "testPoint");
     }
 
     @Test

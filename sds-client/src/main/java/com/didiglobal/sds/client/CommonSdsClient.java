@@ -276,12 +276,15 @@ public class CommonSdsClient extends AbstractSdsClient {
      */
     private void initStrategyChain() {
         // 默认使用用户自定义的
+        String customStrategyExecutorBuilderName = "";
         try {
             ServiceLoader<StrategyExecutorBuilder> strategyExecutorBuilders = ServiceLoader.load(StrategyExecutorBuilder.class);
             Iterator<StrategyExecutorBuilder> strategyExecutorBuilderIterator = strategyExecutorBuilders.iterator();
             // 注意这里用的是 if, 即只会找到第一个
             if (strategyExecutorBuilderIterator.hasNext()) {
-                strategyExecutorChain = strategyExecutorBuilderIterator.next().build();
+                StrategyExecutorBuilder next = strategyExecutorBuilderIterator.next();
+                customStrategyExecutorBuilderName = next.getClass().getName();
+                strategyExecutorChain = next.build();
             }
         } catch (Exception e) {
             // 如果构建策略链出错了, 打印 warn 日志提醒, 在下面重新构建策略链
@@ -291,6 +294,8 @@ public class CommonSdsClient extends AbstractSdsClient {
         if (strategyExecutorChain == null) {
             logger.info("CommonSdsClient use default strategy executor chain");
             strategyExecutorChain = new DefaultStrategyExecutorBuilder().build();
+        } else {
+            logger.info("CommonSdsClient use custom strategy executor chain: {}", customStrategyExecutorBuilderName);
         }
     }
 

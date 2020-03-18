@@ -8,9 +8,8 @@ import java.lang.annotation.*;
 
 /**
  * 服务降级方法注解
- * 
- * 
- * @author 易振强 manzhizhen
+ *
+ * @author  manzhizhen
  * @version $Id: SdsDowngradeMethod.java, v 0.1 2016年1月9日 上午10:43:45 Administrator Exp $
  */
 @Target({ ElementType.METHOD })

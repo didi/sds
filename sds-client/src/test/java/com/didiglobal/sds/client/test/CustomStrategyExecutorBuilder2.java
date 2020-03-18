@@ -1,9 +1,7 @@
 package com.didiglobal.sds.client.test;
 
 import com.didiglobal.sds.client.strategy.StrategyExecutorBuilder;
-import com.didiglobal.sds.client.strategy.executor.AbstractStrategyExecutor;
-import com.didiglobal.sds.client.strategy.executor.TimeoutStrategyExecutor;
-import com.didiglobal.sds.client.strategy.executor.VisitStrategyExecutor;
+import com.didiglobal.sds.client.strategy.executor.*;
 
 /**
  * <p>description : CustomStrategyExecutorBuilder2
@@ -17,7 +15,12 @@ public class CustomStrategyExecutorBuilder2 implements StrategyExecutorBuilder {
     @Override
     public AbstractStrategyExecutor build() {
         return new VisitStrategyExecutor(
-                new TimeoutStrategyExecutor(null));
+                new TokenBucketStrategyExecutor(
+                        new ConcurrentStrategyExecutor(
+                                new TimeoutStrategyExecutor(
+                                        new ExceptionStrategyExecutor(
+                                                new ExceptionRateStrategyExecutor(null)
+                                        )))));
     }
 
 }
