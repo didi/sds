@@ -8,6 +8,7 @@ import com.didiglobal.sds.client.exception.SdsException;
 import com.didiglobal.sds.client.log.SdsLoggerFactory;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
+import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Pointcut;
 import org.aspectj.lang.reflect.MethodSignature;
 import org.slf4j.Logger;
@@ -19,6 +20,7 @@ import java.util.concurrent.ConcurrentHashMap;
  * @Author: yizhenqiang
  * @Date: Create in 2020-03-14 20:33
  */
+@Aspect
 public class SdsPointAspect {
 
     private static Logger logger = SdsLoggerFactory.getDefaultLogger();
@@ -94,7 +96,7 @@ public class SdsPointAspect {
         }
         Class<? extends SdsExceptionCallBack> callbackClass = sdsDowngradeMethodAnnotation.callback();
         String callbackClassName = callbackClass.getName();
-        if (!exceptionCallBackClass.contains(callbackClassName)) {
+        if (!exceptionCallBackClass.containsKey(callbackClassName)) {
             // 这里缓存一下, 以免每次都构建新的对象
             exceptionCallBackClass.put(callbackClassName, callbackClass.newInstance());
         }
