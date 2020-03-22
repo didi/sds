@@ -11,7 +11,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
 /**
- * Created by yizhenqiang on 18/2/12.
+ * Created by manzhizhen on 18/2/12.
  */
 @RunWith(SpringRunner.class)
 @SpringBootTest
@@ -28,9 +28,9 @@ public class SdsSchemeDaoTest {
 
         sdsSchemeDO.setSdsSchemeName("FIRST_GROUP");
         sdsSchemeDO.setCreatorName("路飞");
-        sdsSchemeDO.setCreatorEmail("yizhenqiang@didichuxing.com");
+        sdsSchemeDO.setCreatorEmail("manzhizhen@didichuxing.com");
         sdsSchemeDO.setOperatorName("路飞");
-        sdsSchemeDO.setOperatorEmail("yizhenqiang@didichuxing.com");
+        sdsSchemeDO.setOperatorEmail("manzhizhen@didichuxing.com");
         Assert.assertEquals(1, sdsSchemeDao.addSdsScheme(sdsSchemeDO));
 
         sdsSchemeDO.setSdsSchemeName("SECOND_GROUP");
@@ -50,7 +50,7 @@ public class SdsSchemeDaoTest {
     @Test
     public void updateSdsSchemeTest() {
         System.out.println(sdsSchemeDao.updateSdsScheme("两轮车事业部", "bh-order", "FIRST_GROUP", "FIRST_GROUP1", "路飞",
-                "yizhenqiang@didichuxing.com"));
+                "manzhizhen@didichuxing.com"));
     }
 
     @Test

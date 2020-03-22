@@ -5,7 +5,7 @@ import java.util.Date;
 /**
  * 降级点降级策略实体
  * <p>
- * Created by yizhenqiang on 17/7/26.
+ * Created by manzhizhen on 17/7/26.
  */
 public class PointStrategyDO {
 

@@ -3,7 +3,7 @@ package com.didiglobal.sds.admin.controller.request;
 /**
  * 降级点返回值请求
  *
- * @author yizhenqiang
+ * @author manzhizhen
  */
 public class PointReturnValueRequest extends AbstractRequest {
 

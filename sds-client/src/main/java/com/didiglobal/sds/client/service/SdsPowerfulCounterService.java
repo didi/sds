@@ -12,7 +12,7 @@ import java.util.concurrent.ConcurrentHashMap;
 /**
  * {@link PowerfulCycleTimeCounter}计数器服务类
  * <p>
- * Created by yizhenqiang on 2016/6/11.
+ * Created by manzhizhen on 2016/6/11.
  */
 public class SdsPowerfulCounterService {
 

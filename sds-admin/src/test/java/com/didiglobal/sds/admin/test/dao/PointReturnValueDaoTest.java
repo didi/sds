@@ -9,7 +9,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
 /**
- * Created by yizhenqiang on 18/2/14.
+ * Created by manzhizhen on 18/2/14.
  */
 @RunWith(SpringRunner.class)
 @SpringBootTest
@@ -29,10 +29,10 @@ public class PointReturnValueDaoTest {
         pointReturnValueDO.setPoint("testPoint");
         pointReturnValueDO.setStatus(1);
         pointReturnValueDO.setReturnValueStr("abc-json");
-        pointReturnValueDO.setOperatorName("yizhenqiang");
-        pointReturnValueDO.setOperatorEmail("yizhenqiang@didichuxing.com");
-        pointReturnValueDO.setCreatorName("yizhenqiang");
-        pointReturnValueDO.setCreatorEmail("yizhenqiang@didichuxing.com");
+        pointReturnValueDO.setOperatorName("manzhizhen");
+        pointReturnValueDO.setOperatorEmail("manzhizhen@didichuxing.com");
+        pointReturnValueDO.setCreatorName("manzhizhen");
+        pointReturnValueDO.setCreatorEmail("manzhizhen@didichuxing.com");
 
         pointReturnValueDao.addPointReturnValue(pointReturnValueDO);
     }
@@ -42,7 +42,7 @@ public class PointReturnValueDaoTest {
     public void updatePointReturnValueTest() {
 
         pointReturnValueDao.updatePointReturnValue("htw", "测试", "testPoint",
-                "new-abc-json", 0, "yizhenqiang", "yizhenqiang@didichuxing.com");
+                "new-abc-json", 0, "manzhizhen", "manzhizhen@didichuxing.com");
     }
 
 

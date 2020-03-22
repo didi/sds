@@ -10,7 +10,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
 /**
- * Created by yizhenqiang on 18/2/14.
+ * Created by manzhizhen on 18/2/14.
  */
 @RunWith(SpringRunner.class)
 @SpringBootTest
@@ -38,9 +38,9 @@ public class PointStrategyDaoTest {
         strategyDO.setDowngradeRate(100);
         strategyDO.setStatus(1);
         strategyDO.setCreatorName("路飞");
-        strategyDO.setCreatorEmail("yizhenqiang@didichuxing.com");
+        strategyDO.setCreatorEmail("manzhizhen@didichuxing.com");
         strategyDO.setOperatorName("路飞");
-        strategyDO.setOperatorEmail("yizhenqiang@didichuxing.com");
+        strategyDO.setOperatorEmail("manzhizhen@didichuxing.com");
 
         System.out.println(pointStrategyDao.addPointStrategy(strategyDO));
 
@@ -52,9 +52,9 @@ public class PointStrategyDaoTest {
         strategyDO.setDowngradeRate(100);
         strategyDO.setStatus(1);
 
-        strategyDO.setCreatorEmail("yizhenqiang@didiglobal.com");
+        strategyDO.setCreatorEmail("manzhizhen@didiglobal.com");
         strategyDO.setCreatorName("路飞");
-        strategyDO.setOperatorEmail("yizhenqiang@didiglobal.com");
+        strategyDO.setOperatorEmail("manzhizhen@didiglobal.com");
         strategyDO.setOperatorName("路飞");
 
         System.out.println(pointStrategyDao.addPointStrategy(strategyDO));
@@ -73,9 +73,9 @@ public class PointStrategyDaoTest {
         pointStrategyDO.setStatus(1);
         pointStrategyDO.setDowngradeRate(100);
         pointStrategyDO.setCreatorName("路飞");
-        pointStrategyDO.setCreatorEmail("yizhenqiang@didichuxing.com");
+        pointStrategyDO.setCreatorEmail("manzhizhen@didichuxing.com");
         pointStrategyDO.setOperatorName("路飞");
-        pointStrategyDO.setOperatorEmail("yizhenqiang@didichuxing.com");
+        pointStrategyDO.setOperatorEmail("manzhizhen@didichuxing.com");
 
         System.out.println(pointStrategyDao.updatePointStrategy(pointStrategyDO));
     }

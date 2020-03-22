@@ -29,7 +29,7 @@ import static com.didiglobal.sds.admin.constants.SdsCode.*;
 /**
  * 应用组控制器
  * <p>
- * Created by yizhenqiang on 18/1/7.
+ * Created by manzhizhen on 18/1/7.
  */
 @RestController
 @RequestMapping(value = "/sds/appgroup/", method = RequestMethod.POST)

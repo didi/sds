@@ -10,7 +10,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
 /**
- * Created by yizhenqiang on 18/2/12.
+ * Created by manzhizhen on 18/2/12.
  */
 @RunWith(SpringRunner.class)
 @SpringBootTest
@@ -25,9 +25,9 @@ public class AppInfoDaoTest {
         appInfoDO.setAppGroupName("黑马1");
         appInfoDO.setAppName("bh-order");
         appInfoDO.setCreatorEmail("manzhizhen@163.com");
-        appInfoDO.setCreatorName("yizhenqiang");
+        appInfoDO.setCreatorName("manzhizhen");
         appInfoDO.setOperatorEmail("manzhizhen@163.com");
-        appInfoDO.setOperatorName("yizhenqiang");
+        appInfoDO.setOperatorName("manzhizhen");
         Assert.assertEquals(1, appInfoDao.addAppInfo(appInfoDO));
 
         appInfoDO.setAppGroupName("黑马1");

@@ -5,7 +5,7 @@ import java.util.Date;
 /**
  * 降级后的返回值
  *
- * @auther yizhenqiang
+ * @auther manzhizhen
  * @date 2019/4/21
  */
 public class PointReturnValueDO {

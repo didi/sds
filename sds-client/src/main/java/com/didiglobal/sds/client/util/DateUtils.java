@@ -9,7 +9,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 /**
- * @author yizhenqiang
+ * @author manzhizhen
  * @version $Id: DateUtils.java, v 0.1 2016年2月21日 上午10:56:04 Administrator Exp $
  */
 public class DateUtils {

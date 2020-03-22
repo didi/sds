@@ -25,7 +25,7 @@ import static com.didiglobal.sds.admin.constants.SdsCode.SUCCESS;
 /**
  * 降级点返回值控制器
  * <p>
- * Created by yizhenqiang on 18/1/7.
+ * Created by manzhizhen on 18/1/7.
  */
 @RestController
 @RequestMapping(value = "/sds/pointreturnvalue/", method = RequestMethod.POST)

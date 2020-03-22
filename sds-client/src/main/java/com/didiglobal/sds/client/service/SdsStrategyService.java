@@ -16,7 +16,7 @@ import java.util.concurrent.ConcurrentHashMap;
 /**
  * 降级策略服务管理
  *
- * @author yizhenqiang
+ * @author manzhizhen
  * @version $Id: SdsStrategyService.java, v 0.1 2016年1月12日 上午12:03:55 Administrator Exp $
  */
 final public class SdsStrategyService {

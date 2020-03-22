@@ -5,7 +5,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 /**
  * 降级点策略信息请求
  *
- * @author yizhenqiang
+ * @author manzhizhen
  */
 public class PointStrategyRequest extends AbstractRequest {
 

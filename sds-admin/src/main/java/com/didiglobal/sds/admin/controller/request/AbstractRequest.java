@@ -3,7 +3,7 @@ package com.didiglobal.sds.admin.controller.request;
 import com.didiglobal.sds.admin.controller.bean.PageInfo;
 
 /**
- * @Author: yizhenqiang
+ * @Author: manzhizhen
  * @Date: Create in 2020-03-22 20:48
  */
 public abstract class AbstractRequest extends PageInfo {

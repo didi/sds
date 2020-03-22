@@ -34,7 +34,7 @@ import java.util.Map;
 import java.util.Objects;
 
 /**
- * Created by yizhenqiang on 18/2/12.
+ * Created by manzhizhen on 18/2/12.
  */
 @Service("heartbeatService")
 public class HeartbeatServiceImpl implements HeartbeatService {

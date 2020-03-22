@@ -30,7 +30,7 @@ import java.util.Objects;
 /**
  * 降级点策略控制器
  * <p>
- * Created by yizhenqiang on 18/1/7.
+ * Created by manzhizhen on 18/1/7.
  */
 @RestController
 @RequestMapping(value = "/sds/pointstrategy/", method = RequestMethod.POST)

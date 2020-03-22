@@ -1,7 +1,7 @@
 package com.didiglobal.sds.admin.controller.request;
 
 /**
- * Created by yizhenqiang on 18/9/29.
+ * Created by manzhizhen on 18/9/29.
  */
 public class SdsSchemeRequest extends AbstractRequest {
 
