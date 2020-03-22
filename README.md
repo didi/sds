@@ -237,7 +237,7 @@ java -javaagent:/home/sds/lib/sds-bootstrap.jar MyApplication
 第三步：这样就可以直接在类方法中使用@SdsDowngradeMethod了。
 > 注意：该方式对类中的任何方法，不管是private还是public都有效。
 
-### 7.2 通过Aspectj的方式使用注解
+### 7.2 通过Spring AOP(Aspectj)的方式使用注解
 第一步：项目需要依赖sds-aspectj.jar，例如：
 ```xml
     <dependency>
@@ -259,7 +259,7 @@ public class SdsConfiguration {
 第三步：这样就可以直接在类方法中使用@SdsDowngradeMethod了。
 > 注意：该方式无法对类的private方法生效。
 
-> 提醒：Java Agent方式和Aspectj方式请不要同时使用！
+> 提醒：Java Agent方式和Spring AOP方式请不要同时使用！
 
 ## 8. 降级露出
 我只能从sds-admin的仪表盘来感知到被降级了吗？其实客户端也可以感知降级，通过如下方式注册一个监听器：
