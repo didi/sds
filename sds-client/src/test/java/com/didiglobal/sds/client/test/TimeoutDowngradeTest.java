@@ -63,7 +63,7 @@ public class TimeoutDowngradeTest extends AbstractDowngradeTest {
 
         strategyMap.put(getPoint(), strategy);
 
-        SdsStrategyService.getInstance().reset(strategyMap);
+        SdsStrategyService.getInstance().resetAll(strategyMap);
     }
 
     @Override

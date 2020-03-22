@@ -50,7 +50,7 @@ public class AppInfoDaoTest {
 
     @Test
     public void queryAppInfoTest() {
-        System.out.println(appInfoDao.queryAppInfo("两轮车", "bh-order"));
+        System.out.println(appInfoDao.queryAppInfo("两轮车事业部", "bh-order"));
     }
 
     @Test

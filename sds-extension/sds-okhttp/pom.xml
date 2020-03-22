@@ -9,6 +9,8 @@
         <version>1.0.1-SNAPSHOT</version>
     </parent>
 
+    <url>https://github.com/didi/sds</url>
+
     <artifactId>sds-okhttp</artifactId>
     <dependencies>
         <dependency>
