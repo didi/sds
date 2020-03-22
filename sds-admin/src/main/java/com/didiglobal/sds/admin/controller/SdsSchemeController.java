@@ -77,7 +77,7 @@ public class SdsSchemeController {
         return new SdsResponse<>(sdsSchemeNameList);
     }
 
-    // curl -X POST -H 'Content-type':'application/json'  -d '{"appGroupName":"两轮车"}'
+    // curl -X POST -H 'Content-type':'application/json'  -d '{"appGroupName":"两轮车事业部"}'
     // http://localhost:8887/sds/sdsscheme/listpage
     @RequestMapping(value = "listpage")
     public SdsResponse<List<SdsSchemeDO>> querySdsSchemeByPage(@RequestBody SdsSchemeRequest
@@ -109,7 +109,7 @@ public class SdsSchemeController {
         return new SdsResponse(sdsSchemeList);
     }
 
-    // curl -X POST -H 'Content-type':'application/json'  -d '{"appGroupName":"两轮车", "appName":"mzz-study",
+    // curl -X POST -H 'Content-type':'application/json'  -d '{"appGroupName":"两轮车事业部", "appName":"order",
     // "sdsSchemeName":"FIRST_GROUP", "operatorId":2}'  http://localhost:8887/sds/sdsscheme/add
     @RequestMapping(value = "add")
     public SdsResponse addSdsScheme(@RequestBody SdsSchemeRequest sdsSchemeRequest) {
@@ -130,13 +130,13 @@ public class SdsSchemeController {
             return new SdsResponse(PARAM_ERROR.getCode(), "降级预案名称不能为空");
         }
 
-        if (StringUtils.isBlank(sdsSchemeRequest.getCreatorName())) {
-            return new SdsResponse(PARAM_ERROR.getCode(), "创建者姓名不能为空");
-        }
-
-        if (StringUtils.isBlank(sdsSchemeRequest.getCreatorEmail())) {
-            return new SdsResponse(PARAM_ERROR.getCode(), "创建者邮箱不能为空");
-        }
+//        if (StringUtils.isBlank(sdsSchemeRequest.getCreatorName())) {
+//            return new SdsResponse(PARAM_ERROR.getCode(), "创建者姓名不能为空");
+//        }
+//
+//        if (StringUtils.isBlank(sdsSchemeRequest.getCreatorEmail())) {
+//            return new SdsResponse(PARAM_ERROR.getCode(), "创建者邮箱不能为空");
+//        }
 
         if (!StringCheck.checkChineseStringName(sdsSchemeRequest.getSdsSchemeName())) {
             return new SdsResponse(PARAM_ERROR.getCode(), "降级预案名称只能是汉字、数字、字母和-");
@@ -203,13 +203,13 @@ public class SdsSchemeController {
             return new SdsResponse(SUCCESS.getCode(), "降级预案名称没有变化，不需要更新");
         }
 
-        if (StringUtils.isBlank(sdsSchemeRequest.getOperatorName())) {
-            return new SdsResponse(PARAM_ERROR.getCode(), "操作者姓名不能为空");
-        }
-
-        if (StringUtils.isBlank(sdsSchemeRequest.getOperatorEmail())) {
-            return new SdsResponse(PARAM_ERROR.getCode(), "操作者邮箱不能为空");
-        }
+//        if (StringUtils.isBlank(sdsSchemeRequest.getOperatorName())) {
+//            return new SdsResponse(PARAM_ERROR.getCode(), "操作者姓名不能为空");
+//        }
+//
+//        if (StringUtils.isBlank(sdsSchemeRequest.getOperatorEmail())) {
+//            return new SdsResponse(PARAM_ERROR.getCode(), "操作者邮箱不能为空");
+//        }
 
         if (sdsSchemeRequest.getNewSdsSchemeName().length() > 30) {
             return new SdsResponse(PARAM_ERROR.getCode(), "新降级预案名称不能超过30个字符");
@@ -276,13 +276,13 @@ public class SdsSchemeController {
             new SdsResponse(SUCCESS.getCode(), "降级预案名称没有变化，不需要克隆");
         }
 
-        if (StringUtils.isBlank(sdsSchemeRequest.getCreatorName())) {
-            return new SdsResponse(PARAM_ERROR.getCode(), "创建者名称不能为空");
-        }
-
-        if (StringUtils.isBlank(sdsSchemeRequest.getCreatorEmail())) {
-            return new SdsResponse(PARAM_ERROR.getCode(), "创建者邮箱不能为空");
-        }
+//        if (StringUtils.isBlank(sdsSchemeRequest.getCreatorName())) {
+//            return new SdsResponse(PARAM_ERROR.getCode(), "创建者名称不能为空");
+//        }
+//
+//        if (StringUtils.isBlank(sdsSchemeRequest.getCreatorEmail())) {
+//            return new SdsResponse(PARAM_ERROR.getCode(), "创建者邮箱不能为空");
+//        }
 
         SdsSchemeDO sourceSdsSchemeDO =
                 sdsSchemeDao.queryByGroupName(sdsSchemeRequest.getAppGroupName(),
@@ -355,13 +355,13 @@ public class SdsSchemeController {
             return new SdsResponse(PARAM_ERROR.getCode(), "降级预案名称不能为空");
         }
 
-        if (StringUtils.isBlank(sdsSchemeRequest.getOperatorName())) {
-            return new SdsResponse(PARAM_ERROR.getCode(), "操作者姓名不能为空");
-        }
-
-        if (StringUtils.isBlank(sdsSchemeRequest.getOperatorEmail())) {
-            return new SdsResponse(PARAM_ERROR.getCode(), "操作者邮箱不能为空");
-        }
+//        if (StringUtils.isBlank(sdsSchemeRequest.getOperatorName())) {
+//            return new SdsResponse(PARAM_ERROR.getCode(), "操作者姓名不能为空");
+//        }
+//
+//        if (StringUtils.isBlank(sdsSchemeRequest.getOperatorEmail())) {
+//            return new SdsResponse(PARAM_ERROR.getCode(), "操作者邮箱不能为空");
+//        }
 
         AppInfoDO appInfoDO = appInfoDao.queryAppInfo(sdsSchemeRequest.getAppGroupName(),
                 sdsSchemeRequest.getAppName());

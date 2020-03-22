@@ -18,7 +18,7 @@ public abstract class AbstractDowngradeTest {
     protected static final int DOWNGRADE_RATE = 100;
 
     protected static final String SERVER_URL = "http://127.0.0.1:8887";
-    protected static SdsClient sdsClient = SdsClientFactory.getOrCreateSdsClient("两轮车", "mzz-study", SERVER_URL);
+    protected static SdsClient sdsClient = SdsClientFactory.getOrCreateSdsClient("两轮车事业部", "order", SERVER_URL);
 
     // 业务方法是否需要抛出异常
     protected static boolean hasException = false;

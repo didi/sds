@@ -26,7 +26,7 @@ public class SdsSchemeControllerTest {
     public void querySdsSchemeByPageTest() {
 
         SdsSchemeRequest request = new SdsSchemeRequest();
-        request.setAppGroupName("两轮车");
+        request.setAppGroupName("两轮车事业部");
         request.setAppName("order");
         request.setSdsSchemeName("默认降级策略");
         request.setOperatorName("路飞");

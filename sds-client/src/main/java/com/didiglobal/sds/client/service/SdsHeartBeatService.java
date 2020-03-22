@@ -294,7 +294,7 @@ final public class SdsHeartBeatService {
         /**
          * 重设降级点策略
          */
-        SdsStrategyService.getInstance().reset(strategyMap);
+        SdsStrategyService.getInstance().resetAll(strategyMap);
 
         /**
          * 重设降级点返回值

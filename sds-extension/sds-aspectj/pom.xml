@@ -11,6 +11,8 @@
     <packaging>jar</packaging>
     <name>sds-aspectj</name>
 
+    <url>https://github.com/didi/sds</url>
+
     <dependencies>
         <dependency>
             <groupId>com.didiglobal.sds</groupId>

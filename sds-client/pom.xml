@@ -11,6 +11,8 @@
     <artifactId>sds-client</artifactId>
     <name>sds-client</name>
 
+    <url>https://github.com/didi/sds</url>
+
     <dependencies>
         <dependency>
             <groupId>com.alibaba</groupId>
