@@ -1,7 +1,7 @@
 package com.didiglobal.sds.admin.constants;
 
 /**
- * Created by yizhenqiang on 18/2/10.
+ * Created by manzhizhen on 18/2/10.
  */
 public interface BizConstants {
 

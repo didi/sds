@@ -11,7 +11,7 @@ import java.util.concurrent.locks.ReentrantLock;
 /**
  * 用于并发量统计的数据
  * <p>
- * Created by yizhenqiang on 2016/6/25.
+ * Created by manzhizhen on 2016/6/25.
  */
 public class ConcurrentData {
 

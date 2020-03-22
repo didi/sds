@@ -6,7 +6,7 @@ import org.slf4j.LoggerFactory;
 /**
  * 客户端日志
  *
- * @author yizhenqiang
+ * @author manzhizhen
  * @version $Id: ServerBizLogger.java, v 0.1 2015年9月22日 上午10:07:27 Administrator Exp $
  */
 public class SdsLoggerFactory {

@@ -7,6 +7,7 @@ import com.didiglobal.sds.client.exception.SdsException;
 import com.didiglobal.sds.client.log.SdsLoggerFactory;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
+import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Pointcut;
 import org.aspectj.lang.reflect.MethodSignature;
 import org.slf4j.Logger;
@@ -14,9 +15,10 @@ import org.slf4j.Logger;
 import java.lang.reflect.Method;
 
 /**
- * @Author: yizhenqiang
+ * @Author: manzhizhen
  * @Date: Create in 2020-03-14 20:33
  */
+@Aspect
 public class SdsPointAspect {
 
     private static Logger logger = SdsLoggerFactory.getDefaultLogger();

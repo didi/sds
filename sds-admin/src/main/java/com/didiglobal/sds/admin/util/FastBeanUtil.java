@@ -7,7 +7,7 @@ import java.util.concurrent.ConcurrentHashMap;
 /**
  * 通过CGLib方式来做对象拷贝
  *
- * Created by yizhenqiang on 17/8/29.
+ * Created by manzhizhen on 17/8/29.
  */
 public class FastBeanUtil {
 

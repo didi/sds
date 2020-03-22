@@ -16,7 +16,7 @@ import java.util.Map.Entry;
 /**
  * Http工具类
  *
- * @author yizhenqiang
+ * @author manzhizhen
  * @version $Id: HttpUtils.java, v 0.1 2016年2月21日 上午11:03:05 Administrator Exp $
  */
 public class HttpUtils {

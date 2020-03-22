@@ -22,7 +22,7 @@ import java.util.concurrent.atomic.AtomicLong;
 /**
  * 降级延迟服务类
  *
- * @author yizhenqiang
+ * @author manzhizhen
  * @version $Id: SdsDowngradeDelayService.java, v 0.1 2016年1月23日 下午1:31:12
  * Administrator Exp $
  */

@@ -8,7 +8,7 @@ import com.didiglobal.sds.client.contant.BizConstant;
  * 速率：每秒生成多少个令牌
  * 桶容量：桶里面最多能存储多少个令牌
  *
- * @auther yizhenqiang
+ * @auther manzhizhen
  * @date 2018/12/31
  */
 public class TokenBucketData {

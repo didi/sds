@@ -5,7 +5,7 @@ import java.util.Date;
 /**
  * 降级预案实体
  * <p>
- * Created by yizhenqiang on 18/9/1.
+ * Created by manzhizhen on 18/9/1.
  */
 public class SdsSchemeDO {
 

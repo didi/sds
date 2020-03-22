@@ -4,7 +4,7 @@ import java.util.Date;
 
 /**
  * @Description: 仪表盘降级点查询请求
- * @Author: yizhenqiang
+ * @Author: manzhizhen
  * @Date: Create in 2019-09-13 12:22
  */
 public class DashboardRequest {

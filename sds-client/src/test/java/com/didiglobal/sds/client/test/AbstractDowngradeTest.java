@@ -11,7 +11,7 @@ import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
 
 /**
- * Created by yizhenqiang on 17/4/19.
+ * Created by manzhizhen on 17/4/19.
  */
 public abstract class AbstractDowngradeTest {
 

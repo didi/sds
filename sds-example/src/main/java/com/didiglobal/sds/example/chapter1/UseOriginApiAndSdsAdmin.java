@@ -8,19 +8,19 @@ import java.util.concurrent.ThreadLocalRandom;
 /**
  * 样例章节1：通过原生API来使用SDS，结合sds-admin来配置降级策略
  *
- * @Author: yizhenqiang
+ * @Author: manzhizhen
  * @Date: Create in 2020-03-22 12:26
  */
 public class UseOriginApiAndSdsAdmin {
 
     // 这里配置我们官方的远程演示sds-admin地址
-    protected static final String SERVER_URL = "https://sds.chpengzh.com/";
+    private static final String SERVER_URL = "https://sds.chpengzh.com/";
 
     // 保证SdsClient对象的单例使用(线程安全)
     private static SdsClient sdsClient = SdsClientFactory.getOrCreateSdsClient("两轮车事业部", "order", SERVER_URL);
 
     // 创建订单的降级点名称
-    private static String CREATE_ORDER_POINT = "createOrderPoint";
+    private static final String CREATE_ORDER_POINT = "createOrderPoint";
 
     public static void main(String[] args) {
 

@@ -20,7 +20,7 @@ import java.util.jar.JarFile;
  * 资源工具类
  * 比如扫描Sds自定义注解
  * 
- * @author  yizhenqiang
+ * @author  manzhizhen
  * @version $Id: ResourceTool.java, v 0.1 2015年9月9日 下午1:02:19 Administrator Exp $
  */
 public class ResourceTool {

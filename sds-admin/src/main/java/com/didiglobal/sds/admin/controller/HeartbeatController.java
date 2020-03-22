@@ -26,7 +26,7 @@ import static com.didiglobal.sds.admin.constants.SdsCode.PARAM_ERROR;
 /**
  * 心跳页面控制器
  *
- * @author yizhenqiang
+ * @author manzhizhen
  */
 @RestController
 @RequestMapping(value = "/sds/heartbeat/", method = RequestMethod.POST)

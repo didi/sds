@@ -5,7 +5,7 @@ import java.util.Date;
 /**
  * 心跳查询请求
  *
- * @author yizhenqiang
+ * @author manzhizhen
  */
 public class HeartbeatQueryRequest {
 

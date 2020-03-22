@@ -9,7 +9,7 @@ import java.util.Collections;
 /**
  *
  *
- * @author yizhenqiang
+ * @author manzhizhen
  * @version $Id: ListUtils.java, v 0.1 2016年2月21日 上午10:46:15 Administrator Exp $
  */
 public class ListUtils {

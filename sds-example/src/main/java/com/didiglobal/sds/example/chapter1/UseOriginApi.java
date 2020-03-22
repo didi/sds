@@ -11,19 +11,19 @@ import java.util.concurrent.ThreadLocalRandom;
 /**
  * 样例章节1：通过原生API来使用SDS，不合sds-admin交互
  *
- * @Author: yizhenqiang
+ * @Author: manzhizhen
  * @Date: Create in 2020-03-22 11:02
  */
 public class UseOriginApi {
 
     // 随便写个地址，因为我们此次的演示不会用到sds-admin
-    protected static final String SERVER_URL = "http://127.0.0.1:8887";
+    private static final String SERVER_URL = "http://127.0.0.1:8887";
 
     // 保证SdsClient对象的单例使用(线程安全)
     private static SdsClient sdsClient = SdsClientFactory.getOrCreateSdsClient("两轮车事业部", "order", SERVER_URL);
 
     // 创建订单的降级点名称
-    private static String CREATE_ORDER_POINT = "createOrderPoint";
+    private static final String CREATE_ORDER_POINT = "createOrderPoint";
 
     static {
         // 不从sds-admin获取策略配置，完全使用本地手动设置

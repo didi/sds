@@ -29,9 +29,9 @@ public class AppInfoControllerTest {
         request.setAppName("order");
         request.setSdsSchemeName("默认降级预案");
         request.setOperatorName("路飞");
-        request.setOperatorEmail("yizhenqiang@didiglobal.com");
+        request.setOperatorEmail("manzhizhen@didiglobal.com");
         request.setCreatorName("路飞");
-        request.setCreatorEmail("yizhenqiang@didiglobal.com");
+        request.setCreatorEmail("manzhizhen@didiglobal.com");
         request.setPage(1);
         request.setPageSize(10);
 

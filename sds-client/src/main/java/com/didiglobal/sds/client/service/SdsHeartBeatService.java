@@ -23,7 +23,7 @@ import static com.didiglobal.sds.client.contant.BizConstant.CYCLE_BUCKET_NUM;
 /**
  * 心跳线程服务类 用于客户端上传数据和从服务端拉取最新的降级配置
  *
- * @author yizhenqiang
+ * @author manzhizhen
  * @version $Id: SdsHeartBeatService.java, v 0.1 2016年2月25日 下午11:00:43
  */
 final public class SdsHeartBeatService {

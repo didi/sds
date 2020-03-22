@@ -3,7 +3,7 @@ package com.didiglobal.sds.admin.controller.request;
 /**
  * app信息请求
  *
- * @author yizhenqiang
+ * @author manzhizhen
  */
 public class AppInfoRequest extends AbstractRequest {
 

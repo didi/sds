@@ -25,7 +25,7 @@ import static com.didiglobal.sds.admin.constants.SdsCode.PARAM_ERROR;
 
 /**
  * @Description: 包含访问量、并发量、错误量、超时量和降级量的仪表盘控制器
- * @Author: yizhenqiang
+ * @Author: manzhizhen
  * @Date: Create in 2019-09-11 10:07
  */
 @RestController
