@@ -96,13 +96,13 @@ sds-easy内部依赖了sds-client，sds-easy的出现是为了让我们使用sds
 // SDS控制台地址
 private static final String SERVER_URL = "http://127.0.0.1:8887";
 // 通过工厂方法来创建SdsClient实例
-private static final SdsClient sdsClient = SdsClientFactory.getOrCreateSdsClient("两轮车事业部", "order", SERVER_URL);
+private static final SdsClient sdsClient = SdsClientFactory.getOrCreateSdsClient("BikeBusinessDepartment", "order", SERVER_URL);
 ```
 
 我们可以在Spring配置文件如下初始化：
 ```xml
 <bean id="sdsClient" class="com.didiglobal.sds.client.SdsClientFactory" factory-method="getOrCreateSdsClient">
-    <constructor-arg type="java.lang.String" value="两轮车事业部" />
+    <constructor-arg type="java.lang.String" value="BikeBusinessDepartment" />
     <constructor-arg type="java.lang.String" value="order" />
     <constructor-arg type="java.lang.String" value="http://127.0.0.1:8887" />
 </bean>
@@ -171,7 +171,7 @@ protected static final String SERVER_URL = "http://127.0.0.1:8887";
  
 static {
     // 可以找个安静的地方初始化SdsClient
-    SdsClientFactory.getOrCreateSdsClient("两轮车事业部", "order", SERVER_URL);
+    SdsClientFactory.getOrCreateSdsClient("BikeBusinessDepartment", "order", SERVER_URL);
 }
  
 // 这里假装是业务Service

@@ -58,7 +58,7 @@ public class PointReturnValueController {
         return new SdsResponse<>(data);
     }
 
-    // curl -X POST -H 'Content-type':'application/json'  -d '{"appGroupName":"两轮车事业部", "appName":"order",
+    // curl -X POST -H 'Content-type':'application/json'  -d '{"appGroupName":"BikeBusinessDepartment", "appName":"order",
     // "sdsSchemeName":"FIRST_GROUP", "point":"love", "status":1, "operatorId":999 }'
     // http://localhost:8887/sds/pointstrategy/add
     @RequestMapping(value = "add")

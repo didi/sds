@@ -27,7 +27,7 @@ public class AppGroupControllerTest {
         MockMvc mockMvc = MockMvcBuilders.standaloneSetup(appGroupController).build();
         try {
             AppGroupRequest request = new AppGroupRequest();
-            request.setAppGroupName("两轮车事业部");
+            request.setAppGroupName("BikeBusinessDepartment");
             request.setOperatorName("路飞");
             request.setOperatorEmail("manzhizhen@didiglobal.com");
             request.setCreatorName("路飞");

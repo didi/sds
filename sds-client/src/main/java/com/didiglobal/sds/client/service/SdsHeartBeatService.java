@@ -53,7 +53,7 @@ final public class SdsHeartBeatService {
     /**
      * 修改的版本,用于标识是否有更新
      */
-    private long version = 0;
+    private Long version = 0L;
 
     private Logger logger = SdsLoggerFactory.getDefaultLogger();
 

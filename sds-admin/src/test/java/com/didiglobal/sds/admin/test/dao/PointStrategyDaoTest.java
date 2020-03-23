@@ -22,7 +22,7 @@ public class PointStrategyDaoTest {
     @Test
     public void addStrategyTest() {
         PointStrategyDO strategyDO = new PointStrategyDO();
-        strategyDO.setAppGroupName("两轮车事业部");
+        strategyDO.setAppGroupName("BikeBusinessDepartment");
         strategyDO.setAppName("bh-order");
         strategyDO.setPoint("testPoint22");
         strategyDO.setSdsSchemeName("FIRST_GROUP");
@@ -45,7 +45,7 @@ public class PointStrategyDaoTest {
         System.out.println(pointStrategyDao.addPointStrategy(strategyDO));
 
         strategyDO = new PointStrategyDO();
-        strategyDO.setAppGroupName("两轮车事业部");
+        strategyDO.setAppGroupName("BikeBusinessDepartment");
         strategyDO.setAppName("bh-order");
         strategyDO.setPoint("testPoint23");
         strategyDO.setSdsSchemeName("FIRST_GROUP");
@@ -82,15 +82,15 @@ public class PointStrategyDaoTest {
 
     @Test
     public void queryPointStrategyTest() {
-        System.out.println(pointStrategyDao.queryPointStrategyBatch("两轮车事业部", "order", Lists.newArrayList("testPoint"),
+        System.out.println(pointStrategyDao.queryPointStrategyBatch("BikeBusinessDepartment", "order", Lists.newArrayList("testPoint"),
                 "FIRST_GROUP"));
         System.out.println(
-                pointStrategyDao.queryPointStrategyBatch("两轮车事业部", "order", Lists.newArrayList("abcdefPoint"),
+                pointStrategyDao.queryPointStrategyBatch("BikeBusinessDepartment", "order", Lists.newArrayList("abcdefPoint"),
                         "FIRST_GROUP"));
     }
 
     @Test
     public void queryPointStrategyByPageTest() {
-        System.out.println(pointStrategyDao.queryPointStrategyByPage("两轮车事业部", "order", "testPoint", null, 0, 10));
+        System.out.println(pointStrategyDao.queryPointStrategyByPage("BikeBusinessDepartment", "order", "testPoint", null, 0, 10));
     }
 }

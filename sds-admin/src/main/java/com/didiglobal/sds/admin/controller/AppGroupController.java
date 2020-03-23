@@ -55,10 +55,10 @@ public class AppGroupController {
 
     // curl -i -v -X POST -H 'Content-type':'application/json' -H 'Origin':'http://10.90.23.30:8000'
     // -H 'Referer':' http://10.90.23.30:8000/applicationGroup' -H 'Access-Control-Request-Headers':'content-type'
-    // -H 'Access-Control-Request-Method':'POST' -d '{"appGroupName":"两轮车事业部"}'
+    // -H 'Access-Control-Request-Method':'POST' -d '{"appGroupName":"BikeBusinessDepartment"}'
     // http://10.88.129.19:8000/sds/appgroup/listpage
     //
-    // curl -X POST -H 'Content-type':'application/json'  -d '{"appGroupName":"两轮车事业部"}'
+    // curl -X POST -H 'Content-type':'application/json'  -d '{"appGroupName":"BikeBusinessDepartment"}'
     // http://localhost:8887/sds/appgroup/listpage
     @RequestMapping(value = "listpage")
     public SdsResponse<List<AppGroupDO>> queryAppGroupByPage(@RequestBody AppGroupRequest appGroupRequest) {
@@ -81,7 +81,7 @@ public class AppGroupController {
         return new SdsResponse<>(appGroupDOList);
     }
 
-    // curl -X POST -H 'Content-type':'application/json'  -d '{"appGroupName":"两轮车事业部", "operatorId":1}'
+    // curl -X POST -H 'Content-type':'application/json'  -d '{"appGroupName":"BikeBusinessDepartment", "operatorId":1}'
     // http://localhost:8887/sds/appgroup/add
     @RequestMapping(value = "add")
     public SdsResponse addAppGroup(@RequestBody AppGroupRequest appGroupRequest) {

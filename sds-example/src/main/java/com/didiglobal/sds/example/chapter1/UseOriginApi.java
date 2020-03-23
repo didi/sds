@@ -20,7 +20,7 @@ public class UseOriginApi {
     private static final String SERVER_URL = "http://127.0.0.1:8887";
 
     // 保证SdsClient对象的单例使用(线程安全)
-    private static SdsClient sdsClient = SdsClientFactory.getOrCreateSdsClient("两轮车事业部", "order", SERVER_URL);
+    private static SdsClient sdsClient = SdsClientFactory.getOrCreateSdsClient("BikeBusinessDepartment", "order", SERVER_URL);
 
     // 创建订单的降级点名称
     private static final String CREATE_ORDER_POINT = "createOrderPoint";
