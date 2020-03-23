@@ -11,7 +11,7 @@ import static com.didiglobal.sds.client.enums.DowngradeActionType.TOKEN_BUCKET;
 /**
  * 令牌桶策略执行器
  *
- * @auther yizhenqiang
+ * @auther manzhizhen
  * @date 2018/12/31
  */
 public class TokenBucketStrategyExecutor extends AbstractStrategyExecutor {

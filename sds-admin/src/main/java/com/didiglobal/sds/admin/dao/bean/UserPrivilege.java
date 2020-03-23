@@ -3,7 +3,7 @@ package com.didiglobal.sds.admin.dao.bean;
 import java.util.Date;
 
 /**
- * @auther yizhenqiang
+ * @auther manzhizhen
  * @date 2019/1/19
  */
 public class UserPrivilege {

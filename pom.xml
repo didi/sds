@@ -15,6 +15,7 @@
         <module>sds-bootstrap</module>
         <module>sds-extension</module>
         <module>sds-easy</module>
+        <module>sds-example</module>
     </modules>
 
     <properties>

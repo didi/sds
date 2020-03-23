@@ -4,7 +4,7 @@ import com.didiglobal.sds.admin.controller.bean.PageInfo;
 
 /**
  * @Description: 监控大盘页面的查询请求
- * @Author: yizhenqiang
+ * @Author: manzhizhen
  * @Date: Create in 2019-10-02 16:39
  */
 public class DashboardPointRequest extends PageInfo {

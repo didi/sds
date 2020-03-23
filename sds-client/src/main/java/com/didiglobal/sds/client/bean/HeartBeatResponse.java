@@ -9,7 +9,7 @@ import java.util.List;
 /**
  * 服务端应答对象
  *
- * @author yizhenqiang
+ * @author manzhizhen
  * @version $Id: HeartBeatResponse.java, v 0.1 2016年2月20日 下午9:37:55 Administrator Exp $
  */
 public class HeartBeatResponse {

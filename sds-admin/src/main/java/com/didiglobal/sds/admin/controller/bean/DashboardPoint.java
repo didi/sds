@@ -2,7 +2,7 @@ package com.didiglobal.sds.admin.controller.bean;
 
 /**
  * @Description: 仪表盘数据上的一个点
- * @Author: yizhenqiang
+ * @Author: manzhizhen
  * @Date: Create in 2019-09-13 17:15
  */
 public class DashboardPoint {

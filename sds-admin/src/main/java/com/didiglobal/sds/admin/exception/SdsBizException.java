@@ -9,7 +9,7 @@ import org.apache.commons.lang3.StringUtils;
 
 
 /**
- * @author yizhenqiang
+ * @author manzhizhen
  * @version $Id: SdsBizException.java, v 0.1 2015年9月17日 下午4:50:57 Administrator Exp $
  */
 public class SdsBizException extends RuntimeException {

@@ -7,7 +7,7 @@ import org.springframework.web.client.RestTemplate;
 
 /**
  * @Description:
- * @Author: yizhenqiang
+ * @Author: manzhizhen
  * @Date: Create in 2019-09-15 08:48
  */
 @Configuration

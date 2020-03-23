@@ -4,7 +4,7 @@ import java.util.Date;
 
 /**
  * 心跳信息DO
- * Created by yizhenqiang on 18/7/1.
+ * Created by manzhizhen on 18/7/1.
  */
 public class HeartbeatDO {
     // ID

@@ -7,7 +7,7 @@ import java.util.regex.Pattern;
 /**
  * 字符工具类
  *
- * @author yizhenqiang
+ * @author manzhizhen
  * @date 2019-01-28
  */
 public final class StringCheck {

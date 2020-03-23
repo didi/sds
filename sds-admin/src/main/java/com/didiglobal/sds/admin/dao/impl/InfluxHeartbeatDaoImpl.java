@@ -30,7 +30,7 @@ import java.util.Map;
 
 /**
  * @Description: 当使用influxdb来保存心跳数据时，初始化该类
- * @Author: yizhenqiang
+ * @Author: manzhizhen
  * @Date: Create in 2019-09-15 00:02
  */
 @ConditionalOnProperty(name = "sds.heartbeat.database.type", havingValue = "influxdb")
@@ -129,7 +129,7 @@ public class InfluxHeartbeatDaoImpl implements HeartbeatDao {
 //        }
 
         /**
-         * todo 这块代码后续需要优化 yizhenqiang
+         * todo 这块代码后续需要优化 manzhizhen
          */
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat(INFLUXDB_DATE_FORMAT);
         JSONObject responseJsonObject = JSONObject.parseObject(exchange.getBody());

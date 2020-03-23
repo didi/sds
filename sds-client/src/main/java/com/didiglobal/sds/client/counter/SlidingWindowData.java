@@ -15,7 +15,7 @@ import java.util.concurrent.atomic.AtomicLongArray;
  * 完整周期（WholeCycle）: 包含桶indxe0-9或者10-19或者20-29这10个桶的周期就是完整的周期。上传统计和降级的数据都来自一个完整周期。
  * 滑动周期（SlidingCycle）：从当前时间算出的当前桶index，然后往前推9个桶，这10个桶组成的周期就是滑动周期。判断要不要降级是根据当前的滑动周期的数据来的。
  * <p>
- * Created by yizhenqiang on 18/2/9.
+ * Created by manzhizhen on 18/2/9.
  */
 public class SlidingWindowData extends AbstractCycleData {
 

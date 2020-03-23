@@ -32,7 +32,7 @@ import static com.didiglobal.sds.admin.constants.SdsCode.*;
 /**
  * 应用信息控制器
  * <p>
- * Created by yizhenqiang on 18/1/7.
+ * Created by manzhizhen on 18/1/7.
  */
 @RestController
 @RequestMapping(value = "/sds/appinfo/", method = RequestMethod.POST)
@@ -49,7 +49,7 @@ public class AppInfoController {
 
     private static Logger logger = SdsLoggerFactory.getDefaultLogger();
 
-    // curl -X POST -H 'Content-type':'application/json'  -d '{"appGroupName":"两轮车"}'
+    // curl -X POST -H 'Content-type':'application/json'  -d '{"appGroupName":"BikeBusinessDepartment"}'
     // http://localhost:8887/sds/appinfo/listpage
     @RequestMapping(value = "listpage")
     public SdsResponse<List<AppInfoDO>> queryAppInfoByPage(@RequestBody AppInfoRequest appInfoRequest) {
@@ -89,7 +89,7 @@ public class AppInfoController {
         return new SdsResponse<>(Lists.newArrayList());
     }
 
-    // curl -X POST -H 'Content-type':'application/json'  -d '{"appGroupName":"两轮车", "appName":"bh-order",
+    // curl -X POST -H 'Content-type':'application/json'  -d '{"appGroupName":"BikeBusinessDepartment", "appName":"bh-order",
     // "operatorId":2}'  http://localhost:8887/sds/appinfo/add
     @RequestMapping(value = "add")
     public SdsResponse addAppInfo(@RequestBody AppInfoRequest appInfoRequest) {
@@ -105,13 +105,13 @@ public class AppInfoController {
             return new SdsResponse(PARAM_ERROR.getCode(), "应用名称不能为空");
         }
 
-        if (StringUtils.isBlank(appInfoRequest.getCreatorName())) {
-            return new SdsResponse(PARAM_ERROR.getCode(), "创建者姓名不能为空");
-        }
-
-        if (StringUtils.isBlank(appInfoRequest.getCreatorEmail())) {
-            return new SdsResponse(PARAM_ERROR.getCode(), "创建者邮箱不能为空");
-        }
+//        if (StringUtils.isBlank(appInfoRequest.getCreatorName())) {
+//            return new SdsResponse(PARAM_ERROR.getCode(), "创建者姓名不能为空");
+//        }
+//
+//        if (StringUtils.isBlank(appInfoRequest.getCreatorEmail())) {
+//            return new SdsResponse(PARAM_ERROR.getCode(), "创建者邮箱不能为空");
+//        }
 
         if (!StringCheck.checkStringName(appInfoRequest.getAppName())) {
             return new SdsResponse(PARAM_ERROR.getCode(), "应用名称只能是数字、字母和-");
@@ -170,7 +170,7 @@ public class AppInfoController {
                 new SdsResponse(SYSTEM_ERROR.getCode(), "新增应用失败");
     }
 
-    // curl -X POST -H 'Content-type':'application/json'  -d '{"appGroupName":"两轮车", "appName":"bh-order",
+    // curl -X POST -H 'Content-type':'application/json'  -d '{"appGroupName":"BikeBusinessDepartment", "appName":"bh-order",
     // "newAppName":"bh-ins", "newSdsSchemeName":"abc", "operatorId":2}'  http://localhost:8887/sds/appinfo/edit
     @RequestMapping(value = "edit")
     public SdsResponse<List<AppInfoDO>> updateAppInfo(@RequestBody AppInfoRequest appInfoRequest) {

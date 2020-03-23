@@ -7,7 +7,7 @@ package com.didiglobal.sds.client.util;
 /**
  * 参数断言
  * 
- * @author  yizhenqiang
+ * @author  manzhizhen
  * @version $Id: AssertUtil.java, v 0.1 2016年1月27日 下午5:33:26 Administrator Exp $
  */
 public final class AssertUtil {

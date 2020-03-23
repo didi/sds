@@ -4,7 +4,7 @@ package com.didiglobal.sds.client.bean;
  * 访问量的包装值
  * 包含当前桶值和当前的滑动周期值
  *
- * Created by yizhenqiang on 18/2/24.
+ * Created by manzhizhen on 18/2/24.
  */
 public class VisitWrapperValue {
     /**

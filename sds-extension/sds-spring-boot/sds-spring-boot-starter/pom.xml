@@ -11,6 +11,8 @@
 
     <artifactId>sds-spring-boot-starter</artifactId>
 
+    <url>https://github.com/didi/sds</url>
+
     <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>

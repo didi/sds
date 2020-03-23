@@ -12,7 +12,7 @@ import java.util.concurrent.ConcurrentHashMap;
 /**
  * 并发量降级测试
  * <p>
- * Created by yizhenqiang on 2016/4/24.
+ * Created by manzhizhen on 2016/4/24.
  */
 public class ConcurrentDowngradeTest extends AbstractDowngradeTest {
 
@@ -55,7 +55,7 @@ public class ConcurrentDowngradeTest extends AbstractDowngradeTest {
 
         strategyMap.put(getPoint(), strategy);
 
-        SdsStrategyService.getInstance().reset(strategyMap);
+        SdsStrategyService.getInstance().resetAll(strategyMap);
     }
 
     @Override

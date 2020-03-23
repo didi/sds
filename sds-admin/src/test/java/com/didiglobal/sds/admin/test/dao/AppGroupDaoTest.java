@@ -11,7 +11,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
 /**
- * Created by yizhenqiang on 18/2/12.
+ * Created by manzhizhen on 18/2/12.
  */
 @RunWith(SpringRunner.class)
 @SpringBootTest
@@ -25,8 +25,8 @@ public class AppGroupDaoTest {
         AppGroupDO appGroupDO = new AppGroupDO();
         appGroupDO.setCreatorName("路飞");
         appGroupDO.setOperatorName("路飞");
-        appGroupDO.setCreatorEmail("yizhenqiang@didichuxing.com");
-        appGroupDO.setOperatorEmail("yizhenqiang@didichuxing.com");
+        appGroupDO.setCreatorEmail("manzhizhen@didichuxing.com");
+        appGroupDO.setOperatorEmail("manzhizhen@didichuxing.com");
         appGroupDO.setAppGroupName("黑马4");
         Assert.assertEquals(1, appGroupDao.addAppGroup(appGroupDO));
 
