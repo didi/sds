@@ -23,7 +23,7 @@ public class SdsSchemeDaoTest {
     @Test
     public void addSdsSchemeTest() {
         SdsSchemeDO sdsSchemeDO = new SdsSchemeDO();
-        sdsSchemeDO.setAppGroupName("两轮车事业部");
+        sdsSchemeDO.setAppGroupName("BikeBusinessDepartment");
         sdsSchemeDO.setAppName("bh-order");
 
         sdsSchemeDO.setSdsSchemeName("FIRST_GROUP");
@@ -39,23 +39,23 @@ public class SdsSchemeDaoTest {
 
     @Test
     public void queryAllSdsSchemeTest() {
-        System.out.println(JSON.toJSONString(sdsSchemeDao.queryAllSdsScheme("两轮车事业部", "order")));
+        System.out.println(JSON.toJSONString(sdsSchemeDao.queryAllSdsScheme("BikeBusinessDepartment", "order")));
     }
 
     @Test
     public void queryByGroupNameTest() {
-        System.out.println(sdsSchemeDao.queryByGroupName("两轮车事业部", "bh-order", "FIRST_GROUP"));
+        System.out.println(sdsSchemeDao.queryByGroupName("BikeBusinessDepartment", "bh-order", "FIRST_GROUP"));
     }
 
     @Test
     public void updateSdsSchemeTest() {
-        System.out.println(sdsSchemeDao.updateSdsScheme("两轮车事业部", "bh-order", "FIRST_GROUP", "FIRST_GROUP1", "路飞",
+        System.out.println(sdsSchemeDao.updateSdsScheme("BikeBusinessDepartment", "bh-order", "FIRST_GROUP", "FIRST_GROUP1", "路飞",
                 "manzhizhen@didichuxing.com"));
     }
 
     @Test
     public void deleteSdsSchemeTest() {
-        System.out.println(sdsSchemeDao.deleteSdsScheme("两轮车事业部", "bh-order", "FIRST_GROUP"));
+        System.out.println(sdsSchemeDao.deleteSdsScheme("BikeBusinessDepartment", "bh-order", "FIRST_GROUP"));
     }
 
 }
