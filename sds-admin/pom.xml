@@ -11,6 +11,8 @@
     <artifactId>sds-admin</artifactId>
     <name>sds-admin</name>
 
+    <url>https://github.com/didi/sds</url>
+
     <properties>
     </properties>
 

@@ -13,8 +13,8 @@
     <packaging>jar</packaging>
 
     <name>sds-spring-boot-autoconfigure</name>
-    <!-- FIXME change it to the project's website -->
-    <url>http://www.example.com</url>
+
+    <url>https://github.com/didi/sds</url>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>

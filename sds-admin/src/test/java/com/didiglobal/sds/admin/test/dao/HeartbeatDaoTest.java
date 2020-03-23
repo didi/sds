@@ -23,7 +23,7 @@ public class HeartbeatDaoTest {
     public void addHeartbeatTest() {
         List<HeartbeatDO> dataList = Lists.newArrayList();
         HeartbeatDO heartbeatDO = new HeartbeatDO();
-        heartbeatDO.setAppGroupName("两轮车");
+        heartbeatDO.setAppGroupName("BikeBusinessDepartment");
         heartbeatDO.setAppName("bh-order");
         heartbeatDO.setPoint("testPoint");
         heartbeatDO.setDowngradeNum(123L);
@@ -36,7 +36,7 @@ public class HeartbeatDaoTest {
         dataList.add(heartbeatDO);
 
         heartbeatDO = new HeartbeatDO();
-        heartbeatDO.setAppGroupName("两轮车");
+        heartbeatDO.setAppGroupName("BikeBusinessDepartment");
         heartbeatDO.setAppName("bh-order");
         heartbeatDO.setPoint("testPoint1");
         heartbeatDO.setDowngradeNum(123L);
@@ -53,7 +53,7 @@ public class HeartbeatDaoTest {
 
     @Test
     public void queryHeartbeatListTest() {
-        System.out.println(heartbeatDao.queryHeartbeatList("两轮车", "bh-order", "testPoint",
+        System.out.println(heartbeatDao.queryHeartbeatList("BikeBusinessDepartment", "bh-order", "testPoint",
                 new Date(System.currentTimeMillis() - 10000000), new Date()));
     }
 }

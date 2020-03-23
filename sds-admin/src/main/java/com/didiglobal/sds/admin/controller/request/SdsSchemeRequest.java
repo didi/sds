@@ -1,11 +1,9 @@
 package com.didiglobal.sds.admin.controller.request;
 
-import com.didiglobal.sds.admin.controller.bean.PageInfo;
-
 /**
- * Created by yizhenqiang on 18/9/29.
+ * Created by manzhizhen on 18/9/29.
  */
-public class SdsSchemeRequest extends PageInfo {
+public class SdsSchemeRequest extends AbstractRequest {
 
     private String appGroupName;
 
@@ -14,14 +12,6 @@ public class SdsSchemeRequest extends PageInfo {
     private String sdsSchemeName;
 
     private String newSdsSchemeName;
-
-    private String operatorName;
-
-    private String operatorEmail;
-
-    private String creatorName;
-
-    private String creatorEmail;
 
     public String getAppGroupName() {
         return appGroupName;
@@ -53,38 +43,6 @@ public class SdsSchemeRequest extends PageInfo {
 
     public void setNewSdsSchemeName(String newSdsSchemeName) {
         this.newSdsSchemeName = newSdsSchemeName;
-    }
-
-    public String getOperatorName() {
-        return operatorName;
-    }
-
-    public void setOperatorName(String operatorName) {
-        this.operatorName = operatorName;
-    }
-
-    public String getOperatorEmail() {
-        return operatorEmail;
-    }
-
-    public void setOperatorEmail(String operatorEmail) {
-        this.operatorEmail = operatorEmail;
-    }
-
-    public String getCreatorName() {
-        return creatorName;
-    }
-
-    public void setCreatorName(String creatorName) {
-        this.creatorName = creatorName;
-    }
-
-    public String getCreatorEmail() {
-        return creatorEmail;
-    }
-
-    public void setCreatorEmail(String creatorEmail) {
-        this.creatorEmail = creatorEmail;
     }
 
     @Override

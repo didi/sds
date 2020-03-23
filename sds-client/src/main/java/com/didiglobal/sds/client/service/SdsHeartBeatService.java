@@ -23,7 +23,7 @@ import static com.didiglobal.sds.client.contant.BizConstant.CYCLE_BUCKET_NUM;
 /**
  * 心跳线程服务类 用于客户端上传数据和从服务端拉取最新的降级配置
  *
- * @author yizhenqiang
+ * @author manzhizhen
  * @version $Id: SdsHeartBeatService.java, v 0.1 2016年2月25日 下午11:00:43
  */
 final public class SdsHeartBeatService {
@@ -53,7 +53,7 @@ final public class SdsHeartBeatService {
     /**
      * 修改的版本,用于标识是否有更新
      */
-    private long version = 0;
+    private Long version = 0L;
 
     private Logger logger = SdsLoggerFactory.getDefaultLogger();
 
@@ -294,7 +294,7 @@ final public class SdsHeartBeatService {
         /**
          * 重设降级点策略
          */
-        SdsStrategyService.getInstance().reset(strategyMap);
+        SdsStrategyService.getInstance().resetAll(strategyMap);
 
         /**
          * 重设降级点返回值

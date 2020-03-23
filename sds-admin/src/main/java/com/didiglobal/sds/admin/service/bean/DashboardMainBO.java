@@ -6,7 +6,7 @@ import java.util.List;
 
 /**
  * @Description: 仪表盘主要显示的信息
- * @Author: yizhenqiang
+ * @Author: manzhizhen
  * @Date: Create in 2019-10-01 11:18
  */
 public class DashboardMainBO {

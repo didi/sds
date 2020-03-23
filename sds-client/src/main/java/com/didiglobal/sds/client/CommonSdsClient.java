@@ -23,7 +23,7 @@ import java.util.concurrent.ThreadLocalRandom;
  * Sds服务降级客户端
  * <p>
  * 适用于全新的全能降级点
- * Created by yizhenqiang on 2016/6/11.
+ * Created by manzhizhen on 2016/6/11.
  */
 public class CommonSdsClient extends AbstractSdsClient {
 

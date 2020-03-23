@@ -1,14 +1,13 @@
 package com.didiglobal.sds.admin.controller.request;
 
-import com.didiglobal.sds.admin.controller.bean.PageInfo;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
  * 降级点策略信息请求
  *
- * @author yizhenqiang
+ * @author manzhizhen
  */
-public class PointStrategyRequest extends PageInfo {
+public class PointStrategyRequest extends AbstractRequest {
 
     private String appGroupName;
 
@@ -101,14 +100,6 @@ public class PointStrategyRequest extends PageInfo {
      * 压测流量降级，0-压测流量对策略降级不产生影响，1-压测流量直接强制降级
      */
     private Integer pressureTestDowngrade = 0;
-
-    private String operatorName;
-
-    private String operatorEmail;
-
-    private String creatorName;
-
-    private String creatorEmail;
 
     public String getAppGroupName() {
         return appGroupName;
@@ -261,38 +252,6 @@ public class PointStrategyRequest extends PageInfo {
 
     public void setPressureTestDowngrade(Integer pressureTestDowngrade) {
         this.pressureTestDowngrade = pressureTestDowngrade;
-    }
-
-    public String getOperatorName() {
-        return operatorName;
-    }
-
-    public void setOperatorName(String operatorName) {
-        this.operatorName = operatorName;
-    }
-
-    public String getOperatorEmail() {
-        return operatorEmail;
-    }
-
-    public void setOperatorEmail(String operatorEmail) {
-        this.operatorEmail = operatorEmail;
-    }
-
-    public String getCreatorName() {
-        return creatorName;
-    }
-
-    public void setCreatorName(String creatorName) {
-        this.creatorName = creatorName;
-    }
-
-    public String getCreatorEmail() {
-        return creatorEmail;
-    }
-
-    public void setCreatorEmail(String creatorEmail) {
-        this.creatorEmail = creatorEmail;
     }
 
     @Override

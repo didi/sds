@@ -3,7 +3,7 @@ package com.didiglobal.sds.client.config;
 /**
  * 降级点返回值配置
  *
- * @author yizhenqiang
+ * @author manzhizhen
  * @date 2019-04-21
  */
 public class SdsPointReturnValueConfig {

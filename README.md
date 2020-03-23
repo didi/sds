@@ -66,6 +66,7 @@ sds-client除了需要统计滑动窗口的数据，还有两个任务，统计�
 降级比例可以用作策略执行的灰度发布方案！
 
 ## 5. 使用方式
+详见：https://github.com/didi/sds/wiki/SDS%E7%9A%84%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97
 ### 5.1 添加依赖
 我们已经知道，所有的降级逻辑将由sds-client.jar来完成，为了让某个应用能成为SDS的一个客户端，应用需要依赖如下Jar：
 
@@ -95,13 +96,13 @@ sds-easy内部依赖了sds-client，sds-easy的出现是为了让我们使用sds
 // SDS控制台地址
 private static final String SERVER_URL = "http://127.0.0.1:8887";
 // 通过工厂方法来创建SdsClient实例
-private static final SdsClient sdsClient = SdsClientFactory.getOrCreateSdsClient("两轮车", "order", SERVER_URL);
+private static final SdsClient sdsClient = SdsClientFactory.getOrCreateSdsClient("BikeBusinessDepartment", "order", SERVER_URL);
 ```
 
 我们可以在Spring配置文件如下初始化：
 ```xml
 <bean id="sdsClient" class="com.didiglobal.sds.client.SdsClientFactory" factory-method="getOrCreateSdsClient">
-    <constructor-arg type="java.lang.String" value="两轮车" />
+    <constructor-arg type="java.lang.String" value="BikeBusinessDepartment" />
     <constructor-arg type="java.lang.String" value="order" />
     <constructor-arg type="java.lang.String" value="http://127.0.0.1:8887" />
 </bean>
@@ -170,7 +171,7 @@ protected static final String SERVER_URL = "http://127.0.0.1:8887";
  
 static {
     // 可以找个安静的地方初始化SdsClient
-    SdsClientFactory.getOrCreateSdsClient("两轮车", "mzz-study", SERVER_URL);
+    SdsClientFactory.getOrCreateSdsClient("BikeBusinessDepartment", "order", SERVER_URL);
 }
  
 // 这里假装是业务Service
@@ -236,7 +237,7 @@ java -javaagent:/home/sds/lib/sds-bootstrap.jar MyApplication
 第三步：这样就可以直接在类方法中使用@SdsDowngradeMethod了。
 > 注意：该方式对类中的任何方法，不管是private还是public都有效。
 
-### 7.2 通过Aspectj的方式使用注解
+### 7.2 通过Spring AOP(Aspectj)的方式使用注解
 第一步：项目需要依赖sds-aspectj.jar，例如：
 ```xml
     <dependency>
@@ -258,7 +259,7 @@ public class SdsConfiguration {
 第三步：这样就可以直接在类方法中使用@SdsDowngradeMethod了。
 > 注意：该方式无法对类的private方法生效。
 
-> 提醒：Java Agent方式和Aspectj方式请不要同时使用！
+> 提醒：Java Agent方式和Spring AOP方式请不要同时使用！
 
 ## 8. 降级露出
 我只能从sds-admin的仪表盘来感知到被降级了吗？其实客户端也可以感知降级，通过如下方式注册一个监听器：

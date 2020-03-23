@@ -15,7 +15,7 @@ import java.util.List;
 /**
  * 心跳的DAO，心跳数据用于给仪表盘来展示数据
  * 注意：只有使用mysql或h2时才初始化该DAO
- * Created by yizhenqiang on 18/7/1.
+ * Created by manzhizhen on 18/7/1.
  */
 @Mapper
 @MultConditionalOnProperty(name = "sds.heartbeat.database.type", havingValue = {"mysql", "h2"})

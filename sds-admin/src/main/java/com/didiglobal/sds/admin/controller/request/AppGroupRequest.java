@@ -1,23 +1,13 @@
 package com.didiglobal.sds.admin.controller.request;
 
-import com.didiglobal.sds.admin.controller.bean.PageInfo;
-
 /**
- * Created by yizhenqiang on 18/9/29.
+ * Created by manzhizhen on 18/9/29.
  */
-public class AppGroupRequest extends PageInfo {
+public class AppGroupRequest extends AbstractRequest {
 
     private String appGroupName;
 
     private String newAppGroupName;
-
-    private String operatorName;
-
-    private String operatorEmail;
-
-    private String creatorName;
-
-    private String creatorEmail;
 
     public String getAppGroupName() {
         return appGroupName;
@@ -33,38 +23,6 @@ public class AppGroupRequest extends PageInfo {
 
     public void setNewAppGroupName(String newAppGroupName) {
         this.newAppGroupName = newAppGroupName;
-    }
-
-    public String getOperatorName() {
-        return operatorName;
-    }
-
-    public void setOperatorName(String operatorName) {
-        this.operatorName = operatorName;
-    }
-
-    public String getOperatorEmail() {
-        return operatorEmail;
-    }
-
-    public void setOperatorEmail(String operatorEmail) {
-        this.operatorEmail = operatorEmail;
-    }
-
-    public String getCreatorName() {
-        return creatorName;
-    }
-
-    public void setCreatorName(String creatorName) {
-        this.creatorName = creatorName;
-    }
-
-    public String getCreatorEmail() {
-        return creatorEmail;
-    }
-
-    public void setCreatorEmail(String creatorEmail) {
-        this.creatorEmail = creatorEmail;
     }
 
     @Override

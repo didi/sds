@@ -5,7 +5,7 @@ import java.util.concurrent.TimeUnit;
 /**
  * 时间统计工具类
  * <p>
- * Created by yizhenqiang on 2016/6/21.
+ * Created by manzhizhen on 2016/6/21.
  */
 public class TimeStatisticsUtil {
     private static ThreadLocal<Long> startTimeThreadLocal = new ThreadLocal<>();

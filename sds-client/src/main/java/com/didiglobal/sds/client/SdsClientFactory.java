@@ -13,7 +13,7 @@ import static com.didiglobal.sds.client.contant.BizConstant.SERVER_ADDR_LIST;
 /**
  * SdsClient单例工厂
  * <p>
- * Created by yizhenqiang on 17/1/1.
+ * Created by manzhizhen on 17/1/1.
  */
 public final class SdsClientFactory {
 

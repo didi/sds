@@ -7,7 +7,7 @@ package com.didiglobal.sds.client.bean;
 /**
  * 简单类定义实体
  * 
- * @author  yizhenqiang
+ * @author  manzhizhen
  * @version $Id: SdsClassDefine.java, v 0.1 2016年1月10日 上午11:13:31 Administrator Exp $
  */
 public class SdsClassDefine {

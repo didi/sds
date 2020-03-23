@@ -6,8 +6,8 @@ package com.didiglobal.sds.client.bean;
 /**
  * 降级策略对象
  *
- * @author yizhenqiang
- * @version $Id: SdsStrategy.java, v 0.1 2016年4月17日 上午10:26:07 yizhenqiang Exp $
+ * @author manzhizhen
+ * @version $Id: SdsStrategy.java, v 0.1 2016年4月17日 上午10:26:07 manzhizhen Exp $
  */
 public class SdsStrategy {
 

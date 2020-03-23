@@ -1,7 +1,7 @@
 package com.didiglobal.sds.client.bean;
 
 /**
- * Created by yizhenqiang on 17/3/5.
+ * Created by manzhizhen on 17/3/5.
  */
 public class SdsCycleInfo {
 

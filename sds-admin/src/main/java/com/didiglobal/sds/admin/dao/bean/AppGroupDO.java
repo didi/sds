@@ -8,7 +8,7 @@ import java.util.Date;
 /**
  * 应用组，同一个应用组下应用名称不能相同，不同的应用组下的应用名称可以相同
  * <p>
- * Created by yizhenqiang on 17/7/26.
+ * Created by manzhizhen on 17/7/26.
  */
 public class AppGroupDO {
 

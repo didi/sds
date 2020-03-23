@@ -29,7 +29,7 @@ import static com.didiglobal.sds.admin.constants.SdsCode.*;
 /**
  * 应用组控制器
  * <p>
- * Created by yizhenqiang on 18/1/7.
+ * Created by manzhizhen on 18/1/7.
  */
 @RestController
 @RequestMapping(value = "/sds/appgroup/", method = RequestMethod.POST)
@@ -55,10 +55,10 @@ public class AppGroupController {
 
     // curl -i -v -X POST -H 'Content-type':'application/json' -H 'Origin':'http://10.90.23.30:8000'
     // -H 'Referer':' http://10.90.23.30:8000/applicationGroup' -H 'Access-Control-Request-Headers':'content-type'
-    // -H 'Access-Control-Request-Method':'POST' -d '{"appGroupName":"两轮车"}'
+    // -H 'Access-Control-Request-Method':'POST' -d '{"appGroupName":"BikeBusinessDepartment"}'
     // http://10.88.129.19:8000/sds/appgroup/listpage
     //
-    // curl -X POST -H 'Content-type':'application/json'  -d '{"appGroupName":"两轮车"}'
+    // curl -X POST -H 'Content-type':'application/json'  -d '{"appGroupName":"BikeBusinessDepartment"}'
     // http://localhost:8887/sds/appgroup/listpage
     @RequestMapping(value = "listpage")
     public SdsResponse<List<AppGroupDO>> queryAppGroupByPage(@RequestBody AppGroupRequest appGroupRequest) {
@@ -81,7 +81,7 @@ public class AppGroupController {
         return new SdsResponse<>(appGroupDOList);
     }
 
-    // curl -X POST -H 'Content-type':'application/json'  -d '{"appGroupName":"两轮车", "operatorId":1}'
+    // curl -X POST -H 'Content-type':'application/json'  -d '{"appGroupName":"BikeBusinessDepartment", "operatorId":1}'
     // http://localhost:8887/sds/appgroup/add
     @RequestMapping(value = "add")
     public SdsResponse addAppGroup(@RequestBody AppGroupRequest appGroupRequest) {
@@ -94,13 +94,13 @@ public class AppGroupController {
             return new SdsResponse(PARAM_ERROR.getCode(), "应用组名称不能为空");
         }
 
-        if (StringUtils.isBlank(appGroupRequest.getCreatorName())) {
-            return new SdsResponse(PARAM_ERROR.getCode(), "创建者名称不能为空");
-        }
-
-        if (StringUtils.isBlank(appGroupRequest.getCreatorEmail())) {
-            return new SdsResponse(PARAM_ERROR.getCode(), "创建者邮箱不能为空");
-        }
+//        if (StringUtils.isBlank(appGroupRequest.getCreatorName())) {
+//            return new SdsResponse(PARAM_ERROR.getCode(), "创建者名称不能为空");
+//        }
+//
+//        if (StringUtils.isBlank(appGroupRequest.getCreatorEmail())) {
+//            return new SdsResponse(PARAM_ERROR.getCode(), "创建者邮箱不能为空");
+//        }
 
         if (!StringCheck.checkStringName(appGroupRequest.getAppGroupName())) {
             return new SdsResponse(PARAM_ERROR.getCode(), "应用组名称只能是数字、字母和-");
@@ -143,13 +143,13 @@ public class AppGroupController {
             return new SdsResponse(PARAM_ERROR.getCode(), "新老名字不能相同");
         }
 
-        if (StringUtils.isBlank(appGroupRequest.getOperatorName())) {
-            return new SdsResponse(PARAM_ERROR.getCode(), "操作人姓名不能为空");
-        }
-
-        if (StringUtils.isBlank(appGroupRequest.getOperatorEmail())) {
-            return new SdsResponse(PARAM_ERROR.getCode(), "操作人邮箱不能为空");
-        }
+//        if (StringUtils.isBlank(appGroupRequest.getOperatorName())) {
+//            return new SdsResponse(PARAM_ERROR.getCode(), "操作人姓名不能为空");
+//        }
+//
+//        if (StringUtils.isBlank(appGroupRequest.getOperatorEmail())) {
+//            return new SdsResponse(PARAM_ERROR.getCode(), "操作人邮箱不能为空");
+//        }
 
         if (!StringCheck.checkStringName(appGroupRequest.getNewAppGroupName())) {
             return new SdsResponse(PARAM_ERROR.getCode(), "新应用组名称只能是数字、字母和-");
