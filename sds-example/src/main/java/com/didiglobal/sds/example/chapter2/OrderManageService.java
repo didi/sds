@@ -34,12 +34,12 @@ public class OrderManageService {
      * @param address
      * @return 创建的订单ID
      */
-    @SdsDowngradeMethod(point = CREATE_ORDER_POINT)
-    public Long createOrder(Long userId, String address) {
+    @SdsDowngradeMethod(point = CREATE_ORDER_POINT, callback = OrderSdsExceptionCallback.class)
+    public BaseResult<Long> createOrder(Long userId, String address) {
 
         // 1. 这里是正常的业务逻辑：用控制台输出来代表业务逻辑，为简单起见，返回的订单ID随机生成
         System.out.println("您的业务方法已经执行，userId:" + userId + ", address:" + address);
-        return ThreadLocalRandom.current().nextLong(0, 10000000);
+        return BaseResult.success(ThreadLocalRandom.current().nextLong(0, 10000000));
 
     }
 }

@@ -26,10 +26,10 @@ public class UseAnnotationByAspectj {
         int times = 10000;
         while (times-- > 0) {
 
-            Long orderId = null;
+            BaseResult result = null;
             try {
-                orderId = orderManageService.createOrder(12345L, "杭州西湖区西溪谷G座");
-                System.out.println("新创建的订单id:" + orderId);
+                result = orderManageService.createOrder(12345L, "杭州西湖区西溪谷G座");
+                System.out.println("新创建的订单id:" + result);
 
             } catch (SdsException e) {
                 System.out.println("此次调用已经被降级！");
