@@ -65,12 +65,13 @@ public class SdsPointAspect {
 
         } catch (SdsException ex) {
             ex.setPoint(point);
-            if (this.handleSdsExceptionHandler(pjp, ex) == null) {
+            Object result = this.handleSdsExceptionHandler(pjp, ex);
+            if (result == null) {
                 // 表示不处理这个异常, 继续抛出异常
                 throw ex;
             } else {
                 // 表示捕获到异常且处理
-                return this.handleSdsExceptionHandler(pjp, ex);
+                return result;
             }
 
         } catch (Throwable throwable) {
