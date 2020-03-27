@@ -1,4 +1,4 @@
-package com.didiglobal.sds.example.chapter2;
+package com.didiglobal.sds.example.chapter3;
 
 import com.didiglobal.sds.client.SdsClient;
 import com.didiglobal.sds.client.SdsClientFactory;

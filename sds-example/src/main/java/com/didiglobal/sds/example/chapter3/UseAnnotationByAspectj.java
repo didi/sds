@@ -1,4 +1,4 @@
-package com.didiglobal.sds.example.chapter2;
+package com.didiglobal.sds.example.chapter3;
 
 import com.didiglobal.sds.client.exception.SdsException;
 import org.springframework.context.ApplicationContext;
@@ -19,11 +19,11 @@ public class UseAnnotationByAspectj {
                 "orderManageService");
 
         /**
-         * 模拟业务方法的调用者，调用10000次
+         * 模拟业务方法的调用者，调用2000次
          *
          * 注意：我们已经在演示sds-admin中配置了降级点createOrderPoint的降级策略，此时该业务方法的执行受到SDS的包括，在10s的滑动窗口中，最多调用1000次
          */
-        int times = 10000;
+        int times = 2000;
         while (times-- > 0) {
 
             Long orderId = null;

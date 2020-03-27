@@ -24,6 +24,11 @@
     <dependencies>
         <dependency>
             <groupId>com.didiglobal.sds</groupId>
+            <artifactId>sds-easy</artifactId>
+            <version>1.0.1-SNAPSHOT</version>
+        </dependency>
+        <dependency>
+            <groupId>com.didiglobal.sds</groupId>
             <artifactId>sds-aspectj</artifactId>
             <version>1.0.1-SNAPSHOT</version>
         </dependency>
