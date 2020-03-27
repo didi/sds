@@ -125,4 +125,17 @@
             </activation>
         </profile>
     </profiles>
+
+    <scm>
+        <url>https://github.com/didi/sds</url>
+        <connection>scm:git:https://github.com/didi/sds.git</connection>
+        <developerConnection>scm:git:https://github.com/didi/sds.git</developerConnection>
+        <tag>HEAD</tag>
+    </scm>
+
+    <issueManagement>
+        <system>Github Issues</system>
+        <url>https://github.com/didi/sds/issues</url>
+    </issueManagement>
+
 </project>

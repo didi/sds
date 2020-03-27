@@ -47,10 +47,10 @@ public class UseOriginApi {
     public static void main(String[] args) {
 
         /**
-         * 模拟业务方法的调用者，调用10000次
+         * 模拟业务方法的调用者，调用2000次
          * 注意：此时该业务方法的执行受到SDS的包括，在10s的滑动窗口中，最多调用1000次
          */
-        int times = 10000;
+        int times = 2000;
         while(times-- > 0) {
             Long orderId = createOrder(12345L, "杭州西湖区西溪谷G座");
             System.out.println("新创建的订单id:" + orderId);
@@ -72,7 +72,7 @@ public class UseOriginApi {
                 return null;
             }
 
-            // 2. 这里写正常的业务逻辑：用控制台输出来代表业务逻辑，为简单起见，返回的订单ID随机生成
+            // 2. 这里是正常的业务逻辑：用控制台输出来代表业务逻辑，为简单起见，返回的订单ID随机生成
             System.out.println("您的业务方法已经执行，userId:" + userId + ", address:" + address);
             return ThreadLocalRandom.current().nextLong(0, 10000000);
 
