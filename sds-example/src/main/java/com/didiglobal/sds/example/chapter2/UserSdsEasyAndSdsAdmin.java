@@ -35,6 +35,7 @@ public class UserSdsEasyAndSdsAdmin {
 
             /**
              * 使用了sds-easy的 {@link SdsEasyUtil} 后，再也不用在业务方法中进行SDS的埋点了，多方便啊！！！
+             * 注意：我们这里设置了降级后默认的返回值是null
              */
             Long orderId = SdsEasyUtil.invokerMethod(CREATE_ORDER_POINT, null,
                     () -> createOrder(12345L, "杭州西湖区西溪谷G座")
