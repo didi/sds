@@ -25,7 +25,7 @@ import static com.didiglobal.sds.admin.constants.SdsCode.SUCCESS;
 /**
  * 降级点返回值控制器
  * <p>
- * Created by yizhenqiang on 18/1/7.
+ * Created by manzhizhen on 18/1/7.
  */
 @RestController
 @RequestMapping(value = "/sds/pointreturnvalue/", method = RequestMethod.POST)
@@ -58,7 +58,7 @@ public class PointReturnValueController {
         return new SdsResponse<>(data);
     }
 
-    // curl -X POST -H 'Content-type':'application/json'  -d '{"appGroupName":"两轮车", "appName":"mzz-study",
+    // curl -X POST -H 'Content-type':'application/json'  -d '{"appGroupName":"BikeBusinessDepartment", "appName":"order",
     // "sdsSchemeName":"FIRST_GROUP", "point":"love", "status":1, "operatorId":999 }'
     // http://localhost:8887/sds/pointstrategy/add
     @RequestMapping(value = "add")
@@ -84,13 +84,13 @@ public class PointReturnValueController {
             return new SdsResponse(PARAM_ERROR.getCode(), "状态不能为空");
         }
 
-        if (StringUtils.isBlank(pointReturnValueRequest.getCreatorName())) {
-            return new SdsResponse(PARAM_ERROR.getCode(), "创建者姓名不能为空");
-        }
-
-        if (StringUtils.isBlank(pointReturnValueRequest.getCreatorEmail())) {
-            return new SdsResponse(PARAM_ERROR.getCode(), "创建者邮箱不能为空");
-        }
+//        if (StringUtils.isBlank(pointReturnValueRequest.getCreatorName())) {
+//            return new SdsResponse(PARAM_ERROR.getCode(), "创建者姓名不能为空");
+//        }
+//
+//        if (StringUtils.isBlank(pointReturnValueRequest.getCreatorEmail())) {
+//            return new SdsResponse(PARAM_ERROR.getCode(), "创建者邮箱不能为空");
+//        }
 
         if (!StringCheck.checkStringName(pointReturnValueRequest.getPoint())) {
             return new SdsResponse(PARAM_ERROR.getCode(), "降级点名称只能是数字、字母、-、_和#");
@@ -145,13 +145,13 @@ public class PointReturnValueController {
             return new SdsResponse(PARAM_ERROR.getCode(), "状态不能为空");
         }
 
-        if (StringUtils.isBlank(pointReturnValueRequest.getOperatorName())) {
-            return new SdsResponse(PARAM_ERROR.getCode(), "操作者姓名不能为空");
-        }
-
-        if (StringUtils.isBlank(pointReturnValueRequest.getOperatorEmail())) {
-            return new SdsResponse(PARAM_ERROR.getCode(), "操作者邮箱不能为空");
-        }
+//        if (StringUtils.isBlank(pointReturnValueRequest.getOperatorName())) {
+//            return new SdsResponse(PARAM_ERROR.getCode(), "操作者姓名不能为空");
+//        }
+//
+//        if (StringUtils.isBlank(pointReturnValueRequest.getOperatorEmail())) {
+//            return new SdsResponse(PARAM_ERROR.getCode(), "操作者邮箱不能为空");
+//        }
 
         if (pointReturnValueRequest.getPoint().length() > 200) {
             return new SdsResponse(PARAM_ERROR.getCode(), "降级点名称不能超过200个字符");

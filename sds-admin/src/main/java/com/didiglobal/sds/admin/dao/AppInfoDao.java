@@ -6,7 +6,7 @@ import org.apache.ibatis.annotations.*;
 import java.util.List;
 
 /**
- * Created by yizhenqiang on 18/2/11.
+ * Created by manzhizhen on 18/2/11.
  */
 @Mapper
 public interface AppInfoDao {

@@ -5,7 +5,7 @@ import com.didiglobal.sds.client.bean.SdsStrategy;
 import com.didiglobal.sds.client.enums.DowngradeActionType;
 
 /**
- * Created by yizhenqiang on 17/7/26.
+ * Created by manzhizhen on 17/7/26.
  */
 public abstract class AbstractStrategyExecutor {
 

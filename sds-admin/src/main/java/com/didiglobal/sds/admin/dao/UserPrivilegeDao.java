@@ -12,7 +12,7 @@ import java.util.List;
 /**
  * 用户权限DAO
  *
- * @auther yizhenqiang
+ * @auther manzhizhen
  * @date 2019/1/18
  */
 public interface UserPrivilegeDao {

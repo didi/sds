@@ -10,7 +10,7 @@ import java.io.InputStream;
  * <p>
  * 注意：该实现参考自Spring
  *
- * @author yizhenqiang
+ * @author manzhizhen
  * @version $Id: SdsClassReader.java, v 0.1 2016年1月10日 上午11:12:18 Administrator Exp $
  */
 public class SdsClassReader {

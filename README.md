@@ -8,11 +8,12 @@
 ## 2. SDS简介
 SDS（即 Service Downgrade System）是一个轻量级、简单、易用的限流、熔断、降级系统，能让Java应用做到自动限流、熔断和快速恢复，提升应用整体的“弹性”。现在服务端通过采用流行的微服务架构来应对错综复杂的大流量场景，并能在业务高速发展时仍然能做到较强的快速迭代能力和可扩展性。微服务架构并不是将整个系统变得更简单，相反，微服务架构的管理难度高于普通的集中式架构，所以，如何保证系统的每个节点在错综复杂的环境下能稳定提供服务，需要借助工具来让服务节点能抵挡流量冲击、熔断依赖坏点。
 
+![SDS Logo](https://pt-starimg.didistatic.com/static/starimg/img/I6dlKk6olY1585304032826.png "SDS")
+
 ## 3. SDS架构设计
-SDS采用C/S架构，只要Java应用依赖并使用了sds-client包，那么它就是一个SDS的客户端，sds-client中包含了限流、熔断和数据统计等功能。sds-admin作为Server端主要是为了配置降级策略、提供丰富的仪表盘并且保存客户端上传的统计数据、并应答最新的降级策略，如下图：
-<div align="center">    
-  <img src="https://pt-starimg.didistatic.com/static/starimg/img/fxnHAtPgtS1575906494316.png" alt="SDS架构图" align="center" />
-</div>
+SDS采用C/S架构，只要Java应用依赖并使用了sds-client包，那么它就是一个SDS的客户端，sds-client中包含了限流、熔断和数据统计等功能。sds-admin作为Server端主要是为了配置降级策略、提供丰富的仪表盘并且保存客户端上传的统计数据、并应答最新的降级策略( **快速体验sds-admin：https://sds.chpengzh.com/** )，如下图：
+
+![SDS架构图](https://pt-starimg.didistatic.com/static/starimg/img/fxnHAtPgtS1575906494316.png "SDS架构图")
 
 那么sds-client.jar是如何和sds-admin进行交互的？SDS客户端每10秒钟向SDS服务端发送一次心跳，用于上传SDS客户端在最近一个完整周期（10秒）内的统计和降级数据，并从服务端拉取最新的降级点策略信息。值得注意的是，sds-client.jar的依赖比较少，只靠内存来统计数据，各客户端的数据在服务端才进行聚合展现，服务端借助客户端的心跳来分发最新的降级点策略。
 
@@ -66,6 +67,7 @@ sds-client除了需要统计滑动窗口的数据，还有两个任务，统计�
 降级比例可以用作策略执行的灰度发布方案！
 
 ## 5. 使用方式
+详见：https://github.com/didi/sds/wiki/SDS%E7%9A%84%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97
 ### 5.1 添加依赖
 我们已经知道，所有的降级逻辑将由sds-client.jar来完成，为了让某个应用能成为SDS的一个客户端，应用需要依赖如下Jar：
 
@@ -95,13 +97,13 @@ sds-easy内部依赖了sds-client，sds-easy的出现是为了让我们使用sds
 // SDS控制台地址
 private static final String SERVER_URL = "http://127.0.0.1:8887";
 // 通过工厂方法来创建SdsClient实例
-private static final SdsClient sdsClient = SdsClientFactory.getOrCreateSdsClient("两轮车", "order", SERVER_URL);
+private static final SdsClient sdsClient = SdsClientFactory.getOrCreateSdsClient("BikeBusinessDepartment", "order", SERVER_URL);
 ```
 
 我们可以在Spring配置文件如下初始化：
 ```xml
 <bean id="sdsClient" class="com.didiglobal.sds.client.SdsClientFactory" factory-method="getOrCreateSdsClient">
-    <constructor-arg type="java.lang.String" value="两轮车" />
+    <constructor-arg type="java.lang.String" value="BikeBusinessDepartment" />
     <constructor-arg type="java.lang.String" value="order" />
     <constructor-arg type="java.lang.String" value="http://127.0.0.1:8887" />
 </bean>
@@ -170,7 +172,7 @@ protected static final String SERVER_URL = "http://127.0.0.1:8887";
  
 static {
     // 可以找个安静的地方初始化SdsClient
-    SdsClientFactory.getOrCreateSdsClient("两轮车", "mzz-study", SERVER_URL);
+    SdsClientFactory.getOrCreateSdsClient("BikeBusinessDepartment", "order", SERVER_URL);
 }
  
 // 这里假装是业务Service
@@ -213,7 +215,54 @@ String result = SdsEasyUtil.invokerMethod("somePoint", "我是降级后的默认
 });
 ```
 
-## 7. 降级露出
+## 7. 注解支持（推荐）
+SDS也支持使用注解接入，我们只需要在方法上使用 **@SdsDowngradeMethod** 即可。注解的接入方式有两种，一种是使用**Java 
+Agent**的能力来在类加载时将SDS代码植入（类似于Pinpoint的做法），另一种是利用**Aspectj**的能力来动态植入。
+### 7.1 通过Java Agent的方式使用注解
+第一步：通过maven依赖sds-bootstrap.jar（或者将sds-bootstrap.jar放到某个绝对路径下，例如/home/sds/lib/sds-bootstrap.jar）
+```xml
+    <dependency>
+        <groupId>com.didiglobal.sds</groupId>
+        <artifactId>sds-bootstrap</artifactId>
+        <version>1.0.1-SNAPSHOT</version>
+    </dependency>
+```
+第二步：在JVM启动时通过javaagent来引入sds-bootstrap.jar，所以我们需要修改启动脚本，例如：
+```jvm
+# 通过相对路径引入sds-bootstrap.jar (这里假设项目打完包后sds-bootstrap.jar在启动脚本当前目录的lib目录下)
+java -javaagent:lib/sds-bootstrap.jar MyApplication
+
+# 当然也可以通过绝对路径引入sds-bootstrap.jar
+java -javaagent:/home/sds/lib/sds-bootstrap.jar MyApplication
+```
+第三步：这样就可以直接在类方法中使用@SdsDowngradeMethod了。
+> 注意：该方式对类中的任何方法，不管是private还是public都有效。
+
+### 7.2 通过Spring AOP(Aspectj)的方式使用注解
+第一步：项目需要依赖sds-aspectj.jar，例如：
+```xml
+    <dependency>
+        <groupId>com.didiglobal.sds</groupId>
+        <artifactId>sds-aspectj</artifactId>
+        <version>1.0.1-SNAPSHOT</version>
+    </dependency>
+```
+第二步：如果使用了Spring(当然也包含Spring Boot)，那么需要创建一个SdsPointAspect Bean：
+```java
+@Configuration
+public class SdsConfiguration {
+    @Bean
+    public SdsPointAspect createSdsPointAspect() {
+        return new SdsPointAspect();
+    }
+}
+```
+第三步：这样就可以直接在类方法中使用@SdsDowngradeMethod了。
+> 注意：该方式无法对类的private方法生效。
+
+> 提醒：Java Agent方式和Spring AOP方式请不要同时使用！
+
+## 8. 降级露出
 我只能从sds-admin的仪表盘来感知到被降级了吗？其实客户端也可以感知降级，通过如下方式注册一个监听器：
 ```java
 static {
@@ -232,10 +281,10 @@ static {
 注意，监听器不宜注册太多，一个足矣，比如我们可以输出一些降级日志等。需要注意的是，只要有请求被降级，该监听器就会被触发，虽然是异步执行，但最好不要在里面做高耗时的操作，更不能在里面进行短信或电话报警（被降级的量有可能很高）。
 
 
-## 8. 常用扩展
+## 9. 常用扩展
 为了能进一步减少接入的难度，我们对常用框架的接入进行了封装，让接入的成本更低。
 
-### 8.1 对Dubbo的支持
+### 9.1 对Dubbo的支持
 大多数外部工具，对Dubbo的切入点都在Filter上，Filter它是由Dubbo通过SPI来初始化的，SdsClient实例应该作为静态单例来使用。
 
 我们为此提供了sds-dubbo.jar（注意，如果是maven方式构建，可以业务系统可以只依赖sds-dubbo.jar，因为sds-dubbo.jar内依赖了sds-client.jar），里面有一个SdsProviderFilter 和 SdsConsumerFilter，这两个filter都提供了可覆盖的接口，用于业务系统根据自己的特殊性，来提供降级后的返回值或行为：
@@ -259,17 +308,17 @@ static {
     }
 ```
 
-## 9. SDS优势
+## 10. SDS优势
 SDS的目标是打造一个简单、易用、可靠的限流、熔断和降级系统。让我们回退到2015年年底，当时代驾急需一个能自动限流、熔断和恢复的工具，但经过市场调研，著名的Hystrix并不是我们想要的，Hystrix因为它依赖了RxJava，所以对我们来说太重了，而且Hystrix的主要两种限流方式是信号量和线程池，不满足我们对固定时间窗口访问量的限流方式（当时代驾使用的监控系统的时间力度是1分钟，所以我们希望也能在1分钟内进行流控操作），而且Hystrix基于Command模式来设计，侵入性较强。既然我们目标明确，于是SDS1.0版本在2016年初，功能简单，但API设计得不太合理，易用性比较差，而且整个控制台界面也不人性化，现在看来有些惨不忍睹。于是在17年底开始着手进行重构，在2018年SDS2.0诞生，SDS2.0在功能和易用性方面相比SDS1.0有质的飞越，目前在两轮车中使用（代驾、安全等部门使用的还是SDS1.0），为了回馈社会，希望把SDS2.0开源出来。 相比著名的Hystrix，SDS的优势主要体现在支持的限流功能更丰富，有访问量、并发量、错误量、超时量、令牌桶等限流方式（没有Hystrix的线程池限流），并且控制台仪表盘比Hystrix更强大。 相比18年7月阿里开源Sentinel，SDS的优势主要体现更简单，上手更容易，并且SDS支持现成的一键降级方案，能更方便的制定紧急预案。相比Sentinel，SDS的弱势主要体现在没有集群统一限流功能，并且只支持Java。
 
-## 10. 联系或加入我们
+## 11. 联系或加入我们
 **微信群**：我们有微信群（SDS开发者交流群），但群二维码7天有效，所以请加微信号 **sugarmq**、**devil_chpengzh**、**lansedemeng-2010**、**huangyiminghappy**、**BU_DONG_XIAO_BIN** 为好友（备注下sds），我们会拉你入群。
 
 **钉钉群**：我们也有钉钉群（SDS开发者交流群），请用钉钉扫码加入：
 
 ![avatar](https://pt-starimg.didistatic.com/static/starimg/img/3AAuscs7Rj1582955653942.png)
 
-## 11. 协议
+## 12. 协议
 
 <img alt="Apache-2.0 license" src="https://lucene.apache.org/images/mantle-power.png" width="128">
 SDS 基于 Apache-2.0 协议进行分发和使用，更多信息参见 [协议文件](LICENSE)。

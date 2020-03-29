@@ -7,7 +7,7 @@ import static com.didiglobal.sds.client.contant.ExceptionCode.DOWNGRADE;
 /**
  * 降级后抛的异常
  * <p>
- * Created by yizhenqiang on 17/5/1.
+ * Created by manzhizhen on 17/5/1.
  */
 public class SdsException extends RuntimeException {
 

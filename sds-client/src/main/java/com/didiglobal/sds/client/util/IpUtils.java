@@ -16,7 +16,7 @@ import java.util.Enumeration;
 /**
  * IP工具类
  *
- * @author yizhenqiang
+ * @author manzhizhen
  * @version $Id: IpUtils.java, v 0.1 2015年9月22日 下午3:45:13 Administrator Exp $
  */
 public class IpUtils {

@@ -1,7 +1,7 @@
 package com.didiglobal.sds.admin.util;
 
 /**
- * Created by yizhenqiang on 17/6/28.
+ * Created by manzhizhen on 17/6/28.
  */
 public class HttpResponse {
 

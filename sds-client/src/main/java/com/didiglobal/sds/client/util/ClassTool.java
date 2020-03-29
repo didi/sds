@@ -15,7 +15,7 @@ import java.io.InputStream;
  *
  * 参见 org.springframework.asm.ClassReader
  * 
- * @author yizhenqiang
+ * @author manzhizhen
  * @version $Id: ClassTool.java, v 0.1 2016年1月9日 下午5:34:40 Administrator Exp $
  */
 public class ClassTool {

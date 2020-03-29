@@ -7,7 +7,7 @@ import com.didiglobal.sds.client.service.CycleDataService;
 /**
  * 包含访问量、并发量、异常量、异常率、超时等特性的毫秒计数器
  * <p>
- * Created by yizhenqiang on 2017/1/1.
+ * Created by manzhizhen on 2017/1/1.
  */
 public class PowerfulCycleTimeCounter {
 

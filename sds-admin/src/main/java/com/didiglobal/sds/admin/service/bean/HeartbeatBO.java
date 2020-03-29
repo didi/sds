@@ -11,7 +11,7 @@ import java.util.Date;
  * 如果每分钟一次心跳，保存7天，记录数将是千万级。
  * </p>
  *
- * Created by yizhenqiang on 17/7/26.
+ * Created by manzhizhen on 17/7/26.
  */
 public class HeartbeatBO {
 

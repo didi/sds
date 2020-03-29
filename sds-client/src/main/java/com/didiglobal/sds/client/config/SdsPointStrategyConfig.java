@@ -14,7 +14,7 @@ import java.util.List;
 /**
  * 降级点策略配置
  * 
- * @author yizhenqiang
+ * @author manzhizhen
  */
 public class SdsPointStrategyConfig {
 

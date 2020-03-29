@@ -6,7 +6,7 @@ import java.util.List;
 
 /**
  * @Description: 仪表盘的查询结果
- * @Author: yizhenqiang
+ * @Author: manzhizhen
  * @Date: Create in 2019-09-13 17:13
  */
 public class DashboardResponse {

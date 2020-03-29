@@ -11,6 +11,8 @@
     <artifactId>sds-admin</artifactId>
     <name>sds-admin</name>
 
+    <url>https://github.com/didi/sds</url>
+
     <properties>
     </properties>
 
@@ -129,12 +131,66 @@
                 <resources>
                     <resource>
                         <directory>${front.build.dir}</directory>
-                        <targetPath>static</targetPath>
+                        <targetPath>static/</targetPath>
                     </resource>
                     <resource>
                         <directory>src/main/resources</directory>
                     </resource>
                 </resources>
+            </build>
+        </profile>
+        <profile>
+            <id>docker</id>
+            <activation>
+                <activeByDefault>false</activeByDefault>
+            </activation>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>com.spotify</groupId>
+                        <artifactId>docker-maven-plugin</artifactId>
+                        <version>0.4.12</version>
+                        <executions>
+                            <execution>
+                                <phase>package</phase>
+                                <goals>
+                                    <goal>build</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                        <configuration>
+                            <imageName>didisds/sds-admin</imageName>
+                            <baseImage>openjdk:8</baseImage>
+                            <env>
+                                <!-- MetaData Config Store -->
+                                <SPRING_DATASOURCE_DRIVER_CLASS_NAME>org.h2.Driver</SPRING_DATASOURCE_DRIVER_CLASS_NAME>
+                                <SPRING_DATASOURCE_USERNAME>sa</SPRING_DATASOURCE_USERNAME>
+                                <SPRING_DATASOURCE_PASSWORD>sa</SPRING_DATASOURCE_PASSWORD>
+                                <SPRING_DATASOURCE_URL>jdbc:h2:~/test</SPRING_DATASOURCE_URL>
+                                <SPRING_DATASOURCE_SCHEMA>classpath:db/h2.sql</SPRING_DATASOURCE_SCHEMA>
+                                <!-- HeartBeat Store -->
+                                <SDS_HEARTBEAT_DATABASE_TYPE>h2</SDS_HEARTBEAT_DATABASE_TYPE>
+                                <SDS_INFLUXDB_USERNAME>sa</SDS_INFLUXDB_USERNAME>
+                                <SDS_INFLUXDB_PASSWORD>sa</SDS_INFLUXDB_PASSWORD>
+                                <SDS_INFLUXDB_URL>http://localhost:8086</SDS_INFLUXDB_URL>
+                                <SDS_INFLUXDB_DATABASE>sds</SDS_INFLUXDB_DATABASE>
+                            </env>
+                            <exposes>
+                                <expose>8887</expose>
+                            </exposes>
+                            <entryPoint>
+                                ["java", "-jar", "/${project.build.finalName}.jar", "--spring.profiles.active=docker"]
+                            </entryPoint>
+                            <resources>
+                                <resource>
+                                    <targetPath>/</targetPath>
+                                    <directory>${project.build.directory}</directory>
+                                    <include>${project.build.finalName}.jar</include>
+                                </resource>
+                            </resources>
+                        </configuration>
+                    </plugin>
+                </plugins>
             </build>
         </profile>
     </profiles>

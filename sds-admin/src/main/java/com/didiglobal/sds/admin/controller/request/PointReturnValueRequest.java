@@ -1,13 +1,11 @@
 package com.didiglobal.sds.admin.controller.request;
 
-import com.didiglobal.sds.admin.controller.bean.PageInfo;
-
 /**
  * 降级点返回值请求
  *
- * @author yizhenqiang
+ * @author manzhizhen
  */
-public class PointReturnValueRequest extends PageInfo {
+public class PointReturnValueRequest extends AbstractRequest {
 
     private String appGroupName;
 
@@ -24,14 +22,6 @@ public class PointReturnValueRequest extends PageInfo {
      * 本策略是否可用 0-关闭， 1-开启
      */
     private Integer status;
-
-    private String operatorName;
-
-    private String operatorEmail;
-
-    private String creatorName;
-
-    private String creatorEmail;
 
     public String getAppGroupName() {
         return appGroupName;
@@ -63,38 +53,6 @@ public class PointReturnValueRequest extends PageInfo {
 
     public void setReturnValueStr(String returnValueStr) {
         this.returnValueStr = returnValueStr;
-    }
-
-    public String getOperatorName() {
-        return operatorName;
-    }
-
-    public void setOperatorName(String operatorName) {
-        this.operatorName = operatorName;
-    }
-
-    public String getOperatorEmail() {
-        return operatorEmail;
-    }
-
-    public void setOperatorEmail(String operatorEmail) {
-        this.operatorEmail = operatorEmail;
-    }
-
-    public String getCreatorName() {
-        return creatorName;
-    }
-
-    public void setCreatorName(String creatorName) {
-        this.creatorName = creatorName;
-    }
-
-    public String getCreatorEmail() {
-        return creatorEmail;
-    }
-
-    public void setCreatorEmail(String creatorEmail) {
-        this.creatorEmail = creatorEmail;
     }
 
     public Integer getStatus() {

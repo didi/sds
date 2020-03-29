@@ -6,7 +6,7 @@ import java.util.Date;
 
 /**
  * @Description: 降级仪表盘服务接口
- * @Author: yizhenqiang
+ * @Author: manzhizhen
  * @Date: Create in 2019-10-01 11:16
  */
 public interface DashboardService {

@@ -3,7 +3,7 @@ package com.didiglobal.sds.client;
 /**
  * 服务降级的客户端api
  * <p>
- * Created by yizhenqiang on 17/1/1.
+ * Created by manzhizhen on 17/1/1.
  */
 public interface SdsClient {
 

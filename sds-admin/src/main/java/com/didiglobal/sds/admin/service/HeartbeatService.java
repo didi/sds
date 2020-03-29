@@ -7,7 +7,7 @@ import com.didiglobal.sds.admin.service.bean.HeartbeatShowBO;
 import java.util.Date;
 
 /**
- * Created by yizhenqiang on 18/2/12.
+ * Created by manzhizhen on 18/2/12.
  */
 public interface HeartbeatService {
 

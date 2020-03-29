@@ -22,7 +22,7 @@ import static com.didiglobal.sds.client.contant.BizConstant.CYCLE_BUCKET_NUM;
  * 周期数据统计服务
  * <p>
  * <p>
- * Created by yizhenqiang on 2017/1/1.
+ * Created by manzhizhen on 2017/1/1.
  */
 final public class CycleDataService {
 

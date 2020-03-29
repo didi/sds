@@ -1,7 +1,7 @@
 package com.didiglobal.sds.client.contant;
 
 /**
- * Created by yizhenqiang on 17/6/23.
+ * Created by manzhizhen on 17/6/23.
  */
 final public class BizConstant {
 

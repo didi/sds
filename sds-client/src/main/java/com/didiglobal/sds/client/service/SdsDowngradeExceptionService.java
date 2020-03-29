@@ -15,7 +15,7 @@ import java.util.concurrent.ConcurrentHashMap;
 /**
  * 降级异常过滤服务类
  *
- * @author yizhenqiang
+ * @author manzhizhen
  * @version $Id: SdsDowngradeExceptionService.java, v 0.1 2016年1月28日 上午9:59:56 Administrator Exp $
  */
 final public class SdsDowngradeExceptionService {
@@ -96,7 +96,7 @@ final public class SdsDowngradeExceptionService {
     /**
      * 降级异常类
      *
-     * @author yizhenqiang
+     * @author manzhizhen
      * @version $Id: SdsDowngradeExceptionService.java, v 0.1 2016年1月28日 上午10:26:09 Administrator Exp $
      */
     static class DowngradeException {

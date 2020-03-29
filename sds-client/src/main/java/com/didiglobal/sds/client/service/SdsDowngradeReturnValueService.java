@@ -20,7 +20,7 @@ import java.util.concurrent.ConcurrentHashMap;
  * <p>
  * 结合AOP使用， {@link{SdsDowngradeAspectService}}
  *
- * @author yizhenqiang
+ * @author manzhizhen
  * @version $Id: SdsDowngradeReturnValueService.java, v 0.1 2016年2月7日 下午12:33:15 Administrator Exp $
  */
 final public class SdsDowngradeReturnValueService {

@@ -11,7 +11,7 @@ import java.util.Map;
 
 /**
  * @Description:
- * @Author: yizhenqiang
+ * @Author: manzhizhen
  * @Date: Create in 2019-09-15 13:45
  */
 public class MultOnPropertyCondition extends SpringBootCondition {

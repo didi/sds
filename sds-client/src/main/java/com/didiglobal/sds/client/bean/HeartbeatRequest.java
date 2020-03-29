@@ -11,7 +11,7 @@ import java.util.Map;
 /**
  * 客户端心跳请求对象 客户端每分钟会往服务端发送一次心跳，用于上传客户端上一分钟数据并从服务端拉取最新的策略
  *
- * @author yizhenqiang
+ * @author manzhizhen
  * @version $Id: HeartBeatRequest.java, v 0.1 2016年2月20日 上午9:47:01 Administrator
  * Exp $
  */

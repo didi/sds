@@ -1,7 +1,7 @@
 package com.didiglobal.sds.client.contant;
 
 /**
- * Created by yizhenqiang on 17/5/1.
+ * Created by manzhizhen on 17/5/1.
  */
 public enum ExceptionCode {
     DOWNGRADE(1, "此请求已经被降级");

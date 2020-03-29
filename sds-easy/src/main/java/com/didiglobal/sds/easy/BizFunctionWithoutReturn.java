@@ -1,7 +1,7 @@
 package com.didiglobal.sds.easy;
 
 /**
- * @author yizhenqiang
+ * @author manzhizhen
  * @date 2019-07-18
  */
 public interface BizFunctionWithoutReturn {

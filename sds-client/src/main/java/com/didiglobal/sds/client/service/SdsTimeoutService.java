@@ -1,7 +1,7 @@
 package com.didiglobal.sds.client.service;
 
 /**
- * Created by yizhenqiang on 2016/6/22.
+ * Created by manzhizhen on 2016/6/22.
  */
 public class SdsTimeoutService {
 
