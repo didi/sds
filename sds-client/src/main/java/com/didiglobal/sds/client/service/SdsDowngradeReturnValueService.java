@@ -72,6 +72,16 @@ final public class SdsDowngradeReturnValueService {
     }
 
     /**
+     * 获取降级点string形式返回值
+     * @param point
+     * @return
+     */
+    public String getPointDowngradeReturnValueStr(String point) {
+        ReturnValue returnValue = pointDowngradeReturnValue.get(point);
+        return returnValue == null ? null : returnValue.getReturnValueStr();
+    }
+
+    /**
      * 重设降级点返回值
      *
      * @param strategyMap
