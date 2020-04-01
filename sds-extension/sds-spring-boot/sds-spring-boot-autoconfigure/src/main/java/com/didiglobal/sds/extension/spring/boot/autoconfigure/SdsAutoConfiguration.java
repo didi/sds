@@ -3,28 +3,34 @@ package com.didiglobal.sds.extension.spring.boot.autoconfigure;
 
 import com.didiglobal.sds.client.SdsClient;
 import com.didiglobal.sds.client.SdsClientFactory;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.context.properties.EnableConfigurationProperties;
+import com.didiglobal.sds.client.log.SdsLoggerFactory;
+import org.slf4j.Logger;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
+import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
 
 
 /**
  * 将SDS和Spring Boot的自动配置打通
  */
-@EnableConfigurationProperties({SdsProperties.class})
+@Configuration
 public class SdsAutoConfiguration {
 
-    @Autowired
-    private SdsProperties sdsProperties;
+    private Logger logger = SdsLoggerFactory.getDefaultLogger();
 
     @Bean
-    public SdsClient getOrCreateSdsClient() {
-        if (sdsProperties == null) {
-            throw new IllegalStateException("SdsAutoConfiguration#getOrCreateSdsClient 无法解析到sds.app-group-name、" +
-                    "sds.app-name和sds.server-addr-list等properties配置，无法创建SdsClient");
-        }
+    @ConfigurationProperties("sds")
+    public SdsProperties sdsProperties() {
+        return new SdsProperties();
+    }
 
-        return SdsClientFactory.getOrCreateSdsClient(sdsProperties.getAppGroupName(), sdsProperties.getAppName(),
+    @Bean
+    @ConditionalOnMissingBean
+    public SdsClient sdsClient(SdsProperties sdsProperties) {
+        SdsClient sdsClient = SdsClientFactory.getOrCreateSdsClient(sdsProperties.getAppGroupName(), sdsProperties.getAppName(),
                 sdsProperties.getServerAddrList());
+        logger.info("SdsAutoConfiguration create SdsClient with sdsProperties:{}", sdsProperties);
+        return sdsClient;
     }
 }

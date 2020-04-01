@@ -1,12 +1,9 @@
 package com.didiglobal.sds.extension.spring.boot.autoconfigure;
 
-import org.springframework.boot.context.properties.ConfigurationProperties;
-
 /**
  * 对应properties文件的：
  * sds.app.group.name, sds.app.name, sds.server.addr.list
  */
-@ConfigurationProperties("sds")
 public class SdsProperties {
 
     private String appGroupName;
