@@ -1,8 +1,8 @@
 package com.didiglobal.sds.extension.dubbo;
 
+import com.didiglobal.sds.client.log.SdsLoggerFactory;
 import com.didiglobal.sds.client.util.StringUtils;
 import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import static com.didiglobal.sds.client.contant.BizConstant.*;
 
@@ -12,7 +12,7 @@ import static com.didiglobal.sds.client.contant.BizConstant.*;
 public enum DubboSdsClientFactory {
     INSTANCE;
 
-    private final Logger logger = LoggerFactory.getLogger(DubboSdsClientFactory.class);
+    private final Logger logger = SdsLoggerFactory.getDefaultLogger();
 
     private final DubboSdsClient dubboSdsClient;
 
