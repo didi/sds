@@ -36,7 +36,7 @@ public class CommonSdsClient extends AbstractSdsClient {
      */
     private volatile AbstractStrategyExecutor strategyExecutorChain;
 
-    CommonSdsClient(String appGroupName, String appName, String serverAddrList) {
+    protected CommonSdsClient(String appGroupName, String appName, String serverAddrList) {
         super(appGroupName, appName, serverAddrList);
 
         // 初始化策略链条
@@ -44,6 +44,14 @@ public class CommonSdsClient extends AbstractSdsClient {
 
         // 初始化心跳线程
         initHeartBeat(appGroupName, appName, serverAddrList);
+    }
+
+    protected void setDowngradeStartTime(Long time) {
+        downgradeStartTime.set(time);
+    }
+
+    protected Long getDowngradeStartTime() {
+        return downgradeStartTime.get();
     }
 
     /**
@@ -67,7 +75,7 @@ public class CommonSdsClient extends AbstractSdsClient {
             /**
              * 传递now到{@link this#downgradeFinally(String)}方法
              */
-            downgradeStartTime.set(now);
+            setDowngradeStartTime(now);
 
             SdsPowerfulCounterService sdsPowerfulCounterService = SdsPowerfulCounterService.getInstance();
 
@@ -115,7 +123,7 @@ public class CommonSdsClient extends AbstractSdsClient {
              */
             if (timeoutThreshold != null && timeoutThreshold > 0 && consumeTime > timeoutThreshold) {
 
-                Long downgradeStartTimeValue = downgradeStartTime.get();
+                Long downgradeStartTimeValue = getDowngradeStartTime();
                 if (downgradeStartTimeValue == null) {
                     logger.warn("CommonSdsClient downgradeExit: 调用 downgradeFinally 之前请先调用 shouldDowngrade ！");
                     return;
@@ -125,7 +133,7 @@ public class CommonSdsClient extends AbstractSdsClient {
             }
 
         } finally {
-            downgradeStartTime.set(null);
+            setDowngradeStartTime(null);
         }
     }
 
@@ -145,7 +153,7 @@ public class CommonSdsClient extends AbstractSdsClient {
         AssertUtil.notBlack(point, "降级点不能为空！");
 
         try {
-            Long startTime = downgradeStartTime.get();
+            Long startTime = getDowngradeStartTime();
 
             // 先判断该异常是否属于失败异常
             if (exception != null && SdsDowngradeExceptionService.getInstance().isDowngradeException(point,

@@ -19,7 +19,7 @@
         <li>
           <el-dropdown>
             <span class="el-dropdown-link">
-              <span class="env-tag"> {{ env ? env : "测试环境" }}</span>
+              <span class="env-tag"> {{ env ? env : "默认环境" }}</span>
               <a href="javascript:;">
                 <a class="iconfont adSys-user user-li" href="javascript:;"></a>
                 <span class="user-name">{{ userInfo.username_zh || '登录' }}</span>
