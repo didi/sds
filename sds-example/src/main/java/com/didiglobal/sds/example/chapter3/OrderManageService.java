@@ -1,4 +1,4 @@
-package com.didiglobal.sds.example.chapter2;
+package com.didiglobal.sds.example.chapter3;
 
 import com.didiglobal.sds.client.SdsClient;
 import com.didiglobal.sds.client.SdsClientFactory;
@@ -26,7 +26,7 @@ public class OrderManageService {
     private final static String CREATE_ORDER_POINT = "createOrderPoint";
 
     /**
-     * 经过SDS包装的某个业务方法：创建订单
+     * 创建订单
      *
      * 注意：使用 {@link SdsDowngradeMethod} 默认降级后的行为是抛 {@link com.didiglobal.sds.client.exception.SdsException} 异常
      *

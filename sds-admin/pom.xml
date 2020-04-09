@@ -114,19 +114,12 @@
         <profile>
             <id>front</id>
             <activation>
-                <activeByDefault>false</activeByDefault>
+                <activeByDefault>true</activeByDefault>
             </activation>
             <properties>
                 <!-- 前端构建件输出地址 -->
                 <front.build.dir>../sds-front/target/static</front.build.dir>
             </properties>
-            <dependencies>
-                <dependency>
-                    <groupId>${project.groupId}</groupId>
-                    <artifactId>sds-front</artifactId>
-                    <version>${project.version}</version>
-                </dependency>
-            </dependencies>
             <build>
                 <resources>
                     <resource>

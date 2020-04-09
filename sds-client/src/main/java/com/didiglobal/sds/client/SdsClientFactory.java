@@ -31,7 +31,7 @@ public final class SdsClientFactory {
 
         if (StringUtils.isBlank(appGroupName) || StringUtils.isBlank(appName) || StringUtils.isBlank(serverAddrList)) {
             logger.info("SdsClientFactory#static 系统参数" + APP_NAME + ", " + APP_NAME + ", " + SERVER_ADDR_LIST +
-                    "没配置全，无法直接初始化SdsClient。");
+                    "没配置全，不通过系统参数初始化SdsClient。");
 
         } else {
             instance = buildSdsClient(appGroupName, appName, serverAddrList);

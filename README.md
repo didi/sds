@@ -8,11 +8,12 @@
 ## 2. SDS简介
 SDS（即 Service Downgrade System）是一个轻量级、简单、易用的限流、熔断、降级系统，能让Java应用做到自动限流、熔断和快速恢复，提升应用整体的“弹性”。现在服务端通过采用流行的微服务架构来应对错综复杂的大流量场景，并能在业务高速发展时仍然能做到较强的快速迭代能力和可扩展性。微服务架构并不是将整个系统变得更简单，相反，微服务架构的管理难度高于普通的集中式架构，所以，如何保证系统的每个节点在错综复杂的环境下能稳定提供服务，需要借助工具来让服务节点能抵挡流量冲击、熔断依赖坏点。
 
+![SDS Logo](https://pt-starimg.didistatic.com/static/starimg/img/I6dlKk6olY1585304032826.png "SDS")
+
 ## 3. SDS架构设计
-SDS采用C/S架构，只要Java应用依赖并使用了sds-client包，那么它就是一个SDS的客户端，sds-client中包含了限流、熔断和数据统计等功能。sds-admin作为Server端主要是为了配置降级策略、提供丰富的仪表盘并且保存客户端上传的统计数据、并应答最新的降级策略(快速体验sds-admin：https://sds.chpengzh.com/ )，如下图：
-<div align="center">    
-  <img src="https://pt-starimg.didistatic.com/static/starimg/img/fxnHAtPgtS1575906494316.png" alt="SDS架构图" align="center" />
-</div>
+SDS采用C/S架构，只要Java应用依赖并使用了sds-client包，那么它就是一个SDS的客户端，sds-client中包含了限流、熔断和数据统计等功能。sds-admin作为Server端主要是为了配置降级策略、提供丰富的仪表盘并且保存客户端上传的统计数据、并应答最新的降级策略( **快速体验sds-admin：https://sds.chpengzh.com/** )，如下图：
+
+![SDS架构图](https://pt-starimg.didistatic.com/static/starimg/img/fxnHAtPgtS1575906494316.png "SDS架构图")
 
 那么sds-client.jar是如何和sds-admin进行交互的？SDS客户端每10秒钟向SDS服务端发送一次心跳，用于上传SDS客户端在最近一个完整周期（10秒）内的统计和降级数据，并从服务端拉取最新的降级点策略信息。值得注意的是，sds-client.jar的依赖比较少，只靠内存来统计数据，各客户端的数据在服务端才进行聚合展现，服务端借助客户端的心跳来分发最新的降级点策略。
 
