@@ -48,12 +48,6 @@
         </dependency>
 
         <dependency>
-            <groupId>com.didiglobal.sds</groupId>
-            <artifactId>sds-apache-dubbo-common</artifactId>
-            <version>1.0.0-SNAPSHOT</version>
-        </dependency>
-
-        <dependency>
             <groupId>org.apache.dubbo</groupId>
             <artifactId>dubbo</artifactId>
             <scope>provided</scope>

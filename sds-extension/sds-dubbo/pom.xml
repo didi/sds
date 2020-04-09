@@ -18,8 +18,11 @@
 
     <url>https://github.com/didi/sds</url>
 
-    <dependencies>
+    <properties>
+        <dubbo.version>2.6.5</dubbo.version>
+    </properties>
 
+    <dependencies>
         <dependency>
             <groupId>com.didiglobal.sds</groupId>
             <artifactId>sds-client</artifactId>
@@ -29,7 +32,8 @@
         <dependency>
             <groupId>com.alibaba</groupId>
             <artifactId>dubbo</artifactId>
-            <version>2.6.4</version>
+            <version>${dubbo.version}</version>
+            <scope>provided</scope>
         </dependency>
     </dependencies>
 
