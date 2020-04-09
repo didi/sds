@@ -8,6 +8,8 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
 /**
+ * 【演示】Sds和Spring Boot打通
+ *
  * 运行Spring Boot的单元测试来验证结果
  *
  * @Author: yizhenqiang
