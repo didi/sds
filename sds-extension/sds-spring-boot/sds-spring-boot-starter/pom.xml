@@ -22,7 +22,6 @@
         <dependency>
             <groupId>com.didiglobal.sds</groupId>
             <artifactId>sds-spring-boot-autoconfigure</artifactId>
-            <version>1.0.1-SNAPSHOT</version>
         </dependency>
     </dependencies>
 
