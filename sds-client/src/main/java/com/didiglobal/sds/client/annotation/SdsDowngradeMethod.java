@@ -26,4 +26,12 @@ public @interface SdsDowngradeMethod {
      * 异常类型
      */
     Class<?> exceptionClass() default Exception.class;
+
+    /**
+     * 出现异常后的降级方法名称，和使用注解标注的方法在同一个类中，注意这里有降级的优先级顺序
+     * fallback 指定的方法 > sds-admin 配置的策略 > 默认（抛出异常）
+     *
+     * @return 方法名称
+     */
+    String fallback() default "";
 }

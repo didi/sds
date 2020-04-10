@@ -14,7 +14,7 @@ public class UseAnnotationByAspectj {
 
     public static void main(String[] args) {
         // create and configure beans
-        ApplicationContext context = new ClassPathXmlApplicationContext("chapter2-spring.xml");
+        ApplicationContext context = new ClassPathXmlApplicationContext("chapter3-spring.xml");
         OrderManageService orderManageService = (OrderManageService) context.getBean(
                 "orderManageService");
 

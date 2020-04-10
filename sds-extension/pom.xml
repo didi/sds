@@ -15,10 +15,7 @@
 
     <modules>
         <module>sds-dubbo</module>
-        <module>sds-apache-dubbo-common</module>
-        <module>sds-apache-dubbo-2.7.3</module>
-        <module>sds-apache-dubbo-2.7.5</module>
-        <module>sds-apache-dubbo-2.7.6</module>
+        <module>sds-apache-dubbo</module>
         <module>sds-okhttp</module>
         <module>sds-spring-boot</module>
         <module>sds-aspectj</module>
