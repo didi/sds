@@ -27,17 +27,21 @@ public class TokenBucketStrategyExecutor extends AbstractStrategyExecutor {
             return true;
         }
 
-        boolean curSecondTokenUse = checkData.getTakeTokenBucketNum().compareTo(strategy.
-                getTokenBucketGeneratedTokensInSecond().longValue()) < 0;
+        System.out.println(checkData.getTakeTokenBucketNum());
 
-        // 如果当前秒的令牌已经不够用，那么就看令牌桶里是否还有
-        if (!curSecondTokenUse && strategy.getTokenBucketSize() != null && strategy.getTokenBucketSize() > 0) {
-            // 计算滑动周期内桶里是否还有多余的令牌
-            return CYCLE_BUCKET_NUM * BUCKET_TIME * strategy.getTokenBucketGeneratedTokensInSecond() + strategy.
-                    getTokenBucketSize() - (checkData.getTakeTokenBucketNum() - checkData.getDowngradeCount()) > 0;
+        // 如果当前桶的令牌还没用完，那么直接返回
+        if (checkData.getTakeTokenBucketNum().compareTo(strategy.
+                getTokenBucketGeneratedTokensInSecond().longValue()) < 0) {
+            return true;
         }
 
-        return curSecondTokenUse;
+        // 如果当前桶的令牌已经用完，但又没额外设置桶容量（即默认桶容量和桶每秒生成的令牌数相同），那就直接拒绝
+        if (strategy.getTokenBucketSize() <= strategy.getTokenBucketGeneratedTokensInSecond()) {
+            return false;
+        }
+
+        // 如果当前秒的令牌已经不够用，那么就看历史桶中是否有剩余令牌能匀一下
+        return CYCLE_BUCKET_NUM * BUCKET_TIME * strategy.getTokenBucketGeneratedTokensInSecond() - checkData.getTakeTokenBucketNum() + checkData.getDowngradeCount() > 0;
     }
 
     @Override

@@ -12,7 +12,7 @@ import org.springframework.test.context.junit4.SpringRunner;
  *
  * 运行Spring Boot的单元测试来验证结果
  *
- * @Author: yizhenqiang
+ * @Author: manzhizhen
  * @Date: Create in 2020-03-29 18:34
  */
 @RunWith(SpringRunner.class)

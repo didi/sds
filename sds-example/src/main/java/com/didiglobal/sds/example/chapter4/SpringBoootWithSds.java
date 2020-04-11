@@ -6,7 +6,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 /**
  * Spring Boot启动类
  *
- * @Author: yizhenqiang
+ * @Author: manzhizhen
  * @Date: Create in 2020-03-29 14:31
  */
 @SpringBootApplication

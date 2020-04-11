@@ -12,7 +12,7 @@ import java.util.concurrent.ThreadLocalRandom;
  *
  * 这里演示两种方式使用SDS，方式1：Spring AOP + 注解 的方式； 方式2：使用 SdsEasyUtil 或 SdsClient
  *
- * @Author: yizhenqiang
+ * @Author: manzhizhen
  * @Date: Create in 2020-03-22 22:39
  */
 @Service("orderManageService")
