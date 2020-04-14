@@ -6,6 +6,9 @@ package com.didiglobal.sds.client.util;
 import com.didiglobal.sds.client.contant.BizConstant;
 
 import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
+import java.time.ZoneId;
+import java.time.format.DateTimeFormatter;
 import java.util.Date;
 
 /**
@@ -30,10 +33,8 @@ public class DateUtils {
         if (StringUtils.isBlank(newFormat)) {
             newFormat = DATE_TIME_FORMAT;
         }
-
-        SimpleDateFormat format = new SimpleDateFormat(newFormat);
-
-        return format.format(date);
+        LocalDateTime localDateTime = date.toInstant().atZone(ZoneId.systemDefault()).toLocalDateTime();
+        return localDateTime.format(DateTimeFormatter.ofPattern(newFormat));
     }
 
     /**
