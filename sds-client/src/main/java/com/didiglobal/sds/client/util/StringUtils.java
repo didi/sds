@@ -11,7 +11,7 @@ package com.didiglobal.sds.client.util;
 public class StringUtils {
 
     public static boolean isBlank(String value) {
-        return value == null || value.trim().equals("");
+        return value == null || "".equals(value.trim());
     }
 
     public static boolean isNotBlank(String value) {
