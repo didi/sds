@@ -3,6 +3,7 @@
  */
 package com.didiglobal.sds.client.util;
 
+import com.alibaba.fastjson.util.IOUtils;
 import com.didiglobal.sds.client.log.SdsLoggerFactory;
 import org.slf4j.Logger;
 
@@ -77,14 +78,12 @@ public class HttpUtils {
         while ((line = br.readLine()) != null) {
             response.append(line);
         }
-
-        bw.close();
-        osr.close();
-        os.close();
-
-        br.close();
-        isr.close();
-        is.close();
+        IOUtils.close(bw);
+        IOUtils.close(osr);
+        IOUtils.close(os);
+        IOUtils.close(br);
+        IOUtils.close(isr);
+        IOUtils.close(is);
 
         return response.toString();
     }

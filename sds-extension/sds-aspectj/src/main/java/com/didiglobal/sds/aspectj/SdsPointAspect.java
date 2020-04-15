@@ -66,7 +66,7 @@ public class SdsPointAspect {
             Object downgradeReturnValue = null;
             // 优先判断是否被 fallback 处理
             if (!StringUtils.isBlank(sdsDowngradeMethodAnnotation.fallback())) {
-                downgradeReturnValue = this.handleCustomSdsException(pjp, ex);
+                downgradeReturnValue = this.handleFallback(pjp, ex);
                 if (downgradeReturnValue != null) {
                     return downgradeReturnValue;
                 }
@@ -96,14 +96,14 @@ public class SdsPointAspect {
      * 这里提供了两种写法，详细见 {@link com.didiglobal.sds.example.chapter3.OrderManageService}
      * 降级方法要求：
      * 1. 降级方法和注解标注的方法要在同一个类上
-     * 2. 方法名称必须一致
-     * 3. 方法入参必须一致或者方法入参可以多添加一个参数（必须为 {@link SdsException}，且必须放在最后一个位置）
+     * 2. 方法名称必须是 {@link SdsDowngradeMethod} 中的 fallback() 指定的
+     * 3. 降级方法的入参类型必须和限流方法的保持一致或者可以多添加一个参数（类型必须为 {@link SdsException}，且必须放在最后一个位置）
      *
      * @param pjp {@link ProceedingJoinPoint}
      * @param ex  {@link SdsException}
      * @return 降级方法的返回结果
      */
-    private Object handleCustomSdsException(ProceedingJoinPoint pjp, SdsException ex) {
+    private Object handleFallback(ProceedingJoinPoint pjp, SdsException ex) {
         MethodSignature signature = (MethodSignature) pjp.getSignature();
         Class<?> targetClass = pjp.getTarget().getClass();
         Class<?>[] parameterTypes = signature.getMethod().getParameterTypes();

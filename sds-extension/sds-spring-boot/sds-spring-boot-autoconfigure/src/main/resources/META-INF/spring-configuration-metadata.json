@@ -1,0 +1,27 @@
+{
+  "groups": [
+    {
+      "name": "sds",
+      "type": "com.didiglobal.sds.extension.spring.boot.autoconfigure.SdsProperties",
+      "sourceType": "com.didiglobal.sds.extension.spring.boot.autoconfigure.SdsProperties"
+    }
+  ],
+  "properties": [
+    {
+      "name": "sds.app-group-name",
+      "type": "java.lang.String",
+      "sourceType": "com.didiglobal.sds.extension.spring.boot.autoconfigure.SdsProperties"
+    },
+    {
+      "name": "sds.app-name",
+      "type": "java.lang.String",
+      "sourceType": "com.didiglobal.sds.extension.spring.boot.autoconfigure.SdsProperties"
+    },
+    {
+      "name": "sds.server-addr-list",
+      "type": "java.lang.String",
+      "sourceType": "com.didiglobal.sds.extension.spring.boot.autoconfigure.SdsProperties"
+    }
+  ],
+  "hints": []
+}
