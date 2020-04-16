@@ -74,7 +74,6 @@ public class ExceptionRateDowngradeTest extends AbstractDowngradeTest {
         strategy.setPoint(getPoint());
         strategy.setExceptionRateStart(EXCEPTION_RATE_THRESHOLD_START);
         strategy.setExceptionRateThreshold(EXCEPTION_RATE_THRESHOLD);
-        strategy.setDowngradeRate(DOWNGRADE_RATE);
 
         strategyMap.put(getPoint(), strategy);
 

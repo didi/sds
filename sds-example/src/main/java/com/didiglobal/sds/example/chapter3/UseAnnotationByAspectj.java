@@ -5,7 +5,7 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 /**
- * 通过Spring AOP(Aspectj) + 注解 的方式来使用SDS
+ * 【演示】通过Spring AOP(Aspectj) + 注解 的方式来使用SDS
  *
  * @Author: manzhizhen
  * @Date: Create in 2020-03-22 21:31

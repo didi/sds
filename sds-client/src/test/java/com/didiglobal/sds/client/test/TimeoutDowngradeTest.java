@@ -59,7 +59,6 @@ public class TimeoutDowngradeTest extends AbstractDowngradeTest {
 
         strategy.setTimeoutThreshold(TIMEOUT_THRESHOLD);
         strategy.setTimeoutCountThreshold(TIMEOUT_COUNT_THRESHOLD);
-        strategy.setDowngradeRate(DOWNGRADE_RATE);
 
         strategyMap.put(getPoint(), strategy);
 

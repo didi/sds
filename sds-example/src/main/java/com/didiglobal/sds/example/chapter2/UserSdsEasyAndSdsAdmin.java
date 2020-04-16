@@ -7,9 +7,9 @@ import com.didiglobal.sds.easy.SdsEasyUtil;
 import java.util.concurrent.ThreadLocalRandom;
 
 /**
- * sds-easy中提供了Lamdba表达式的方式来使用sds-client
+ * 【演示】使用sds-easy中提供的Lamdba表达式的方式来使用sds-client
  *
- * @Author: yizhenqiang
+ * @Author: manzhizhen
  * @Date: Create in 2020-03-27 09:04
  */
 public class UserSdsEasyAndSdsAdmin {

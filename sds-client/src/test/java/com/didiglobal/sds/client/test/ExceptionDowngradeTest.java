@@ -69,7 +69,6 @@ public class ExceptionDowngradeTest extends AbstractDowngradeTest {
         SdsStrategy strategy = new SdsStrategy();
         strategy.setPoint(getPoint());
         strategy.setExceptionThreshold(EXCEPTION_THRESHOLD);
-        strategy.setDowngradeRate(DOWNGRADE_RATE);
 
         strategyMap.put(getPoint(), strategy);
 

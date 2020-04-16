@@ -51,7 +51,6 @@ public class ConcurrentDowngradeTest extends AbstractDowngradeTest {
         SdsStrategy strategy = new SdsStrategy();
         strategy.setPoint(getPoint());
         strategy.setConcurrentThreshold(CONCURRENT_THRESHOLD);
-        strategy.setDowngradeRate(DOWNGRADE_RATE);
 
         strategyMap.put(getPoint(), strategy);
 

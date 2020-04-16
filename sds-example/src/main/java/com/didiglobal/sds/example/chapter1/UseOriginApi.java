@@ -9,7 +9,7 @@ import com.didiglobal.sds.client.service.SdsStrategyService;
 import java.util.concurrent.ThreadLocalRandom;
 
 /**
- * 样例章节1：通过原生API来使用SDS，不合sds-admin交互
+ * 【演示】通过原生API来使用SDS，不合sds-admin交互
  *
  * @Author: manzhizhen
  * @Date: Create in 2020-03-22 11:02
