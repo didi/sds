@@ -27,11 +27,8 @@ public class TokenBucketStrategyExecutor extends AbstractStrategyExecutor {
             return true;
         }
 
-        System.out.println(checkData.getTakeTokenBucketNum());
-
         // 如果当前桶的令牌还没用完，那么直接返回
-        if (checkData.getTakeTokenBucketNum().compareTo(strategy.
-                getTokenBucketGeneratedTokensInSecond().longValue()) < 0) {
+        if (checkData.getTakeTokenBucketNum() <= strategy.getTokenBucketGeneratedTokensInSecond()) {
             return true;
         }
 
@@ -40,8 +37,14 @@ public class TokenBucketStrategyExecutor extends AbstractStrategyExecutor {
             return false;
         }
 
+        // 每个桶可用的令牌数不能超过桶容量
+        if (checkData.getTakeTokenBucketNum() > strategy.getTokenBucketSize()) {
+            return false;
+        }
+
         // 如果当前秒的令牌已经不够用，那么就看历史桶中是否有剩余令牌能匀一下
-        return CYCLE_BUCKET_NUM * BUCKET_TIME * strategy.getTokenBucketGeneratedTokensInSecond() - checkData.getTakeTokenBucketNum() + checkData.getDowngradeCount() > 0;
+        return CYCLE_BUCKET_NUM * BUCKET_TIME * strategy.getTokenBucketGeneratedTokensInSecond() - checkData.getTakeTokenBucketNum()
+                + checkData.getDowngradeCount() > 0;
     }
 
     @Override

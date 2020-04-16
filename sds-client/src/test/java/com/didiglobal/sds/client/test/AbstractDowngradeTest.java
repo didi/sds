@@ -15,8 +15,6 @@ import java.util.concurrent.TimeUnit;
  */
 public abstract class AbstractDowngradeTest {
 
-    protected static final int DOWNGRADE_RATE = 100;
-
     protected static final String SERVER_URL = "http://127.0.0.1:8887";
     protected static SdsClient sdsClient = SdsClientFactory.getOrCreateSdsClient("BikeBusinessDepartment", "order", SERVER_URL);
 
@@ -131,7 +129,7 @@ public abstract class AbstractDowngradeTest {
      * 至少等1个完全周期，即10s，这里为了保险，等11s
      */
     protected void waitResult() {
-        sleepMilliseconds(11000);
+        sleepMilliseconds(12000);
     }
 
     protected void sleepMilliseconds(long milliseconds) {

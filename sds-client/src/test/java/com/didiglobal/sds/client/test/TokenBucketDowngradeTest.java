@@ -7,8 +7,6 @@ import com.didiglobal.sds.client.service.SdsStrategyService;
 import org.junit.Assert;
 import org.junit.Test;
 
-import java.util.concurrent.ConcurrentHashMap;
-
 /**
  * 令牌桶降级测试
  * <p>
@@ -38,8 +36,6 @@ public class TokenBucketDowngradeTest extends AbstractDowngradeTest {
 
     @Override
     protected void initStrategy() {
-        ConcurrentHashMap<String, SdsStrategy> strategyMap = new ConcurrentHashMap<>();
-
         SdsStrategy strategy = new SdsStrategy();
         strategy.setPoint(getPoint());
 
@@ -48,9 +44,7 @@ public class TokenBucketDowngradeTest extends AbstractDowngradeTest {
         // 每个桶最多20个令牌
         strategy.setTokenBucketSize(TOKEN_BUCKET_SIZE);
 
-        strategyMap.put(getPoint(), strategy);
-
-        SdsStrategyService.getInstance().resetAll(strategyMap);
+        SdsStrategyService.getInstance().resetOne(getPoint(), strategy);
     }
 
     @Override

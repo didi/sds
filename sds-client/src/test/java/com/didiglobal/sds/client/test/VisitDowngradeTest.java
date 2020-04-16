@@ -42,7 +42,6 @@ public class VisitDowngradeTest extends AbstractDowngradeTest {
         strategy.setPoint(getPoint());
 
         strategy.setVisitThreshold(VISITT_HRESHOLD);
-        strategy.setDowngradeRate(DOWNGRADE_RATE);
 
         strategyMap.put(getPoint(), strategy);
 
