@@ -7,16 +7,15 @@ import com.didiglobal.sds.client.service.SdsStrategyService;
 import org.junit.Assert;
 import org.junit.Test;
 
-import java.util.concurrent.ConcurrentHashMap;
-
 /**
- * 访问量降级测试
+ * 令牌桶降级测试
  * <p>
- * Created by manzhizhen on 2016/4/24.
+ * Created by manzhizhen on 2020/4/10.
  */
-public class VisitDowngradeTest extends AbstractDowngradeTest {
+public class TokenBucketDowngradeTest extends AbstractDowngradeTest {
 
-    private final static long VISITT_HRESHOLD = 5L;
+    private final static int TOKEN_BUCKET_GENERATED_TOKENS_IN_SECOND = 15;
+    private final static int TOKEN_BUCKET_SIZE = 20;
 
     @Test
     public void test() {
@@ -29,33 +28,33 @@ public class VisitDowngradeTest extends AbstractDowngradeTest {
                 SdsPowerfulCounterService.getInstance().getPointCounterMap().get(getPoint());
         Assert.assertNotNull(powerfulCycleTimeCounter);
 
-        Assert.assertEquals(getExecutorTimes() * getThreadNum() - VISITT_HRESHOLD,
+        Assert.assertEquals(getExecutorTimes() * getThreadNum() - Math.max(TOKEN_BUCKET_GENERATED_TOKENS_IN_SECOND,
+                TOKEN_BUCKET_SIZE),
                 powerfulCycleTimeCounter.getLastCycleDowngradeValue(System.currentTimeMillis()));
 
     }
 
     @Override
     protected void initStrategy() {
-        ConcurrentHashMap<String, SdsStrategy> strategyMap = new ConcurrentHashMap<>();
-
         SdsStrategy strategy = new SdsStrategy();
         strategy.setPoint(getPoint());
 
-        strategy.setVisitThreshold(VISITT_HRESHOLD);
+        // 桶的时间长度是1秒，每秒生成15个令牌
+        strategy.setTokenBucketGeneratedTokensInSecond(TOKEN_BUCKET_GENERATED_TOKENS_IN_SECOND);
+        // 每个桶最多20个令牌
+        strategy.setTokenBucketSize(TOKEN_BUCKET_SIZE);
 
-        strategyMap.put(getPoint(), strategy);
-
-        SdsStrategyService.getInstance().resetAll(strategyMap);
+        SdsStrategyService.getInstance().resetOne(getPoint(), strategy);
     }
 
     @Override
     protected long getExecutorTimes() {
-        return 10;
+        return 100;
     }
 
     @Override
     protected String getPoint() {
-        return "visitPoint";
+        return "tokenBucketPoint";
     }
 
     @Override
@@ -65,6 +64,6 @@ public class VisitDowngradeTest extends AbstractDowngradeTest {
 
     @Override
     protected long getTakeTime() {
-        return 950;
+        return 1;
     }
 }

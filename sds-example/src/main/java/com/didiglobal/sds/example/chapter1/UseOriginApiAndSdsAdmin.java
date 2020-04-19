@@ -6,7 +6,7 @@ import com.didiglobal.sds.client.SdsClientFactory;
 import java.util.concurrent.ThreadLocalRandom;
 
 /**
- * 样例章节1：通过原生API来使用SDS，结合sds-admin来配置降级策略
+ * 【演示】通过原生API来使用SDS，结合sds-admin来配置降级策略
  *
  * @Author: manzhizhen
  * @Date: Create in 2020-03-22 12:26

@@ -78,9 +78,11 @@ public class SdsStrategy {
     private Long retryInterval = -1L;
 
     /**
-     * 降级率, 取值为[0-100]，值为15表示每100笔请求将有15笔被拒绝掉
+     * 降级比率, 取值为[0-100]
+     * 例如：值为15表示每100笔请求将有15笔被拒绝掉
+     * 默认值：100
      */
-    private Integer downgradeRate = 0;
+    private Integer downgradeRate = 100;
 
     /**
      * 返回值字符串，一般是json格式

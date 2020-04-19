@@ -1,0 +1,17 @@
+spring:
+  application:
+    name: hello-provider
+  main:
+    allow-bean-definition-overriding: true
+dubbo:
+  application:
+    name: hello-provider
+  protocol:
+    name: dubbo
+    port: 12345
+  registry:
+    address: N/A
+sds:
+  appGroupName: demo
+  appName: demo-dubbo-provider
+  serverAddrList: https://sds.chpengzh.com

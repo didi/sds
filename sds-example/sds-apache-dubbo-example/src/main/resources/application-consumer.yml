@@ -1,0 +1,14 @@
+spring:
+  application:
+    name: hello-consumer
+  main:
+    allow-bean-definition-overriding: true
+dubbo:
+  application:
+    name: hello-consumer
+  registry:
+    address: N/A
+sds:
+  appGroupName: demo
+  appName: demo-dubbo-consumer
+  serverAddrList: https://sds.chpengzh.com
