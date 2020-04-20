@@ -191,10 +191,12 @@ public class CommonSdsClient extends AbstractSdsClient {
 
         // 获取配置的策略：规则和触犯规则后的动作
         SdsStrategy strategy = SdsStrategyService.getInstance().getStrategy(point);
-        if (null == strategy) {
+        /**
+         * 没做策略或者做了策略但是降级比例小于等于0表示不需要降级
+         */
+        if (null == strategy || strategy.getDowngradeRate() <= 0) {
             return false;
         }
-
 
         DowngradeActionType downgradeActionType = null;
         if (!SdsDowngradeDelayService.getInstance().isDowngradeDelay(point, time)) {
@@ -240,15 +242,9 @@ public class CommonSdsClient extends AbstractSdsClient {
 
         boolean needDowngrade;
         /**
-         * 小于等于0表示不需要降级
+         * 大于等于100说明百分百降级
          */
-        if (strategy.getDowngradeRate() <= 0) {
-            needDowngrade = false;
-
-            /**
-             * 大于等于100说明百分百降级
-             */
-        } else if (strategy.getDowngradeRate() >= 100) {
+        if (strategy.getDowngradeRate() >= 100) {
             needDowngrade = true;
 
         } else {
