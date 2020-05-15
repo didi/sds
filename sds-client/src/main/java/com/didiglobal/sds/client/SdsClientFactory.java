@@ -30,7 +30,7 @@ public final class SdsClientFactory {
         String serverAddrList = System.getProperty(SERVER_ADDR_LIST);
 
         if (StringUtils.isBlank(appGroupName) || StringUtils.isBlank(appName) || StringUtils.isBlank(serverAddrList)) {
-            logger.info("SdsClientFactory#static 系统参数" + APP_NAME + ", " + APP_NAME + ", " + SERVER_ADDR_LIST +
+            logger.info("SdsClientFactory#static 系统参数" + APP_GROUP_NAME + ", " + APP_NAME + ", " + SERVER_ADDR_LIST +
                     "没配置全，不通过系统参数初始化SdsClient。");
 
         } else {
