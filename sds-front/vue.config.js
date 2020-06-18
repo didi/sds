@@ -16,6 +16,6 @@ module.exports = {
     }
   },
   configureWebpack: {
-    devtool: "eval-source-map", // https://github.com/vuejs/vue-cli/issues/4572
+    // devtool: "eval-source-map", // https://github.com/vuejs/vue-cli/issues/4572
   }
 };

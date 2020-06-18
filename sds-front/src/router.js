@@ -1,12 +1,5 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import ApplicationGroup from './views/ApplicationGroup.vue'
-import ApplyName from './views/ApplyName.vue'
-import SdsScheme from './views/SdsScheme.vue'
-import DemotePoint from './views/DemotePoint.vue'
-import DemotePointResponse from "./views/DemotePointResponse.vue";
-import SettingUp from './views/SettingUp.vue'
-import DowngradeChart from './views/DowngradeChart.vue'
 
 Vue.use(Router);
 
@@ -22,37 +15,38 @@ export default new Router({
     {
       path: "/applicationGroup",
       name: "应用组",
-      component: ApplicationGroup
+      component: () => import("./views/ApplicationGroup.vue")
     },
     {
       path: "/applyName",
       name: "应用",
-      component: ApplyName
+      component: () => import("./views/ApplyName.vue")
     },
     {
       path: "/sdsScheme",
       name: "降级预案",
-      component: SdsScheme
+      component: () => import("./views/SdsScheme.vue")
     },
     {
       path: "/demotePoint",
       name: "降级点策略",
-      component: DemotePoint
+      component: () => import("./views/DemotePoint.vue")
     },
     {
       path: "/demotePointResponse",
       name: "降级返回值",
-      component: DemotePointResponse
+      component: () => import("./views/DemotePointResponse.vue")
     },
     {
       path: "/settingUp",
       name: "设置",
-      component: SettingUp
+      component: () => import("./views/SettingUp.vue")
+
     },
     {
       path: "/downgradeChart",
       name: "监控大盘",
-      component: DowngradeChart
+      component: () => import("./views/DowngradeChart.vue")
     },
     {
       path: "/",
