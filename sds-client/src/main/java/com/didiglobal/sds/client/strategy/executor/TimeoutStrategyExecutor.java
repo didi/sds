@@ -21,7 +21,7 @@ public class TimeoutStrategyExecutor extends AbstractStrategyExecutor {
             return true;
         }
 
-        return checkData.getTimeoutCount() <= strategy.getTimeoutCountThreshold();
+        return checkData.getTimeoutCount() < strategy.getTimeoutCountThreshold();
     }
 
     @Override
