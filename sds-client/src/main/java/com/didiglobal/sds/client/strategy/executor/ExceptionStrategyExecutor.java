@@ -21,7 +21,7 @@ public class ExceptionStrategyExecutor extends AbstractStrategyExecutor {
             return true;
         }
 
-        return checkData.getExceptionCount() <= strategy.getExceptionThreshold();
+        return checkData.getExceptionCount() < strategy.getExceptionThreshold();
     }
 
     @Override
