@@ -4,17 +4,17 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
         <groupId>com.didiglobal.sds</groupId>
-        <artifactId>sds-spring-boot</artifactId>
+        <artifactId>sds-example</artifactId>
         <version>${revision}</version>
         <relativePath>../pom.xml</relativePath>
     </parent>
+
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.didiglobal.sds</groupId>
-    <artifactId>sds-spring-boot-autoconfigure</artifactId>
-    <packaging>jar</packaging>
+    <artifactId>sds-example</artifactId>
 
-    <name>sds-spring-boot-autoconfigure</name>
+    <name>sds-example</name>
 
     <url>https://github.com/didi/sds</url>
 
@@ -25,31 +25,42 @@
     </properties>
 
     <dependencies>
-
         <dependency>
             <groupId>com.didiglobal.sds</groupId>
-            <artifactId>sds-client</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-autoconfigure</artifactId>
+            <artifactId>sds-easy</artifactId>
         </dependency>
         <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-logging</artifactId>
+            <groupId>com.didiglobal.sds</groupId>
+            <artifactId>sds-aspectj</artifactId>
         </dependency>
-
+        <dependency>
+            <groupId>com.didiglobal.sds</groupId>
+            <artifactId>sds-spring-boot-starter</artifactId>
+        </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
-            <scope>test</scope>
         </dependency>
 
         <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-configuration-processor</artifactId>
-            <optional>true</optional>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-aop</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-beans</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-core</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-context</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-context-support</artifactId>
         </dependency>
 
     </dependencies>
