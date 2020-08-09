@@ -5,7 +5,7 @@
     <groupId>com.didiglobal.sds</groupId>
     <artifactId>sds-base</artifactId>
     <packaging>pom</packaging>
-    <version>1.0.1-SNAPSHOT</version>
+    <version>${revision}</version>
 
     <name>SDS</name>
 
@@ -19,6 +19,8 @@
     </modules>
 
     <properties>
+        <revision>1.0.1-SNAPSHOT</revision>
+
         <spring-boot.version>2.1.1.RELEASE</spring-boot.version>
         <apache.dubbo.version>2.7.5</apache.dubbo.version>
         <!-- Plugin dependency -->
@@ -37,6 +39,16 @@
             <dependency>
                 <groupId>com.didiglobal.sds</groupId>
                 <artifactId>sds-easy</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.didiglobal.sds</groupId>
+                <artifactId>sds-dubbo</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.didiglobal.sds</groupId>
+                <artifactId>sds-okhttp</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>

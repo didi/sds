@@ -6,13 +6,14 @@
     <parent>
         <groupId>com.didiglobal.sds</groupId>
         <artifactId>sds-base</artifactId>
-        <version>1.0.1-SNAPSHOT</version>
+        <version>${revision}</version>
+        <relativePath>../pom.xml</relativePath>
     </parent>
 
     <modelVersion>4.0.0</modelVersion>
 
+    <groupId>com.didiglobal.sds</groupId>
     <artifactId>sds-easy</artifactId>
-    <version>1.0.1-SNAPSHOT</version>
 
     <name>sds-easy</name>
 

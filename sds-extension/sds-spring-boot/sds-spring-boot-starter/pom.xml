@@ -5,10 +5,12 @@
     <parent>
         <groupId>com.didiglobal.sds</groupId>
         <artifactId>sds-spring-boot</artifactId>
-        <version>1.0.1-SNAPSHOT</version>
+        <version>${revision}</version>
+        <relativePath>../pom.xml</relativePath>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
+    <groupId>com.didiglobal.sds</groupId>
     <artifactId>sds-spring-boot-starter</artifactId>
 
     <url>https://github.com/didi/sds</url>
