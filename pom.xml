@@ -18,6 +18,35 @@
         <module>sds-example</module>
     </modules>
 
+    <developers>
+        <developer>
+            <name>manzhizhen</name>
+            <email>835576511@qq.com</email>
+        </developer>
+        <developer>
+            <name>chpengzh</name>
+            <email>chpengzh@foxmail.com</email>
+        </developer>
+        <developer>
+            <name>masteryourself</name>
+        </developer>
+        <developer>
+            <name>jamesmsw</name>
+            <email>lovewsic@gmail.com</email>
+        </developer>
+        <developer>
+            <name>Tiger Wang</name>
+            <email>wangyunbo@didichuxing.com</email>
+        </developer>
+        <developer>
+            <name>huangyiming</name>
+            <email>huangyiminghappy@163.com</email>
+        </developer>
+        <developer>
+            <name>seasidesky</name>
+        </developer>
+    </developers>
+
     <properties>
         <revision>1.0.1-SNAPSHOT</revision>
 
@@ -223,11 +252,35 @@
                 <module>sds-front</module>
             </modules>
         </profile>
+
         <profile>
-            <id>release</id>
+            <!-- 本地开发环境 -->
+            <id>dev</id>
+            <properties>
+                <profiles.active>dev</profiles.active>
+            </properties>
             <activation>
+                <!-- 设置默认激活这个配置 -->
                 <activeByDefault>true</activeByDefault>
             </activation>
+        </profile>
+
+        <profile>
+            <!--打包环境-->
+            <id>release</id>
+            <properties>
+                <profiles.active>release</profiles.active>
+            </properties>
+            <distributionManagement>
+                <snapshotRepository>
+                    <id>oss</id>
+                    <url>https://oss.sonatype.org/content/repositories/snapshots/</url>
+                </snapshotRepository>
+                <repository>
+                    <id>oss</id>
+                    <url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
+                </repository>
+            </distributionManagement>
         </profile>
     </profiles>
 
