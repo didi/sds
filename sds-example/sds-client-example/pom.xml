@@ -12,9 +12,9 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.didiglobal.sds</groupId>
-    <artifactId>sds-example</artifactId>
+    <artifactId>sds-client-example</artifactId>
 
-    <name>sds-example</name>
+    <name>sds-client-example</name>
 
     <url>https://github.com/didi/sds</url>
 

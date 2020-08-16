@@ -6,15 +6,14 @@
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
-        <groupId>org.springframework.boot</groupId>
-        <artifactId>spring-boot-starter-parent</artifactId>
-        <version>2.2.6.RELEASE</version>
-        <relativePath/> <!-- lookup parent from repository -->
+        <groupId>com.didiglobal.sds</groupId>
+        <artifactId>sds-example</artifactId>
+        <version>${revision}</version>
+        <relativePath>../pom.xml</relativePath>
     </parent>
 
     <groupId>com.didiglobal.sds</groupId>
     <artifactId>sds-apache-dubbo-example</artifactId>
-    <version>1.0.0-SNAPSHOT</version>
 
     <name>sds-apache-dubbo-example</name>
     <description>sds-apache-dubbo-example</description>
@@ -33,49 +32,43 @@
             <properties>
                 <dubbo.version>2.7.3</dubbo.version>
             </properties>
-            <dependencies>
-                <dependency>
-                    <groupId>com.didiglobal.sds</groupId>
-                    <artifactId>sds-apache-dubbo-2.7.3</artifactId>
-                    <version>1.0.0-SNAPSHOT</version>
-                </dependency>
-            </dependencies>
+<!--            <dependencies>-->
+<!--                <dependency>-->
+<!--                    <groupId>com.didiglobal.sds</groupId>-->
+<!--                    <artifactId>sds-apache-dubbo-2.7.3</artifactId>-->
+<!--                    <version>1.0.0-SNAPSHOT</version>-->
+<!--                </dependency>-->
+<!--            </dependencies>-->
         </profile>
         <profile>
             <id>dubbo-2.7.5</id>
             <properties>
                 <dubbo.version>2.7.5</dubbo.version>
             </properties>
-            <dependencies>
-                <dependency>
-                    <groupId>com.didiglobal.sds</groupId>
-                    <artifactId>sds-apache-dubbo-2.7.5</artifactId>
-                    <version>1.0.0-SNAPSHOT</version>
-                </dependency>
-            </dependencies>
+<!--            <dependencies>-->
+<!--                <dependency>-->
+<!--                    <groupId>com.didiglobal.sds</groupId>-->
+<!--                    <artifactId>sds-apache-dubbo-2.7.5</artifactId>-->
+<!--                    <version>1.0.0-SNAPSHOT</version>-->
+<!--                </dependency>-->
+<!--            </dependencies>-->
         </profile>
         <profile>
             <id>dubbo-2.7.6</id>
             <properties>
                 <dubbo.version>2.7.6</dubbo.version>
             </properties>
-            <dependencies>
-                <dependency>
-                    <groupId>com.didiglobal.sds</groupId>
-                    <artifactId>sds-apache-dubbo-2.7.6</artifactId>
-                    <version>1.0.0-SNAPSHOT</version>
-                </dependency>
-            </dependencies>
+<!--            <dependencies>-->
+<!--                <dependency>-->
+<!--                    <groupId>com.didiglobal.sds</groupId>-->
+<!--                    <artifactId>sds-apache-dubbo-2.7.6</artifactId>-->
+<!--                    <version>1.0.0-SNAPSHOT</version>-->
+<!--                </dependency>-->
+<!--            </dependencies>-->
         </profile>
     </profiles>
 
     <dependencies>
-        <dependency>
-            <groupId>com.didiglobal.sds</groupId>
-            <artifactId>sds-apache-dubbo-common</artifactId>
-            <version>1.0.0-SNAPSHOT</version>
-        </dependency>
-
         <dependency>
             <groupId>org.apache.dubbo</groupId>
             <artifactId>dubbo</artifactId>
@@ -99,24 +92,11 @@
         <dependency>
             <groupId>com.didiglobal.sds</groupId>
             <artifactId>sds-spring-boot-starter</artifactId>
-            <version>1.0.1-SNAPSHOT</version>
         </dependency>
 
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-test</artifactId>
-            <scope>test</scope>
-            <exclusions>
-                <exclusion>
-                    <groupId>org.junit.vintage</groupId>
-                    <artifactId>junit-vintage-engine</artifactId>
-                </exclusion>
-            </exclusions>
         </dependency>
     </dependencies>
 

@@ -2,7 +2,7 @@ package com.didiglobal.sds.example;
 
 import com.didiglobal.sds.example.api.HelloService;
 import org.apache.dubbo.config.annotation.Reference;
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ActiveProfiles;
 
