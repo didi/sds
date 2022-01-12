@@ -51,7 +51,7 @@
         <revision>1.0.1-SNAPSHOT</revision>
 
         <spring-boot.version>2.1.1.RELEASE</spring-boot.version>
-        <apache.dubbo.version>2.7.5</apache.dubbo.version>
+        <apache.dubbo.version>2.7.15</apache.dubbo.version>
         <!-- Plugin dependency -->
         <plugin.spring-boot.version>${spring-boot.version}</plugin.spring-boot.version>
         <plugin.exec.version>1.6.0</plugin.exec.version>
