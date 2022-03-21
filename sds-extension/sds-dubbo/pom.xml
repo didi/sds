@@ -20,7 +20,7 @@
     <url>https://github.com/didi/sds</url>
 
     <properties>
-        <dubbo.version>2.6.5</dubbo.version>
+        <dubbo.version>2.6.9</dubbo.version>
     </properties>
 
     <dependencies>
