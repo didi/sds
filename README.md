@@ -1,3 +1,5 @@
+# DeepWiki: https://deepwiki.com/didi/sds
+
 # SDS (Service Downgrade System)
 
 ## 1. 背景
